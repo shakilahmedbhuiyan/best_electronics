@@ -3,6 +3,9 @@
 /public/build
 /public/hot
 /public/storage
+/public/categories
+/public/brands
+/public/products
 /storage/*.key
 /vendor
 .env
