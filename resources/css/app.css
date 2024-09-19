@@ -1,0 +1,102 @@
+@tailwind base;
+
+/* Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #1667ba lightgray;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 6px;
+}
+
+*::-webkit-scrollbar-track {
+    background: lightgray;
+    border-radius: 6px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: lightgray;
+    border-radius: 5px;
+    border: 5px solid #1667ba;
+}
+
+@tailwind components;
+@tailwind utilities;
+@tailwind screens;
+
+
+[x-cloak] {
+    display: none !important;
+}
+
+.hoverTable .hoverTableBody tr {
+    @apply bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-blue-50 dark:hover:bg-gray-600;
+}
+
+.fi-ta-record div:hover {
+    @apply bg-blue-100 dark:bg-gray-700;
+}
+
+[data-placeholder]::after {
+    content: " ";
+    box-shadow: 0 0 50px 9px rgba(254, 254, 254);
+    position: absolute;
+    top: 0;
+    left: -100%;
+    height: 100%;
+    animation: load 1s infinite;
+}
+
+@keyframes load {
+    0% {
+        left: -100%
+    }
+    100% {
+        left: 150%
+    }
+}
+
+/* #Mega Menu Styles
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+.mega-menu {
+    display: none;
+    left: 0;
+    position: absolute;
+    text-align: left;
+    width: 100%;
+}
+
+
+/* #hoverable Class Styles
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.hoverable {
+    position: static;
+}
+
+.hoverable > a:after {
+    content: "\25BC";
+    font-size: 13px;
+    padding-left: 3px;
+    position: relative;
+    top: 0;
+}
+
+.hoverable:hover .mega-menu {
+    display: block;
+}
+
+@media (max-width: 639px) {
+    #searchModal .items-end {
+        align-items: flex-start;
+    }
+}
+
+@media (min-width: 640px) {
+    #searchModal .items-end {
+        align-items: center;
+    }
+}
+
+
