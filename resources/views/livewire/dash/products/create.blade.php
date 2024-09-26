@@ -14,37 +14,41 @@
         </a>
     </x-slot>
 
+
     <div class="flex flex-col items-center justify-center my-4 w-full">
 
         <form wire:submit.prevent="store" class="w-full space-y-4">
 
             <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-                <x-input type="text" icon="device-phone-mobile" wire:model.defer="form.name" placeholder="Product Name" />
+                <x-input type="text" icon="device-phone-mobile" wire:model.defer="form.name"
+                         placeholder="Product Name" />
                 <x-input type="text" icon="link" wire:model.defer="form.slug" placeholder="Product Slug" />
             </div>
             <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
                 <div class="space-y-4">
-                    <x-input type="text" icon="currency-dollar" wire:model.defer="form.price" placeholder="Product Price" />
+                    <x-input type="text" icon="currency-dollar" wire:model.defer="form.price"
+                             placeholder="Product Price" />
                     <x-input type="text" icon="currency-dollar" wire:model.defer="form.sale_price"
                              placeholder="Product Sale Price" />
-                       <x-input type="text" wire:model.defer="form.quantity" icon="cube" placeholder="Product Stock Quantity" />
+                    <x-input type="text" wire:model.defer="form.quantity" icon="cube"
+                             placeholder="Product Stock Quantity" />
                     <x-select wire:model.defer="form.category" label="Product Category"
                               placeholder="Select Product Category">
-                       @forelse($categories as $c)
-                            <x-select.user-option  :src=" asset($c->thumbnail)"
-                                label="{{ $c->name }}" value="{{ $c->id }}" />
+                        @forelse($categories as $c)
+                            <x-select.user-option :src=" asset($c->thumbnail)"
+                                                  label="{{ $c->name }}" value="{{ $c->id }}" />
                         @empty
-                            <x-select.user-option  label="No Category Available"  />
-                       @endforelse
+                            <x-select.user-option label="No Category Available" />
+                        @endforelse
                     </x-select>
                     <x-select wire:model.defer="form.brand" label="Product Brand"
                               placeholder="Select Product Brand">
-                       @forelse( $brands as $b)
-                            <x-select.user-option  :src=" asset($b->thumbnail)"
-                                label="{{ $b->name }}" value="{{ $b->id }}" />
+                        @forelse( $brands as $b)
+                            <x-select.user-option :src=" asset($b->thumbnail)"
+                                                  label="{{ $b->name }}" value="{{ $b->id }}" />
                         @empty
-                            <x-select.user-option  label="No Brand Available"  />
-                       @endforelse
+                            <x-select.user-option label="No Brand Available" />
+                        @endforelse
                     </x-select>
 
 
@@ -52,9 +56,9 @@
 
                 <!-- product image upload -->
                 <div class="flex items-center justify-center ">
-                    <div class="" x-data="previewImage()">
+                    <div class="" x-data="previewImage()" wire:loading.class="d-block opacity-20 blur-sm">
                         <x-input-error for="form.thumbnail" />
-                        <div class="w-60 h-60 rounded bg-gray-100 border border-gray-200 flex
+                        <div class="w-60 h-60 rounded bg-gray-100 border border-blue-200 flex
                                     items-center justify-center overflow-hidden">
                             <img x-show="imageUrl" :src="imageUrl" class="w-full object-cover">
                             <div x-show="!imageUrl" class="text-gray-300 flex flex-col items-center">

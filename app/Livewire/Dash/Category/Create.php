@@ -3,6 +3,7 @@
 namespace App\Livewire\Dash\Category;
 
 use App\Models\Category;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Livewire\Component;
@@ -27,14 +28,11 @@ class Create extends Component
             'thumbnail' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
-
         $thumbnail = $this->thumbnail->storeAs(
             'categories',
             $this->slug . '.' . $this->thumbnail->extension(),
             'public'
         );
-
-
 
         $category = Category::create([
             'name' => $this->name,
@@ -43,11 +41,12 @@ class Create extends Component
             'status' => $this->status,
             'thumbnail' => $thumbnail,
         ]);
-         if ($thumbnail) {
+        if ($thumbnail) {
             // Remove the temporary file by its path
             Storage::disk('local')->delete('livewire-tmp/' . $this->thumbnail->getFilename());
         }
 
+        Cache::forever('categories', Category::where('status', true)->get());
 
         session()->flash('success', 'Category created successfully.');
 

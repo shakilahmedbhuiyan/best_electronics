@@ -17,6 +17,7 @@ return new class extends Migration {
             $table->string('description')->nullable();
             $table->boolean('status')->default(1);
             $table->string('thumbnail')->nullable();
+            $table->boolean('featured')->default(false);
             $table->timestamps();
         });
     }

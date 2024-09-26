@@ -99,4 +99,13 @@
     }
 }
 
+@media (min-width: 1024px) {
+    #searchModal .items-end {
+        align-items: center;
+    }
+}
+
+
+
+
 

@@ -40,7 +40,8 @@
                     <div class="flex items-center justify-center  ">
                         <div class="mb-4 p-4 text-sm w-full">
                             <div class="font-bold mb-2">Category Icon</div>
-                            <div class="" x-data="previewImage()">
+                            <div class="" x-data="previewImage()"
+                                 wire:loading.class="d-block opacity-20 blur-sm">
                                 <x-input-error for="thumbnail" />
 
                                 <label for="logo">
@@ -80,25 +81,25 @@
 </section>
 
 @push('scripts')
-<script>
-    function previewImage() {
-        return {
-            imageUrl: '',
+    <script>
+        function previewImage() {
+            return {
+                imageUrl: '',
 
-            fileChosen(event) {
-                this.fileToDataUrl(event, (src) => (this.imageUrl = src))
-            },
+                fileChosen(event) {
+                    this.fileToDataUrl(event, (src) => (this.imageUrl = src))
+                },
 
-            fileToDataUrl(event, callback) {
-                if (!event.target.files.length) return
+                fileToDataUrl(event, callback) {
+                    if (!event.target.files.length) return
 
-                let file = event.target.files[0],
-                    reader = new FileReader()
+                    let file = event.target.files[0],
+                        reader = new FileReader()
 
-                reader.readAsDataURL(file)
-                reader.onload = (e) => callback(e.target.result)
-            },
+                    reader.readAsDataURL(file)
+                    reader.onload = (e) => callback(e.target.result)
+                },
+            }
         }
-    }
-</script>
+    </script>
 @endpush

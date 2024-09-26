@@ -38,6 +38,8 @@ Route::group([
         ->get('/products', \App\Livewire\Dash\Products\Index::class)->name('product.index');
     Route::middleware(['permission:product-create'])
         ->get('/products/create', \App\Livewire\Dash\Products\Create::class)->name('product.create');
+    Route::middleware(['permission:product-edit'])
+        ->get('/product/update/{product}', \App\Livewire\Dash\Products\Update::class)->name('product.update');
 });
 
 // /**

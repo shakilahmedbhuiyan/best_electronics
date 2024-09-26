@@ -9,7 +9,7 @@
 
     <!-- Teleport the search input to the #userHeader div -->
     <template x-teleport="#userHeader">
-        <x-input placeholder="Search User" info x-model="search" @keyup="filterUsers">
+        <x-input placeholder="Search User" info x-model="search" x-on:keyup="filterUsers">
             <x-slot name="append">
                 <div class="absolute inset-y-0 right-0 flex items-center p-0.5">
                     <x-button
