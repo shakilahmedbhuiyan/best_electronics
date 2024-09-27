@@ -15,38 +15,33 @@ class Nav extends Component
         ],
         [
             'id' => 2,
-            'name' => 'About',
-            'route' => 'about',
-            'type' => 'external',
+            'name' => 'Laptop',
+            'route' => 'laptop',
+            'type' => 'category',
         ],
         [
             'id' => 3,
-            'name' => 'Contact',
-            'route' => 'register',
-            'type' => 'external',
+            'name' => 'Mobile',
+            'route' => 'mobile',
+            'type' => 'category',
         ],
         [
             'id' => 4,
-            'name' => 'Accessories',
-            'route' => 'category1',
+            'name' => 'Mobile',
+            'route' => 'mobile',
             'type' => 'category',
-            'dropdown' => [
-                [
-                    'name' => 'Service 1',
-                    'route' => 'service-1',
-                    'type' => 'product',
-                ],
-                [
-                    'name' => 'Service 2',
-                    'route' => 'service-2',
-                    'type' => 'product',
-                ],
-                [
-                    'name' => 'Service 3',
-                    'route' => 'service-3',
-                    'type' => 'product',
-                ],
-            ],
+        ],
+        [
+            'id' => 5,
+            'name' => 'Accessories',
+            'route' => 'accessories',
+            'type' => 'category',
+        ],
+        [
+            'id' => 6,
+            'name' => 'Contact',
+            'route' => '/contact',
+            'type' => 'external',
         ],
     ];
 

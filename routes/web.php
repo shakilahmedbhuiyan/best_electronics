@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', App\Livewire\Guest\Index::class)->name('index');
-Route::get('/{category}', App\Livewire\Guest\Index::class .'@category')->name('index.category');
+Route::get('/category/{category}', App\Livewire\Guest\Index::class .'@category')->name('index.category');
 
 /**
  * Admin Routes
