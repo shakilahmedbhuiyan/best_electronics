@@ -50,6 +50,10 @@ class DefaultPermissionsSeeder extends Seeder
             'product-update',
             'product-delete',
 
+            'slider-list',
+            'slider-create',
+            'slider-update',
+            'slider-delete',
         ];
 
         foreach ($permissions as $permission) {

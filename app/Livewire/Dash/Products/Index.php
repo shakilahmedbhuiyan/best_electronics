@@ -19,12 +19,6 @@ class Index extends Component
      public int | string $perPage = 15;
 
 
-//    public function updateSearch()
-//    {
-////        dd($this->search);
-//        $this->SearchProducts();
-//        $this->dispatch('$refresh');
-//    }
 
     public function SearchProducts()
     {

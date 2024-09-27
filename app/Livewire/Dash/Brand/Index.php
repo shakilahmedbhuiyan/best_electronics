@@ -27,6 +27,13 @@ class Index extends Component implements HasForms, HasTable
     use InteractsWithForms;
 
 
+    public function mount()
+    {
+//       $brands= Brand::all();
+//         dd($brands);
+    }
+
+
     public function table(Table $table): Table
     {
         return $table
@@ -47,6 +54,20 @@ class Index extends Component implements HasForms, HasTable
                 ]),
 
             ])
+            ->filters([
+                \Filament\Tables\Filters\SelectFilter::make('featured')
+                    ->label('Featured')
+                    ->options([
+                        '1' => 'Featured',
+                        '0' => 'Unfeatured',
+                    ]),
+                \Filament\Tables\Filters\SelectFilter::make('status')
+                    ->label('Status')
+                    ->options([
+                        '1' => 'Active',
+                        '0' => 'Inactive',
+                    ]),
+            ])
             ->actions([
                 Action::make('feature')
                     ->action(function (Brand $record) {
@@ -60,11 +81,8 @@ class Index extends Component implements HasForms, HasTable
                         $record->save();
                     })
                     ->visible(fn(Brand $record): bool => $record->featured),
-            ])
-            ->filters([
-                Filter::make('featured')
-                    ->label('Featured')
             ]);
+
     }
 
 

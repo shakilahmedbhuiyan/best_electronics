@@ -72,7 +72,6 @@
 
                 </div>
 
-
                 <x-button info type="submit" label="Create Category" icon="plus" />
             </form>
         </x-card>

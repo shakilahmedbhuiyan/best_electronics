@@ -40,6 +40,13 @@ Route::group([
         ->get('/products/create', \App\Livewire\Dash\Products\Create::class)->name('product.create');
     Route::middleware(['permission:product-edit'])
         ->get('/product/update/{product}', \App\Livewire\Dash\Products\Update::class)->name('product.update');
+
+    Route::middleware(['permission:slider-list'])
+        ->get('/sliders', \App\Livewire\Dash\Home\Slider\Index::class)->name('slider.index');
+    Route::middleware(['permission:slider-create'])
+        ->get('/sliders/create', \App\Livewire\Dash\Home\Slider\Create::class)->name('slider.create');
+    Route::middleware(['permission:slider-update'])
+        ->get('/sliders/update/{slider}', \App\Livewire\Dash\Home\Slider\Update::class)->name('slider.update');
 });
 
 // /**

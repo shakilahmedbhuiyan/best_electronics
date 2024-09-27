@@ -16,7 +16,6 @@
                 </x-button-1>
             </a>
         @endcan
-
     </x-slot>
 
     <!-- Roles Table -->
@@ -62,7 +61,7 @@
     <!-- Permissions Table -->
     <div>
         {{ $this->table }}
-        
+
     </div>
 
 </section>
