@@ -7,4 +7,11 @@
             </a>
         </x-slot>
     @endcan
+
+    <div class="my-6">
+
+        {{ $this->table }}
+
+    </div>
+
 </section>

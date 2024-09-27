@@ -1,8 +1,8 @@
 <section id="footer" class="w-full flex justify-center items-center">
     <div class="bg-white drop-shadow-lg rounded-t-lg mx-2 mt-6 px-6 py-8 w-full">
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 p-6 text-gray-700">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 p-6 text-gray-700 order-last">
 
-            <div class="fle flex-row justify-start items-center">
+            <div class="flex flex-col justify-end items-center">
                 <x-application-logo />
                 <h1 class="title font-bold leading-loose">
                     {{ __(config('app.name')) }}
@@ -13,7 +13,7 @@
 
             </div>
 
-            <div class="flex flex-row justify-center items-start space-x-6">
+            <div class="flex flex-row justify-center items-end space-x-6">
 
                 <div class="w-1/2">
                     <h3 class="font-bold">Services
@@ -71,7 +71,10 @@
                     </li>
                     <li>
                         <a href="#" class="navlink hover:font-bold">
-                            <i class="fas fa-envelope"></i>
+                            <i class="fas fa-envelope"></i> info@example.com
+                        </a>
+                    </li>
+                </ul>
 
             </div>
 

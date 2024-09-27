@@ -1,3 +1,5 @@
 <div class="min-h-screen">
-    {{-- Do your work, then step back. --}}
+    <livewire:guest.components.home-slider />
+    <livewire:guest.components.featured-brands />
+    <livewire:guest.components.latest-devices />
 </div>

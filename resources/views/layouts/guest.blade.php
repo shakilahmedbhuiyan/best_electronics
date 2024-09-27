@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="ltr">
 
 <head>
     <meta charset="utf-8">
@@ -15,7 +15,6 @@
 
     <!--Wireui Scripts -->
     <wireui:scripts />
-    <!--Wireui Scripts End -->
 
     <!-- Styles -->
     @filamentStyles
@@ -24,30 +23,29 @@
 </head>
 
 <body id="app" class="font-sans antialiased bg-gray-100">
-    @livewire('guest.components.top-header')
-    @livewire('guest.components.nav')
+@livewire('guest.components.top-header')
+@livewire('guest.components.nav')
 
 
-    <!-- Notifications -->
-    <x-notifications position="top-right" z-index="z-50" />
-    <!-- Notifications End -->
+<!-- Notifications -->
+<x-notifications position="top-right" z-index="z-50" />
+<!-- Notifications End -->
 
-    <!-- Page Content -->
-    <main>
-        {{ $slot }}
-    </main>
+<!-- Page Content -->
+<main>
+    {{ $slot }}
+</main>
 
 
+@livewire('notifications')
+@stack('modals')
 
-    @livewire('notifications')
-    @stack('modals')
+<livewire:guest.components.footer />
 
-    <livewire:guest.components.footer/>
-        
-        @filamentScripts
-        @vite('resources/js/app.js')
-        @livewireScripts
-        @stack('scripts')
+@filamentScripts
+@vite('resources/js/app.js')
+@livewireScripts
+@stack('scripts')
 </body>
 
 </html>

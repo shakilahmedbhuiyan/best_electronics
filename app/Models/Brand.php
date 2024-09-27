@@ -42,4 +42,10 @@ class Brand extends Model
     {
         return $query->where('featured', true);
     }
+
+    public function getThumbnailUrlAttribute()
+    {
+        return asset($this->thumbnail);
+    }
+
 }
