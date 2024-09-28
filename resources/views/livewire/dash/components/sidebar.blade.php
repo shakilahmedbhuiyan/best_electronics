@@ -178,7 +178,7 @@
             </li>
 
             <li>
-                <a href="#" wire:navigate
+                <a href="{{ route('admin.store.info') }}" wire:navigate
                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-slate-300 dark:hover:bg-gray-700 group">
 
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"

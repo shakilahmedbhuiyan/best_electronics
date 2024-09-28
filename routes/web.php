@@ -47,6 +47,9 @@ Route::group([
         ->get('/sliders/create', \App\Livewire\Dash\Home\Slider\Create::class)->name('slider.create');
     Route::middleware(['permission:slider-update'])
         ->get('/sliders/update/{slider}', \App\Livewire\Dash\Home\Slider\Update::class)->name('slider.update');
+
+    Route::middleware(['permission:store-info'])
+        ->get('/store/info', \App\Livewire\Dash\Store\Info::class)->name('store.info');
 });
 
 // /**

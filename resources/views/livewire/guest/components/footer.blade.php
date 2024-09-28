@@ -8,7 +8,7 @@
                     {{ __(config('app.name')) }}
                 </h1>
                 <h2 class="tegline text-md font-light">
-                    {{ __('Your Mobile Shop') }}
+                    {{ __($store->description) }}
                 </h2>
 
             </div>
@@ -66,12 +66,14 @@
                 <ul class="mt-2">
                     <li>
                         <a href="#" class="navlink hover:font-bold">
-                            <i class="fas fa-phone-alt"></i> +91 1234567890
+                            <i class="fas fa-phone-alt"></i>
+                            {!! $store->phone !!}
                         </a>
                     </li>
                     <li>
                         <a href="#" class="navlink hover:font-bold">
-                            <i class="fas fa-envelope"></i> info@example.com
+                            <i class="fas fa-envelope"></i>
+                            {!! $store->email !!}
                         </a>
                     </li>
                 </ul>
