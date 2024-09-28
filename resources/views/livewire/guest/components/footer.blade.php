@@ -8,7 +8,7 @@
                     {{ __(config('app.name')) }}
                 </h1>
                 <h2 class="tegline text-md font-light">
-                    {{ __($store->description) }}
+                    {{ __($store['description']) }}
                 </h2>
 
             </div>
@@ -67,13 +67,13 @@
                     <li>
                         <a href="#" class="navlink hover:font-bold">
                             <i class="fas fa-phone-alt"></i>
-                            {!! $store->phone !!}
+                            {!! $store['phone'] !!}
                         </a>
                     </li>
                     <li>
                         <a href="#" class="navlink hover:font-bold">
                             <i class="fas fa-envelope"></i>
-                            {!! $store->email !!}
+                            {!! $store['email'] !!}
                         </a>
                     </li>
                 </ul>

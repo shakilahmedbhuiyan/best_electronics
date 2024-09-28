@@ -34,10 +34,10 @@ class store extends Model
         'keywords',
     ];
 
-    public function getLogoAttribute($value)
-    {
-        return $value ? asset($value) : null;
-    }
+//    public function getLogoAttribute($value)
+//    {
+//        return $value ? asset($value) : null;
+//    }
 
     public function getFaviconAttribute($value)
     {
