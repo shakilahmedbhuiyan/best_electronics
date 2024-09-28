@@ -3,7 +3,8 @@
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 p-6 text-gray-700 order-last">
 
             <div class="flex flex-col justify-end items-center">
-                <x-application-logo />
+                <x-application-mark href="{{ route('index') }}" alt="{{ config('app.name') }}"
+                            class="h-12 w-12 py-0 text-blue-800" fill="currentColor" />
                 <h1 class="title font-bold leading-loose">
                     {{ __(config('app.name')) }}
                 </h1>

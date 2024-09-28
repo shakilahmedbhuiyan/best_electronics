@@ -11,7 +11,7 @@
          mobile= (width > 769)? true : false">
 
         <x-application-mark href="{{ route('index') }}" alt="{{ config('app.name') }}"
-                            class="h-12 w-12 sm:py-0 py-2 text-blue-800" fill="currentColor" />
+                            class="h-12 w-12 py-0 text-blue-800" fill="currentColor" />
 
         <!-- web navbar -->
         <div class="flex flex-row justify-between items-center">
