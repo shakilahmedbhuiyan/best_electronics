@@ -23,3 +23,5 @@ yarn-error.log
 /.vscode
 /public/sliders
 /public/sliders/*
+/public/logo
+

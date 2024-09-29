@@ -131,6 +131,9 @@
                     </div>
                 </div>
             </div>
+             <x-textarea id="trix-content" class="w-full" label="Summary"
+                        placeholder="Product Short Summary"
+                        wire:model.defer="form.summary"></x-textarea>
             <x-textarea id="trix-content" class="w-full" label="Description"
                         placeholder="Product Complete Description"
                         wire:model.defer="form.description"></x-textarea>

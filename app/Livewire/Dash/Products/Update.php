@@ -31,6 +31,7 @@ class Update extends Component
         'form.category_id' => 'Category',
         'form.brand_id' => 'Brand',
         'form.description' => 'Description',
+        'form.summary' => 'Summary',
         'form.status' => 'Status',
         'form.meta_title' => 'SEO Title',
         'form.meta_description' => 'SEO Description',
@@ -67,6 +68,7 @@ class Update extends Component
             'form.category_id' => 'required| exists:categories,id',
             'form.brand_id' => 'required| exists:brands,id',
             'form.description' => 'nullable|string',
+            'form.summary' => 'required|string',
             'form.status' => 'required|boolean',
             'form.meta_title' => 'nullable|string',
             'form.meta_description' => 'nullable|string',
@@ -92,13 +94,14 @@ class Update extends Component
             'quantity' => $this->form['quantity'],
             'thumbnail' => $thumbnail,
             'description' => $this->form['description'],
+            'summary' => $this->form['summary'],
             'is_featured' => (bool)$this->form['is_featured'],
             'category_id' => $this->form['category_id'],
             'brand_id' => $this->form['brand_id'],
             'status' => $this->form['status'],
             'meta_title' => $this->form['meta_title']?? $this->form['name'],
-            'meta_description' => $this->form['meta_description']??null,
-            'meta_keywords' => $this->form['meta_keywords']??null,
+            'meta_description' => $this->form['meta_description']?? $this->form['summary'],
+            'meta_keywords' => $this->form['meta_keywords']??$this->form['name'],
         ]);
         session()->flash('success', 'Product Updated successfully');
         return $this->redirect(route('admin.product.index'), navigate: true);
