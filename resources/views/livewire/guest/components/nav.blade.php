@@ -10,8 +10,14 @@
          @resize.window=" width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
          mobile= (width > 769)? true : false">
 
-        <x-application-mark href="{{ route('index') }}" alt="{{ config('app.name') }}"
-                            class="h-12 w-12 py-0 text-blue-800" fill="currentColor" />
+        <div class="inline-flex justify-center items-center leading-none ">
+            <x-application-mark href="{{ route('index') }}" alt="{{ config('app.name') }}"
+                                class="h-12 w-12 py-0" fill="currentColor" />
+            <h1 class="flex flex-col pl-2 font-bold text-[1.3rem] leading-none text-emerald-900">
+                Best
+                <span class="font-light">Electronics</span>
+            </h1>
+        </div>
 
         <!-- web navbar -->
         <div class="flex flex-row justify-between items-center">
@@ -142,9 +148,15 @@
         <div class="navbar-backdrop backdrop-blur fixed inset-0 bg-gray-800 opacity-60"></div>
         <nav @click.outside="navbarOpen=false"
              class="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
-            <div class="flex items-center mb-8">
-                <a class="mr-auto text-3xl font-bold leading-none" href="{{ route('index') }}" wire:navigate>
-                    <x-application-logo class="h-12 text-blue-800" fill="currentColor" />
+            <div class="flex items-center justify-center mb-8 font-sans space-x-4 w-full">
+                <a class="mx-auto text-3xl font-bold leading-none inline-flex justify-center items-center w-full"
+                   href="{{ route('index') }}" wire:navigate>
+                    <x-application-logo class="h-12" />
+                    <h1 class="inline-flex pl-2">
+                        Best
+                        <span class="font-light">Electronics</span>
+
+                    </h1>
                 </a>
                 <button class="navbar-close" @click="navbarOpen=false">
                     <svg class="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500"

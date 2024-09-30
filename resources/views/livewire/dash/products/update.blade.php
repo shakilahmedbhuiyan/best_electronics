@@ -37,7 +37,7 @@
                     class="block text-sm font-medium disabled:opacity-60 text-gray-700 dark:text-gray-400
                 invalidated:text-negative-600 dark:invalidated:text-negative-700"
                     for="productStatus">
-                    {!! 'Active Product' !!}
+                    {!! 'Active' !!}
                 </label>
             </div>
             <div class="flex items-center gap-x-2">
@@ -58,9 +58,32 @@
                     class="block text-sm font-medium disabled:opacity-60 text-gray-700 dark:text-gray-400
                 invalidated:text-negative-600 dark:invalidated:text-negative-700"
                     for="productStatus">
-                    {!! 'Featured Product' !!}
+                    {!! 'Featured' !!}
                 </label>
             </div>
+
+            <div class="flex items-center gap-x-2">
+                <input
+                    class="form-checkbox transition ease-in-out duration-100 rounded border-secondary-300
+                text-primary-600 focus:ring-primary-600 focus:border-primary-400 dark:border-secondary-500
+                dark:checked:border-secondary-600 dark:focus:ring-secondary-600 dark:focus:border-secondary-500
+                 dark:bg-secondary-600 dark:text-secondary-600 dark:focus:ring-offset-secondary-800 w-4 h-4
+                 invalidated:focus:ring-negative-500 invalidated:ring-negative-500 invalidated:border-negative-400
+                 invalidated:text-negative-600 invalidated:focus:border-negative-400
+                 invalidated:dark:focus:border-negative-600 invalidated:dark:ring-negative-600
+                 invalidated:dark:border-negative-600 invalidated:dark:bg-negative-700
+                 invalidated:dark:checked:bg-negative-700 invalidated:dark:focus:ring-offset-secondary-800
+                 invalidated:dark:checked:border-negative-700"
+
+                    type="checkbox" @checked($form['instalment']) wire:model="form.instalment">
+                <label
+                    class="block text-sm font-medium disabled:opacity-60 text-gray-700 dark:text-gray-400
+                invalidated:text-negative-600 dark:invalidated:text-negative-700"
+                    for="productStatus">
+                    {!! 'Instalment' !!}
+                </label>
+            </div>
+
         </div>
 
     </template>

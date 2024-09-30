@@ -23,7 +23,6 @@ class Single extends Component
         });
 
 
-
         $this->seo()->setTitle($this->product['name']);
         $this->seo()
             ->setDescription($this->product['description']);

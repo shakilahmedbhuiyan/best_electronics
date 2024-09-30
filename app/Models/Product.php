@@ -18,6 +18,7 @@ class Product extends Model
         'price',
         'sale_price',
         'sale',
+        'instalment',
         'quantity',
         'thumbnail',
         'featured_image',
