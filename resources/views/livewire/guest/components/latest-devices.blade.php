@@ -11,7 +11,7 @@
         @foreach ($latestDevices as $ld)
             <!--   ✅ Product card 1 - Starts Here 👇 -->
             <div class="w-full sm:w-60 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
-                <a href="{{ route('product.single', $ld->slug) }}" class="">
+                <a href="{{ route('product.single', $ld->slug) }}" class="" wire:navigate>
                     <img
                         src="{{ asset($ld->thumbnail) }}"
                         alt="{{ $ld->name }}" class="h-44 w-36  mx-auto object-cover " />

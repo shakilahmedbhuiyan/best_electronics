@@ -1,5 +1,5 @@
 <section x-data="{navbarOpen: false, sticky: false}"
-         x-cloak class="relative w-full">
+         x-cloak class="relative w-full mb-2">
 
     <nav @scroll.window="sticky = (window.scrollY > 10)"
          :class="{'absolute w-full sm:py-0': sticky, 'relative w-full': !sticky}"

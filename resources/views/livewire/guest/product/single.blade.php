@@ -23,10 +23,10 @@
                             <h2 class="text-2xl font-bold text-gray-800 capitalize">{{ $product['name'] }}</h2>
                             <div class="flex flex-row space-x-2 mt-2 justify-center items-center ">
                                 <a class="text-sm text-gray-600 bg-green-300 rounded p-2"
-                                   href="{{ route('index.category', $product['brand']['slug'] ) }}">
+                                   href="{{ route('index.category', $product['brand']['slug'] ) }}" wire:navigate>
                                     {{ $product['brand']['name'] }}</a>
                                 <a class="text-sm text-gray-600 bg-green-300 rounded p-2"
-                                   href="{{ route('index.category', $product['category']['slug'] ) }}">
+                                   href="{{ route('index.category', $product['category']['slug'] ) }}" wire:navigate>
                                     {{ $product['category']['name'] }}</a>
 
                             </div>
@@ -162,7 +162,7 @@
                         <li
                             class="text-gray-800 font-semibold text-sm bg-gray-100 py-3 px-8 border-b-2 border-gray-800 cursor-pointer transition-all">
                             Description
-                        </li>
+                         </li>
                         <li class="text-gray-500 font-semibold text-sm hover:bg-gray-100 py-3 px-8 cursor-pointer transition-all">
                             Reviews
                         </li>

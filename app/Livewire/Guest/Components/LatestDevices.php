@@ -3,6 +3,7 @@
 namespace App\Livewire\Guest\Components;
 
 use App\Models\Product;
+use Illuminate\Support\Facades\Cache;
 use Livewire\Component;
 
 class LatestDevices extends Component
@@ -11,10 +12,7 @@ class LatestDevices extends Component
 
     public function mount()
     {
-        $this->latestDevices = Product::latest()
-            ->take(4)
-            ->with('brand')
-            ->get();
+        $this->latestDevices = Cache::flexible('latestDevices',[5,100], static fn() => Product::latest()->take(4)->get());
     }
 
     public function render()
