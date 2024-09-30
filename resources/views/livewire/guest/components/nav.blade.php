@@ -27,25 +27,24 @@
                 <button type="button" class="navbar-burger flex items-center justify-end"
                         @click="$openModal('searchModal')">
                     <x-heroicons::outline.magnifying-glass
-                        class="h-12 w-12 p-2 text-blue-800 hover:bg-blue-800 hover:text-gray-200" />
+                        class="h-12 w-12 p-2 text-emerald-900 hover:bg-emerald-900 hover:text-gray-200" />
 
                 </button>
                 <!-- mobile navbar button -->
                 <button type="button" class="navbar-burger flex items-center justify-end"
                         @click="navbarOpen = ! navbarOpen">
                     <x-heroicons::outline.bars-3-bottom-right x-show="!navbarOpen"
-                                                              class="h-12 w-12 p-2 text-blue-800 hover:bg-blue-800 hover:text-gray-200" />
+                                                              class="h-12 w-12 p-2 text-emerald-900 hover:bg-emerald-900 hover:text-gray-200" />
                     <x-heroicons::outline.x-mark x-show="navbarOpen"
-                                                 class="h-12 w-12 p-2 text-blue-800 hover:bg-blue-800 hover:text-gray-200" />
+                                                 class="h-12 w-12 p-2 text-emerald-900 hover:bg-emerald-900 hover:text-gray-200" />
                 </button>
             </div>
 
             <!-- web navbar links -->
             <div x-show="mobile">
-                <ul class="flex flex-row justify-center items-center text-blue-800">
+                <ul class="flex flex-row justify-center items-center text-emerald-900">
                     @foreach($navLinks as $item)
-
-                        <li class="hover:bg-blue-800 hover:text-white @isset($item['dropdown']) hoverable
+                        <li class="hover:bg-emerald-900 hover:text-white @isset($item['dropdown']) hoverable
                         @endisset"
                             wire:key="{{ $item['id'] }}">
                             <x-web-link route="{{$item['route']}}"
@@ -53,54 +52,9 @@
                                         id="{{ '#dropdown'.$item['id'] }}"
                                         type="{{$item['type']}}" />
 
-                            @isset($item['dropdown'])
-                                <div class="p-6 mega-menu z-[999] mb-16 sm:mb-0 shadow-xl bg-blue-800"
-                                     wire:key="{{ "#dropdown".$item['id'] }}">
-                                    <div class="container w-full flex flex-wrap justify-between mx-2">
-                                        <div class="w-full text-white mb-8">
-                                            <h2 class="font-bold text-2xl"> {{ $item['name'] }}</h2>
-                                            <p>
-                                                {{ "Category Description" }}
-                                            </p>
-                                        </div>
-                                        @foreach($item['dropdown'] as $key=>$ditem )
-                                            <div class="px-4 w-full sm:w-1/2 lg:w-1/4 border-gray-600 border-b
-                                            sm:border-r lg:border-b-0 pb-6 pt-6 lg:pt-3">
-                                                <div class="flex items-center">
-                                                    <svg class="h-8 mb-3 mr-3 fill-current text-white"
-                                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                                        <path
-                                                            d="M3 6c0-1.1.9-2 2-2h8l4-4h2v16h-2l-4-4H5a2 2 0 0 1-2-2H1V6h2zm8 9v5H8l-1.67-5H5v-2h8v2h-2z" />
-                                                    </svg>
-                                                    <h3 class="font-bold text-xl text-white text-bold mb-2">
-                                                        {{ ($ditem['name']) }}
-                                                    </h3>
-                                                </div>
-                                                <p class="text-gray-100 text-sm"> Quarterly sales are at an all-time low
-                                                    create
-                                                    spaces to explore the accountable talk and blind vampires.</p>
-                                                <div class="flex items-center py-3">
-                                                    <svg class="h-6 pr-3 fill-current text-blue-300"
-                                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                                        <path
-                                                            d="M20 10a10 10 0 1 1-20 0 10 10 0 0 1 20 0zm-2 0a8 8 0 1 0-16 0 8 8 0 0 0 16 0zm-8 2H5V8h5V5l5 5-5 5v-3z" />
-                                                    </svg>
-                                                    <a href="#"
-                                                       class="text-white bold border-b-2 border-blue-300 hover:text-blue-300">Find
-                                                        out more...</a>
-                                                </div>
-                                            </div>
-                                        @endforeach
-
-
-                                    </div>
-                                </div>
-
-                            @endisset
                         </li>
 
                     @endforeach
-
 
                 </ul>
 
@@ -111,13 +65,13 @@
         <!-- web navbar button -->
         <div class="space-x-2 inline-flex" x-show="mobile">
             <a href="#" class="md:inline-block transition duration-200">
-                <x-button type="button" variant="flat" x-on:click="$openModal('searchModal')">
-                    <x-heroicons::outline.magnifying-glass class="h-6 w-6 text-blue-600" />
+                <x-button type="button" variant="flat" x-on:click="$openModal('searchModal')" >
+                    <x-heroicons::outline.magnifying-glass class="h-6 w-6 text-emerald-800" />
                 </x-button>
 
-                <a href="#" class="md:inline-block transition duration-200">
+                <a href="{{ route('cart') }}" class="md:inline-block transition duration-200">
                     <x-button type="button" flat class="hover:outline">
-                        <x-heroicons::outline.shopping-bag class="h-6 w-6 text-blue-600" />
+                        <x-heroicons::outline.shopping-bag class="h-6 w-6 text-emerald-800" />
                     </x-button>
                 </a>
                 @if( auth()->user() )
@@ -128,7 +82,7 @@
                            onClick="event.preventDefault();
                                                 this.closest('form').submit();">
                             <x-button type="button" flat class="hover:outline">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600"
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-emerald-800"
                                      fill="currentColor"
                                      viewBox="0 0 256 256">
                                     <path
@@ -169,19 +123,19 @@
             <div>
                 <ul>
                     <li class="mb-1">
-                        <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-200 hover:text-blue-600 rounded"
+                        <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-emerald-200 hover:text-emerald-800 rounded"
                            href="{{ route('index') }}" wire:navigate>Home</a>
                     </li>
                     <li class="mb-1">
-                        <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-200 hover:text-blue-600 rounded"
+                        <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-emerald-200 hover:text-emerald-800 rounded"
                            href="#">Products</a>
                     </li>
                     <li class="mb-1">
-                        <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-200 hover:text-blue-600 rounded"
+                        <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-emerald-200 hover:text-emerald-800 rounded"
                            href="#">About Us</a>
                     </li>
                     <li class="mb-1">
-                        <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-200 hover:text-blue-600 rounded"
+                        <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-emerald-200 hover:text-emerald-800 rounded"
                            href="#">Contact</a>
                     </li>
                 </ul>
@@ -214,7 +168,7 @@
                            href="{{ route('login') }}">
                             Sign in
                         </a>
-                        <a class="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl"
+                        <a class="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-emerald-600 hover:bg-emerald-700  rounded-xl"
                            href="{{ route('register') }}">Sign Up</a>
                     </div>
                 @endif

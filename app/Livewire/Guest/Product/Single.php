@@ -43,4 +43,18 @@ class Single extends Component
         return view('livewire.guest.product.single')
             ->layout('layouts.guest');
     }
+
+
+    public function order($product)
+    {
+        $product= Product::findOrfail($product);
+       $data= [
+           'product_id' => $product->id,
+           'quantity' => 1,
+           'price' => $product->sale? $product->sale_price : $product->price,
+           'status' => 'pending',
+       ];
+       session()->push('cart', $data);
+       return $this->redirect(route('cart'), navigate: true);
+    }
 }

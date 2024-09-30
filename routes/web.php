@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', App\Livewire\Guest\Index::class)->name('index');
 Route::get('/category/{category}', App\Livewire\Guest\Index::class .'@category')->name('index.category');
 Route::get('/product/{product}', App\Livewire\Guest\Product\Single::class)->name('product.single');
+Route::get('/checkout/cart', App\Livewire\Guest\Order\Cart::class)->name('cart');
+Route::get('/checkout', App\Livewire\Guest\Order\Checkout::class)->name('checkout');
 
 /**
  * Admin Routes

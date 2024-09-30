@@ -59,7 +59,6 @@
                         </p>
                         <div>
 
-
                             <p class="text-gray-800 text-4xl font-bold">
                                 {!! "SAR ". (isset($product['sale_price']) ? $product['sale_price'] : $product['price']) !!}
                             </p>
@@ -69,6 +68,21 @@
                                 @endif
                                 <span class="text-sm ml-1">Tax included</span>
                             </p>
+                            <div class="text-sm inline-flex justify-center items-center text-orange-600/85">
+
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="currentColor"
+                                     class="h-8 w-8">
+                                    <path
+                                        d="M28,41H6c-1.1,0-2-.9-2-2v-22h34v5c0,.55.45,1,1,1s1-.45,1-1v-11c0-2.21-1.79-4-4-4h-2v-1c0-.55-.45-1-1-1s-1,.45-1,1v1h-4v-1c0-.55-.45-1-1-1s-1,.45-1,1v1h-4v-1c0-.55-.45-1-1-1s-1,.45-1,1v1h-4v-1c0-.55-.45-1-1-1s-1,.45-1,1v1h-4v-1c0-.55-.45-1-1-1s-1,.45-1,1v1h-2c-2.21,0-4,1.79-4,4v28c0,2.21,1.79,4,4,4h22c.55,0,1-.45,1-1s-.45-1-1-1ZM6,9h2v2c0,.55.45,1,1,1s1-.45,1-1v-2h4v2c0,.55.45,1,1,1s1-.45,1-1v-2h4v2c0,.55.45,1,1,1s1-.45,1-1v-2h4v2c0,.55.45,1,1,1s1-.45,1-1v-2h4v2c0,.55.45,1,1,1s1-.45,1-1v-2h2c1.1,0,2,.9,2,2v4H4v-4c0-1.1.9-2,2-2Z" />
+                                    <path
+                                        d="M37 25c-4.96 0-9 4.04-9 9s4.04 9 9 9 9-4.04 9-9-4.04-9-9-9zM37 41c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7zM14 22c0-.55-.45-1-1-1h-4c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-4zM12 25h-2v-2h2v2zM13 31h-4c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-4c0-.55-.45-1-1-1zM12 35h-2v-2h2v2zM24 22c0-.55-.45-1-1-1h-4c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-4zM22 25h-2v-2h2v2zM23 31h-4c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-4c0-.55-.45-1-1-1zM22 35h-2v-2h2v2zM29 21c-.55 0-1 .45-1 1v3.07c0 .55.45 1 1 1s1-.45 1-1v-2.07h2.05c.13.4.51.69.95.69.55 0 1-.45 1-1v-.69c0-.55-.45-1-1-1h-4z" />
+                                    <path
+                                        d="M39.29,30.29l-6,6c-.39.39-.39,1.02,0,1.41.2.2.45.29.71.29s.51-.1.71-.29l6-6c.39-.39.39-1.02,0-1.41s-1.02-.39-1.41,0Z" />
+                                    <circle cx="34.5" cy="31.5" r="1.5" />
+                                    <circle cx="39.5" cy="36.5" r="1.5" />
+                                </svg>
+                                {!! "Installment Available" !!}
+                            </div>
                         </div>
 
                         <div class="flex flex-wrap gap-4 ml-auto">
@@ -143,7 +157,7 @@
                     {{--                    <hr class="my-8" />--}}
 
                     <div class="flex flex-wrap gap-4">
-                        <button type="button"
+                        <button type="button" wire:click="order({{ $product['id'] }})"
                                 class="min-w-[200px] px-4 py-3 bg-emerald-900 hover:bg-emerald-950 text-white text-sm
                                 font-semibold rounded-md">
                             Buy now
@@ -162,7 +176,7 @@
                         <li
                             class="text-gray-800 font-semibold text-sm bg-gray-100 py-3 px-8 border-b-2 border-gray-800 cursor-pointer transition-all">
                             Description
-                         </li>
+                        </li>
                         <li class="text-gray-500 font-semibold text-sm hover:bg-gray-100 py-3 px-8 cursor-pointer transition-all">
                             Reviews
                         </li>

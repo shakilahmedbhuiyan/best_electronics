@@ -51,4 +51,9 @@ class Product extends Model
     {
         return 'slug';
     }
+
+    public function getThumbnailAttribute($value)
+    {
+        return $value ? asset( $value) : null;
+    }
 }
