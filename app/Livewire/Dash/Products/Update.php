@@ -103,6 +103,8 @@ class Update extends Component
             'meta_description' => $this->form['meta_description']?? $this->form['summary'],
             'meta_keywords' => $this->form['meta_keywords']??$this->form['name'],
         ]);
+        Cache::forget('product_' . $this->product->slug);
+        Cache::forever('product_' . $this->product->slug, $this->product->load('category', 'brand')->toArray());
         session()->flash('success', 'Product Updated successfully');
         return $this->redirect(route('admin.product.index'), navigate: true);
     }
