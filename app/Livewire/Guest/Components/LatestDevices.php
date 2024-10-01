@@ -12,7 +12,11 @@ class LatestDevices extends Component
 
     public function mount()
     {
-        $this->latestDevices = Cache::flexible('latestDevices',[5,100], static fn() => Product::latest()->take(4)->get());
+        $this->latestDevices = Cache::flexible('latestDevices',[5,300],
+            static fn() => Product::latest()
+                ->where('status', true)
+                ->where('quantity', '>', 0)
+                ->take(4)->get());
     }
 
     public function render()
