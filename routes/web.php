@@ -53,6 +53,12 @@ Route::group([
 
     Route::middleware(['permission:store-info'])
         ->get('/store/info', \App\Livewire\Dash\Store\Info::class)->name('store.info');
+
+    Route::middleware(['permission:order-list'])
+        ->get('/orders', \App\Livewire\Dash\Order\Index::class)->name('order.index');
+    Route::middleware(['permission:order-view'])
+        ->get('/order/show/{order}', \App\Livewire\Dash\Order\Show::class)->name('order.show');
+
 });
 
 // /**

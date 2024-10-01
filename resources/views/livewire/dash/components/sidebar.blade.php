@@ -8,7 +8,8 @@
                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-slate-300 dark:hover:bg-gray-700 group">
                     <svg
                         class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
+                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                        viewBox="0 0 22 21">
                         <path
                             d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z" />
                         <path
@@ -17,6 +18,34 @@
                     <span class="ml-3">Dashboard</span>
                 </a>
             </li>
+            @can('order-list')
+                <li class="inline-flex w-full items-center justify-end bg-blue-200 dark:bg-slate-900 px-4
+                text-gray-900 rounded-lg dark:text-slate-300">
+                    <span>Orders</span>
+                </li>
+            @endcan
+
+            @can('order-list')
+                <li>
+                    <a href="{{ route('admin.order.index') }}" wire:navigate
+                       class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-slate-300 dark:hover:bg-gray-700 group">
+                        <svg
+                            class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                            viewBox="0 0 24 24">
+                            <path fill-rule="evenodd"
+                                  d="M7.5 6v.75H5.513c-.96 0-1.764.724-1.865 1.679l-1.263 12A1.875 1.875 0 0 0 4.25 22.5h15.5a1.875 1.875 0 0 0 1.865-2.071l-1.263-12a1.875 1.875 0 0 0-1.865-1.679H16.5V6a4.5 4.5 0 1 0-9 0ZM12 3a3 3 0 0 0-3 3v.75h6V6a3 3 0 0 0-3-3Zm-3 8.25a3 3 0 1 0 6 0v-.75a.75.75 0 0 1 1.5 0v.75a4.5 4.5 0 1 1-9 0v-.75a.75.75 0 0 1 1.5 0v.75Z"
+                                  clip-rule="evenodd" />
+                        </svg>
+
+
+                        <span class="flex-1 ml-3 whitespace-nowrap">New Orders</span>
+
+                    </a>
+                </li>
+            @endcan
+
+
             @can('product-list')
                 <li class="inline-flex w-full items-center justify-end bg-blue-200 dark:bg-slate-900 px-4
                 text-gray-900 rounded-lg dark:text-slate-300">
@@ -58,36 +87,39 @@
                     </a>
                 </li>
             @endcan
-            <li>
-                <a href="{{ route('admin.product.index') }}" wire:navigate
-                   class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-slate-300 dark:hover:bg-gray-700 group">
-                    <svg
-                        class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400
+            @can('product-list')
+                <li>
+                    <a href="{{ route('admin.product.index') }}" wire:navigate
+                       class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-slate-300 dark:hover:bg-gray-700 group">
+                        <svg
+                            class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400
                         group-hover:text-gray-900 dark:group-hover:text-white"
-                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M10.5 18.75a.75.75 0 0 0 0 1.5h3a.75.75 0 0 0 0-1.5h-3Z" />
-                        <path fill-rule="evenodd"
-                              d="M8.625.75A3.375 3.375 0 0 0 5.25 4.125v15.75a3.375 3.375 0 0 0 3.375 3.375h6.75a3.375 3.375 0 0 0 3.375-3.375V4.125A3.375 3.375 0 0 0 15.375.75h-6.75ZM7.5 4.125C7.5 3.504 8.004 3 8.625 3H9.75v.375c0 .621.504 1.125 1.125 1.125h2.25c.621 0 1.125-.504 1.125-1.125V3h1.125c.621 0 1.125.504 1.125 1.125v15.75c0 .621-.504 1.125-1.125 1.125h-6.75A1.125 1.125 0 0 1 7.5 19.875V4.125Z"
-                              clip-rule="evenodd" />
-                    </svg>
+                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path d="M10.5 18.75a.75.75 0 0 0 0 1.5h3a.75.75 0 0 0 0-1.5h-3Z" />
+                            <path fill-rule="evenodd"
+                                  d="M8.625.75A3.375 3.375 0 0 0 5.25 4.125v15.75a3.375 3.375 0 0 0 3.375 3.375h6.75a3.375 3.375 0 0 0 3.375-3.375V4.125A3.375 3.375 0 0 0 15.375.75h-6.75ZM7.5 4.125C7.5 3.504 8.004 3 8.625 3H9.75v.375c0 .621.504 1.125 1.125 1.125h2.25c.621 0 1.125-.504 1.125-1.125V3h1.125c.621 0 1.125.504 1.125 1.125v15.75c0 .621-.504 1.125-1.125 1.125h-6.75A1.125 1.125 0 0 1 7.5 19.875V4.125Z"
+                                  clip-rule="evenodd" />
+                        </svg>
 
-                    <span class="flex-1 ml-3 whitespace-nowrap">Products</span>
-                </a>
-            </li>
-            {{--            <li>--}}
-            {{--                <a href="#"--}}
-            {{--                   class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-slate-300 dark:hover:bg-gray-700 group">--}}
-            {{--                    <svg--}}
-            {{--                        class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"--}}
-            {{--                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">--}}
-            {{--                        <path--}}
-            {{--                            d="m17.418 3.623-.018-.008a6.713 6.713 0 0 0-2.4-.569V2h1a1 1 0 1 0 0-2h-2a1 1 0 0 0-1 1v2H9.89A6.977 6.977 0 0 1 12 8v5h-2V8A5 5 0 1 0 0 8v6a1 1 0 0 0 1 1h8v4a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-4h6a1 1 0 0 0 1-1V8a5 5 0 0 0-2.582-4.377ZM6 12H4a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2Z" />--}}
-            {{--                    </svg>--}}
-            {{--                    <span class="flex-1 ml-3 whitespace-nowrap">Inbox</span>--}}
-            {{--                    <span--}}
-            {{--                        class="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">3</span>--}}
-            {{--                </a>--}}
-            {{--            </li>--}}
+                        <span class="flex-1 ml-3 whitespace-nowrap">Products</span>
+                    </a>
+                </li>
+            @endcan
+            {{--                        <li>--}}
+            {{--                            <a href="#"--}}
+            {{--                               class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-slate-300 dark:hover:bg-gray-700 group">--}}
+            {{--                                <svg--}}
+            {{--                                    class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"--}}
+            {{--                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">--}}
+            {{--                                    <path--}}
+            {{--                                        d="m17.418 3.623-.018-.008a6.713 6.713 0 0 0-2.4-.569V2h1a1 1 0 1 0 0-2h-2a1 1 0 0 0-1 1v2H9.89A6.977 6.977 0 0 1 12 8v5h-2V8A5 5 0 1 0 0 8v6a1 1 0 0 0 1 1h8v4a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-4h6a1 1 0 0 0 1-1V8a5 5 0 0 0-2.582-4.377ZM6 12H4a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2Z" />--}}
+            {{--                                </svg>--}}
+            {{--                                <span class="flex-1 ml-3 whitespace-nowrap">Inbox</span>--}}
+            {{--                                <span--}}
+            {{--                                    class="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">3</span>--}}
+            {{--                            </a>--}}
+            {{--                        </li>--}}
 
             @can('user-list')
                 <li class="inline-flex w-full items-center justify-end bg-blue-200 dark:bg-slate-900 px-4

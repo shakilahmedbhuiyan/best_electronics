@@ -7,7 +7,7 @@
 <x-guest-layout>
     <x-authentication-card>
         <x-slot name="logo">
-            <x-authentication-card-logo />
+            <x-application-mark class="h-16 w-16"/>
         </x-slot>
 
         <x-validation-errors class="mb-4" />
@@ -46,9 +46,9 @@
                     </a>
                 @endif
 
-                <x-button class="ms-4" type="submit">
+                <x-button-1 class="ms-4 bg" type="submit">
                     {{ __('Log in') }}
-                </x-button>
+                </x-button-1>
             </div>
         </form>
     </x-authentication-card>

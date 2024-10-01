@@ -19,7 +19,7 @@
             {{ $hasAlpineSelectedClasses ? "'[&>*:first-child]:relative [&>*:first-child]:before:absolute [&>*:first-child]:before:start-0 [&>*:first-child]:before:inset-y-0 [&>*:first-child]:before:w-0.5 [&>*:first-child]:before:bg-primary-600 [&>*:first-child]:dark:before:bg-primary-500': {$alpineSelected}," : null }}
         }" @endif
     {{ $attributes->class([
-        'fi-ta-row bg-gray-500 [@media(hover:hover)]:transition [@media(hover:hover)]:duration-75',
+        'fi-ta-row bg-gray-100 dark:bg-gray-800 [@media(hover:hover)]:transition [@media(hover:hover)]:duration-75',
         'hover:bg-gray-50 dark:hover:bg-white/5' => $recordAction || $recordUrl,
         $stripedClasses => $striped,
     ]) }}>

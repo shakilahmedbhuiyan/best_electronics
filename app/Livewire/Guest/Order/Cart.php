@@ -64,15 +64,12 @@ class Cart extends Component
 
     }
 
-
     public function checkout()
     {
-        // Get the cart and filter out items with quantity <= 0
         $cart = collect(session()->get('cart', []))->filter(function ($item) {
             return $item['quantity'] > 0;
         })->toArray();
 
-        // Validate customer information
         $this->validate([
             'customer.name' => 'required|string',
             'customer.email' => 'required|email',
