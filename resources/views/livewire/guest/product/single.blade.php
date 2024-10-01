@@ -68,7 +68,8 @@
                                 @endif
                                 <span class="text-sm ml-1">Tax included</span>
                             </p>
-                            <div class="text-sm inline-flex justify-center items-center text-orange-600/85">
+                           @if($product['instalment'] === 1)
+                                <div class="text-sm inline-flex justify-center items-center text-orange-600/85">
 
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="currentColor"
                                      class="h-8 w-8">
@@ -83,6 +84,7 @@
                                 </svg>
                                 {!! "Installment Available" !!}
                             </div>
+                            @endif
                         </div>
 
                         <div class="flex flex-wrap gap-4 ml-auto">

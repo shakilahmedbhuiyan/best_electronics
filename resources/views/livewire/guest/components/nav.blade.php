@@ -69,7 +69,7 @@
                     <x-heroicons::outline.magnifying-glass class="h-6 w-6 text-emerald-800" />
                 </x-button>
 
-                <a href="{{ route('cart') }}" class="md:inline-block transition duration-200">
+                <a href="{{ route('cart') }}" class="md:inline-block transition duration-200" wire:navigate>
                     <x-button type="button" flat class="hover:outline">
                         <x-heroicons::outline.shopping-bag class="h-6 w-6 text-emerald-800" />
                     </x-button>

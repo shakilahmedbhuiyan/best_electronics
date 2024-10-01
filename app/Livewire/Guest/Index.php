@@ -4,6 +4,7 @@ namespace App\Livewire\Guest;
 
 
 use Artesaos\SEOTools\Traits\SEOTools;
+use Filament\Notifications\Notification;
 use Livewire\Component;
 
 class Index extends Component
@@ -25,14 +26,19 @@ class Index extends Component
 
     public function render()
     {
+         if (session()->has('success')) {
+            Notification::make()
+                ->title('Congrats!')
+                ->success()
+                ->body(session('success'))
+                ->color('success')
+                ->iconColor('success')
+                ->send();
+            session()->forget('success');
+        }
 
         return view('livewire.guest.index')
             ->layout('layouts.guest');
     }
 
-    public function category($category)
-    {
-        return view('livewire.guest.category', compact('category'))
-            ->layout('layouts.guest');
-    }
 }

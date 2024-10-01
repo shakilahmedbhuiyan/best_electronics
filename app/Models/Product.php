@@ -56,4 +56,14 @@ class Product extends Model
     {
         return $value ? asset( $value) : null;
     }
+
+    public function getFeaturedImageAttribute($value)
+    {
+        return $value ? asset( $value) : null;
+    }
+
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class)->withPivot('quantity', 'price');
+    }
 }
