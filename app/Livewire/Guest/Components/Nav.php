@@ -14,18 +14,6 @@ class Nav extends Component
             'type' => 'page',
         ],
         [
-            'id' => 2,
-            'name' => 'Laptop',
-            'route' => 'laptop',
-            'type' => 'category',
-        ],
-        [
-            'id' => 3,
-            'name' => 'Mobile',
-            'route' => 'mobile',
-            'type' => 'category',
-        ],
-        [
             'id' => 4,
             'name' => 'Mobile',
             'route' => 'mobile',
@@ -33,16 +21,12 @@ class Nav extends Component
         ],
         [
             'id' => 5,
-            'name' => 'Accessories',
-            'route' => 'accessories',
+            'name' => 'Tablets',
+            'route' => 'tablet',
             'type' => 'category',
         ],
-        [
-            'id' => 6,
-            'name' => 'Contact',
-            'route' => '/contact',
-            'type' => 'external',
-        ],
+
+
     ];
 
 
