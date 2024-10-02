@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\store;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -14,10 +15,13 @@ class StoreInfoServiceProvider extends ServiceProvider
     private function storeInfo()
     {
         $store = Cache::rememberForever('store-info', function () {
-            $info= Store::firstOrFail();
-            if ($info !== null) {
-                return $info->toArray();
+            if (Schema::hasTable('stores')) {
+                $info = Store::firstOrFail();
+                if ($info !== null | $info->exists()) {
+                    return $info->toArray();
+                }
             }
+
             return [
                 'name' => config('app.name'),
                 'description' => 'Store Description',
