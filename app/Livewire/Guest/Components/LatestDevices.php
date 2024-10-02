@@ -16,7 +16,8 @@ class LatestDevices extends Component
             static fn() => Product::latest()
                 ->where('status', true)
                 ->where('quantity', '>', 0)
-                ->take(4)->get());
+                ->orderBy('created_at', 'desc')
+                ->take(8)->get());
     }
 
     public function render()
