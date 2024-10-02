@@ -46,6 +46,7 @@ class Info extends Component
             'store.email' => 'required|email',
             'store.website' => 'required|string',
             'store.map_link' => 'required|url',
+            'store.whatsapp' => 'required|string',
         ]);
 
         $store = Store::updateOrCreate([

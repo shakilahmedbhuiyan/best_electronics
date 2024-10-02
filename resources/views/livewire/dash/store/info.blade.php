@@ -7,8 +7,9 @@
                 <form wire:submit.prevent="updateStore" class="space-y-4">
                     <x-input wire:model="store.name" label="Store Name" icon="building-storefront" />
                     <x-input wire:model="store.description" label="Store Short Tagline" icon="document-text" />
-                    <x-input wire:model="store.phone" label="Store Contact" icon="phone" />
+                    <x-input wire:model="store.phone" label="Store Contact" icon="device-phone-mobile" />
                     <x-input wire:model="store.email" label="Store Email" icon="at-symbol" />
+                    <x-input wire:model="store.whatsapp" label="Whatsapp" icon="phone" />
                     <x-input wire:model="store.address" label="Store Address" icon="map-pin" />
                     <x-input wire:model="store.website" label="Website" icon="globe-alt" />
                     <x-input wire:model="store.map_link" label="Map Link" icon="map" />

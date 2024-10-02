@@ -63,7 +63,7 @@
                                 {!! "SAR ". (isset($product['sale_price']) ? $product['sale_price'] : $product['price']) !!}
                             </p>
                             <p class="text-gray-500 text-sm mt-2">
-                                @if($product['sale_price'] && $product['sale'] === 1)
+                                @if($product['sale_price'] | $product['sale'] === 1)
                                     <del>{!! $product['price'] !!}</del>
                                 @endif
                                 <span class="text-sm ml-1">Tax included</span>
