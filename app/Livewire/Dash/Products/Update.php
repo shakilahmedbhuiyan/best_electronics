@@ -105,7 +105,7 @@ class Update extends Component
             'meta_title' => $this->form['meta_title']?? $this->form['name'],
             'meta_description' => $this->form['meta_description']?? $this->form['summary'],
             'meta_keywords' => $this->form['meta_keywords']??$this->form['name'],
-            'updated_at' => null,
+            'updated_at' => now(),
         ]);
         Cache::forget('product_' . $this->product->slug);
         Cache::forever('product_' . $this->product->slug, $this->product->load('category', 'brand')->toArray());
