@@ -1,5 +1,4 @@
-<footer class="px-4 divide-y bg-gradient-to-br sm:bg-gradient-to-bl from-emerald-800 to-emerald-950
-dark:bg-emerald-50 text-gray-100 dark:text-gray-800">
+<footer class="px-4 divide-y bg-gradient-to-br sm:bg-gradient-to-bl from-emerald-800 to-emerald-950 text-gray-100">
     <div class="container flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0"
          bis_skin_checked="1">
         <div class="lg:w-1/3" bis_skin_checked="1">
@@ -17,7 +16,7 @@ dark:bg-emerald-50 text-gray-100 dark:text-gray-800">
         </div>
         <div class="grid grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-4" bis_skin_checked="1">
             <div class="space-y-3" bis_skin_checked="1">
-                <h3 class="tracking-wide uppercase text-gray-50 dark:text-gray-900">Product</h3>
+                <h3 class="tracking-wide uppercase text-gray-50 ">Product</h3>
                 <ul class="space-y-1">
                     <li>
                         <a rel="noopener noreferrer" href="#">Features</a>
@@ -31,7 +30,7 @@ dark:bg-emerald-50 text-gray-100 dark:text-gray-800">
                 </ul>
             </div>
             <div class="space-y-3" bis_skin_checked="1">
-                <h3 class="tracking-wide uppercase text-gray-50 dark:text-gray-900">Company</h3>
+                <h3 class="tracking-wide uppercase text-gray-50 ">Company</h3>
                 <ul class="space-y-1">
                     <li>
                         <a rel="noopener noreferrer" href="#">About US</a>
@@ -42,7 +41,7 @@ dark:bg-emerald-50 text-gray-100 dark:text-gray-800">
                 </ul>
             </div>
             <div class="space-y-3" bis_skin_checked="1">
-                <h3 class="uppercase text-gray-50 dark:text-gray-900">Quick Links</h3>
+                <h3 class="uppercase text-gray-50 ">Quick Links</h3>
                 <ul class="space-y-1">
                     <li>
                         <a rel="noopener noreferrer" href="#">Privacy Policy</a>
@@ -56,7 +55,7 @@ dark:bg-emerald-50 text-gray-100 dark:text-gray-800">
                 </ul>
             </div>
             <div class="space-y-3" bis_skin_checked="1">
-                <div class="uppercase text-gray-50 dark:text-gray-900" bis_skin_checked="1">Social media</div>
+                <div class="uppercase text-gray-50 " bis_skin_checked="1">Social media</div>
                 <div class="flex justify-start space-x-3" bis_skin_checked="1">
                     <a rel="noopener noreferrer" href="#" title="Facebook" class="flex items-center p-1">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32"
@@ -91,7 +90,7 @@ dark:bg-emerald-50 text-gray-100 dark:text-gray-800">
             </div>
         </div>
     </div>
-    <div class="py-6 text-sm text-center text-gray-400 dark:text-gray-600 flex flex-col sm:flex-row
+    <div class="py-6 text-sm text-center text-gray-400 flex flex-col sm:flex-row
 	justify-center sm:justify-between items-center" bis_skin_checked="1">
         <span>
             © {{ date('Y'). ' '. config('app.name') }} All rights reserved.
