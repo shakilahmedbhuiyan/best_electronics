@@ -3,9 +3,10 @@ dark:bg-emerald-50 text-gray-100 dark:text-gray-800">
     <div class="container flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0"
          bis_skin_checked="1">
         <div class="lg:w-1/3" bis_skin_checked="1">
-            <a rel="noopener noreferrer" href="#" class="inline-flex justify-center items-center leading-none">
+            <a rel="noopener noreferrer" href="{{ route('index') }}" alt="{{ config('app.name') }}"
+               class="inline-flex justify-center items-center leading-none">
 
-                <x-application-mark href="{{ route('index') }}" alt="{{ config('app.name') }}"
+                <x-application-mark
                                     class="h-12 w-12 py-0" />
 
                 <span class="self-center text-2xl font-semibold">Brand name</span>
