@@ -20,6 +20,7 @@
                 <x-table-hover class="w-full mt-4">
                     <x-slot name="thead">
                         <th class="border px-4 py-2">Name</th>
+                        <th class="border px-4 py-2">DOB</th>
                         <th class="border px-4 py-2">Email</th>
                         <th class="border px-4 py-2">mobile</th>
                         <th class="border px-4 py-2">Address</th>
@@ -32,6 +33,7 @@
                                 {{  '#'. $order->user->id_no }}
                             </span>
                         </td>
+                        <td class="border px-4 py-2">{{ $order->user->dob }}</td>
                         <td class="border px-4 py-2">{{ $order->user->email }}</td>
                         <td class="border px-4 py-2">{{ $order->user->mobile }}</td>
                         <td class="border px-4 py-2">

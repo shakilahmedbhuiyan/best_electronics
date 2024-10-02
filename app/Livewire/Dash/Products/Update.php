@@ -65,7 +65,7 @@ class Update extends Component
             'form.price' => 'required|numeric',
             'form.sale_price' => 'nullable|numeric',
             'form.quantity' => 'required|integer',
-            'form.thumbnail' => 'nullable|image|mimes:jpeg,png,jpg|max:1080',
+            'form.thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:1080',
             'form.category_id' => 'required| exists:categories,id',
             'form.brand_id' => 'required| exists:brands,id',
             'form.description' => 'nullable|string',

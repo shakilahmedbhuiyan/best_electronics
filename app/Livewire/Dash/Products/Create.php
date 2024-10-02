@@ -36,7 +36,7 @@ class Create extends Component
         'form.price' => 'required|numeric',
         'form.sale_price' => 'nullable|numeric',
         'form.quantity' => 'required|integer',
-        'form.thumbnail' => 'required|image|mimes:jpeg,png,jpg|max:1080',
+        'form.thumbnail' => 'required|image|mimes:jpeg,png,jpg,webp|max:1080',
         'form.category' => 'required| exists:categories,id',
         'form.brand' => 'required| exists:brands,id',
     ];

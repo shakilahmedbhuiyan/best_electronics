@@ -36,6 +36,7 @@ class User extends Authenticatable
         'city',
         'nationality',
         'id_no',
+        'dob'
     ];
 
     /**
@@ -81,6 +82,7 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'dob' => 'date'
         ];
     }
 

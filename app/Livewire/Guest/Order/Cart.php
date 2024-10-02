@@ -86,13 +86,15 @@ class Cart extends Component
         $this->validate([
             'customer.name' => 'required|string',
             'customer.email' => 'required|email',
-            'customer.mobile' => 'required|int|digits:15',
+            'customer.mobile' => 'required|int|digits:9,12',
             'customer.address' => 'required|string',
             'customer.city' => 'required|string',
             'customer.nationality' => 'required|string',
             'customer.id_no' => 'required|string',
+            'customer.dob' => 'required|date|before:last year',
         ]);
 
+        dd($this->customer);
         $user = User::where('email', $this->customer['email'])
             ->orWhere('mobile', $this->customer['mobile'])
             ->orWhere('id_no', $this->customer['id_no'])
@@ -103,6 +105,7 @@ class Cart extends Component
                 'address' => $this->customer['address'],
                 'city' => $this->customer['city'],
                 'nationality' => $this->customer['nationality'],
+                'dob' => $this->customer['dob'],
             ]);
         } else {
             $user = User::create([
@@ -113,6 +116,7 @@ class Cart extends Component
                 'address' => $this->customer['address'],
                 'city' => $this->customer['city'],
                 'nationality' => $this->customer['nationality'],
+                'dob' => $this->customer['dob'],
             ]);
         }
 

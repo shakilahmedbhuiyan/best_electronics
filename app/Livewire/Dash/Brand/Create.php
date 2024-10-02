@@ -24,7 +24,7 @@ class Create extends Component
             'slug' => 'required|string|max:60|unique:brands,slug',
             'description' => 'nullable|string',
             'status' => 'required|boolean',
-            'thumbnail' => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'thumbnail' => 'required|image|mimes:jpeg,png,jpg,webp|max:1080',
         ]);
 
         $thumbnail = $this->thumbnail->storeAs(

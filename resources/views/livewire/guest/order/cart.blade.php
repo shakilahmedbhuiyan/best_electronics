@@ -21,13 +21,13 @@
                 <template x-for="(item, index) in items" :key="item.product.id">
                     <div class="grid grid-cols-1 lg:grid-cols-2 border-t border-gray-200 py-6">
                         <div
-                            class="flex items-center flex-col min-[550px]:flex-row gap-3 min-[550px]:gap-6 w-full max-xl:justify-center max-xl:max-w-xl max-xl:mx-auto">
+                            class="flex items-center flex-col md:flex-row gap-3 w-full max-xl:justify-center max-xl:max-w-xl max-xl:mx-auto">
                             <div class="img-box">
                                 <img :src="item.product.thumbnail" :alt="item.product.name"
-                                     class="h-52 aspect-square rounded-xl object-cover">
+                                     class="h-40 aspect-square rounded-xl object-contain">
                             </div>
                             <div class="w-full max-w-sm">
-                                <h5 class="font-semibold text-xl text-black max-[550px]:text-center"
+                                <h5 class="font-semibold text-xl text-black md:text-center"
                                     x-text="item.product.name"></h5>
                                 <p class="font-normal text-lg text-gray-500 my-2 max-[550px]:text-center"
                                    x-text="item.product.category.name"></p>
@@ -36,7 +36,7 @@
                                         x-text="item.product.sale ? item.product.sale_price : item.product.price"></span>
                                 </h6>
                                 <div class="text-sm flex md:inline-flex justify-center items-center text-orange-600/85"
-                                 x-show="item.product.instalment">
+                                     x-show="item.product.instalment">
 
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="currentColor"
                                          class="h-8 w-8">
@@ -54,12 +54,12 @@
                             </div>
                         </div>
                         <div
-                            class="flex items-center flex-col min-[550px]:flex-row w-full max-xl:max-w-xl max-xl:mx-auto gap-2">
+                            class="flex items-center flex-col md:flex-row w-full max-xl:max-w-xl max-xl:mx-auto gap-2">
                             <!-- Quantity Input -->
                             <div class="flex items-center w-full mx-auto justify-center">
                                 <x-jet-input type="number" x-model.number="item.quantity"
-                                       x-on:change="$wire.updateCartQuantity(item.product.id, item.quantity)"
-                                       class="w-20" min="1"/>
+                                             x-on:change="$wire.updateCartQuantity(item.product.id, item.quantity)"
+                                             class="w-20" min="1" />
                             </div>
                             <!-- Total Price for Each Item -->
                             <p class="text-emerald-950 font-bold text-2xl leading-9 w-full max-w-[176px] text-center">
@@ -84,13 +84,26 @@
                 <div class="flex flex-col space-y-3">
                     <x-input wire:model.defer="customer.name" required
                              type="text" placeholder="Name" label="Name" />
-                    <x-input wire:model.defer="customer.email" type="email" placeholder="Email" label="Email" required />
-                    <x-input wire:model.defer="customer.mobile" type="text" placeholder="Mobile" label="Mobile" required />
+                    <x-input wire:model.defer="customer.email" type="email" placeholder="Email" label="Email"
+                             required />
+                    <x-input wire:model.defer="customer.mobile" type="text" placeholder="Mobile" label="Mobile"
+                             required />
                     <x-input wire:model.defer="customer.address" type="text" placeholder="Address" label="Address" />
                     <x-input wire:model.defer="customer.city" type="text" placeholder="City" label="City" />
                     <x-input wire:model.defer="customer.id_no" type="text" placeholder="ID Number"
                              label="ID Number" />
-                    <x-input wire:model.defer="customer.nationality" type="text" placeholder="Nationality" />
+
+                    <div class=" grid grid-col-1 md:grid-cols-2 gap-3">
+                        <x-input wire:model.defer="customer.nationality" type="text" label="Nationality"
+                                 placeholder="Nationality" />
+                        <x-datetime-picker
+                            wire:model.defer="customer.dob"
+                            label="Date of Birth"
+                            placeholder="Date of Birth"
+                            without-time
+                            :max="now()->subDays(365)->hours(12)->minutes(30)"
+                        />
+                    </div>
                 </div>
                 <div class="flex items-center flex-col sm:flex-row justify-center gap-3 mt-8">
                     <button wire:click="checkout()"
