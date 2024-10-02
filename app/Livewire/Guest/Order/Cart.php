@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Guest\Order;
 
-use App\Models\order;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
 use Artesaos\SEOTools\Traits\SEOTools;
@@ -19,6 +19,8 @@ class Cart extends Component
 
     public function mount()
     {
+
+
         $this->seo()->setTitle('Cart');
         $this->seo()->setDescription('Items you put in your cart');
         $cart = session()->get('cart');
@@ -80,15 +82,11 @@ class Cart extends Component
             'customer.id_no' => 'required|string',
         ]);
 
-        // Create or update user
         $user = User::where('email', $this->customer['email'])
             ->orWhere('mobile', $this->customer['mobile'])
             ->orWhere('id_no', $this->customer['id_no'])
             ->first();
-
-        // Step 2: If user is found, update them, else create a new user
         if ($user) {
-            // Update user with new data
             $user->update([
                 'name' => $this->customer['name'],
                 'address' => $this->customer['address'],
@@ -122,10 +120,8 @@ class Cart extends Component
             'item_count' => count($cart),
         ];
 
-        // Save order
         $order = Order::create($order);
 
-        // Attach products to the order
         foreach ($cart as $item) {
             $order->products()->attach(
                 $item['product_id'],
@@ -138,7 +134,7 @@ class Cart extends Component
         }
         session()->forget('cart');
         session()->flash('success', 'Order placed successfully');
-        return redirect()->route('index');
+        return $this->redirect(route('checkout.success', $order->order_number));
     }
 
 

@@ -1,4 +1,4 @@
-<section class="font-serif py-1 bg-gradient-to-l from-violet-100 via-indigo-100 to-cyan-100">
+<section class="font-serif py-1 bg-gradient-to-l from-violet-100 via-indigo-100 to-cyan-100 ">
     <div class="flex justify-center items-center">
         <div class="container px-4 sm:px-11 lg:px-24 flex flex-row justify-between items-center">
             <div class="flex flex-row items-center space-x-4 sm:space-x-6">
@@ -21,7 +21,7 @@
                      </span>
                 </a>
             </div>
-            <div class="flex flex-row items-center space-x-2 sm:space-x-6 ">
+            <div class="flex flex-row items-center space-x-2 sm:space-x-6 print:hidden">
                 <a href="#" target="_blank"
                    class="text-sm inline-flex rounded-lg px-1
                     text-gray-600 hover:text-gray-900 hover:bg-gray-50">

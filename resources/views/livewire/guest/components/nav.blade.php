@@ -1,16 +1,17 @@
 <section x-data="{navbarOpen: false, sticky: false}"
-         x-cloak class="relative w-full mb-2">
+         x-cloak class="relative w-full mb-2 ">
 
     <nav @scroll.window="sticky = (window.scrollY > 10)"
          :class="{'absolute w-full sm:py-0': sticky, 'relative w-full': !sticky}"
-         class="px-8 flex sm:justify-around justify-between items-center bg-white drop-shadow-lg rounded-md top-0"
+         class="px-8 flex sm:justify-around justify-between items-center bg-white
+         drop-shadow-lg print:drop-shadow-none rounded-md top-0"
          x-data="{mobile : false}"
          x-init=" width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
           mobile= (width > 769)? true : false"
          @resize.window=" width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
          mobile= (width > 769)? true : false">
 
-        <div class="inline-flex justify-center items-center leading-none ">
+        <div class="inline-flex print:flex-none justify-center items-center leading-none ">
             <x-application-mark href="{{ route('index') }}" alt="{{ config('app.name') }}"
                                 class="h-12 w-12 py-0" fill="currentColor" />
             <h1 class="flex flex-col pl-2 font-bold text-[1.3rem] leading-none text-emerald-900">
@@ -22,7 +23,7 @@
         <!-- web navbar -->
         <div class="flex flex-row justify-between items-center">
             <!-- mobile navbar button -->
-            <div class="inline-flex justify-center items-center" x-show="!mobile">
+            <div class="inline-flex justify-center items-center print:hidden" x-show="!mobile">
                 <!-- mobile search button -->
                 <button type="button" class="navbar-burger flex items-center justify-end"
                         @click="$openModal('searchModal')">
@@ -41,7 +42,7 @@
             </div>
 
             <!-- web navbar links -->
-            <div x-show="mobile">
+            <div x-show="mobile" class="print:hidden">
                 <ul class="flex flex-row justify-center items-center text-emerald-900">
                     @foreach($navLinks as $item)
                         <li class="hover:bg-emerald-900 hover:text-white @isset($item['dropdown']) hoverable
@@ -63,7 +64,7 @@
         </div>
 
         <!-- web navbar button -->
-        <div class="space-x-2 inline-flex" x-show="mobile">
+        <div class="space-x-2 inline-flex print:hidden" x-show="mobile">
             <a href="#" class="md:inline-block transition duration-200">
                 <x-button type="button" variant="flat" x-on:click="$openModal('searchModal')" >
                     <x-heroicons::outline.magnifying-glass class="h-6 w-6 text-emerald-800" />
