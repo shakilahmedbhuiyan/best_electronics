@@ -14,9 +14,9 @@ class StoreInfoServiceProvider extends ServiceProvider
 
     private function storeInfo()
     {
-        $store = Cache::rememberForever('store-info', function () {
+        $store = Cache::rememberForever('store-info', static function () {
             if (Schema::hasTable('stores')) {
-                $info = Store::firstOrFail();
+                $info = Store::first();
                 if ($info !== null | $info->exists()) {
                     return $info->toArray();
                 }
