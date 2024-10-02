@@ -2,7 +2,7 @@
     <div class="flex justify-center items-center">
         <div class="container px-4 sm:px-11 lg:px-24 flex flex-row justify-between items-center">
             <div class="flex flex-row items-center space-x-4 sm:space-x-6">
-                <a target="_blank" href="https://api.whatsapp.com/send?{!! $store['whatsapp']!!}"
+                <a target="_blank" href="https://wa.me/+{!! $store['whatsapp']!!}"
                    class="text-sm inline-flex text-gray-600 hover:text-green-700">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 256 256">
                         <path
