@@ -22,7 +22,7 @@
                 </a>
             </div>
             <div class="flex flex-row items-center space-x-2 sm:space-x-6 print:hidden">
-                <a href="#" target="_blank"
+                <a href="{{ $store['map_link'] }}" target="_blank"
                    class="text-sm inline-flex rounded-lg px-1
                     text-gray-600 hover:text-gray-900 hover:bg-gray-50">
                     <x-heroicons::outline.map-pin class="mr-1 h-5 w-5" />
