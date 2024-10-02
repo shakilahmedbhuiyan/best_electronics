@@ -9,19 +9,6 @@
     <title>{{ ($title ?? SEOMeta::getTitle()) . ' | ' . config('app.name') }}</title>
     <meta name="description" content="{{ SEOMeta::getDescription() }}">
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
-    <!-- Scripts -->
-    <wireui:scripts />
-
-    <!-- Styles -->
-    @filamentStyles
-    @vite('resources/css/app.css')
-    @livewireStyles
-    @stack('styles')
-
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-6MZMNHZ157"></script>
     <script>
@@ -35,6 +22,20 @@
 
         gtag('config', 'G-6MZMNHZ157')
     </script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+
+    <!-- Scripts -->
+    <wireui:scripts />
+
+    <!-- Styles -->
+    @filamentStyles
+    @vite('resources/css/app.css')
+    @livewireStyles
+    @stack('styles')
+
 
 </head>
 
