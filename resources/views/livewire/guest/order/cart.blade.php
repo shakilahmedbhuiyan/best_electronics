@@ -101,7 +101,7 @@
                             label="Date of Birth"
                             placeholder="Date of Birth"
                             without-time
-                            :max="now()->subDays(365)->hours(12)->minutes(30)"
+                            :max="now()->subYears(18)"
                         />
                     </div>
                 </div>

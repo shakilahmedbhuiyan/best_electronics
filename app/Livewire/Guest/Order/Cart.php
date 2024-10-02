@@ -94,7 +94,6 @@ class Cart extends Component
             'customer.dob' => 'required|date|before:last year',
         ]);
 
-        dd($this->customer);
         $user = User::where('email', $this->customer['email'])
             ->orWhere('mobile', $this->customer['mobile'])
             ->orWhere('id_no', $this->customer['id_no'])
