@@ -14,6 +14,17 @@ class Cart extends Component
 
     protected $listeners = ['updateCartQuantity', 'removeFromCart'];
     public $cartItems;
+
+    protected $validationAttributes = [
+        'customer.name' => 'name',
+        'customer.email' => 'email',
+        'customer.mobile' => 'mobile',
+        'customer.address' => 'address',
+        'customer.city' => 'city',
+        'customer.id_no' => 'Identity Number',
+        'customer.nationality' => 'nationality',
+    ];
+
     public ?array $customers = [];
     public ?array $customer = [];
 
@@ -75,7 +86,7 @@ class Cart extends Component
         $this->validate([
             'customer.name' => 'required|string',
             'customer.email' => 'required|email',
-            'customer.mobile' => 'required|string',
+            'customer.mobile' => 'required|int|digits:15',
             'customer.address' => 'required|string',
             'customer.city' => 'required|string',
             'customer.nationality' => 'required|string',
