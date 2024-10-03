@@ -4,6 +4,7 @@ namespace App\Livewire\Guest\Product;
 
 use App\Models\Product;
 use Artesaos\SEOTools\Traits\SEOTools;
+use Filament\Notifications\Notification;
 use Illuminate\Support\Facades\Cache;
 use Livewire\Component;
 
@@ -42,21 +43,51 @@ class Single extends Component
 
     public function render()
     {
+        if (session()->has('success')) {
+            Notification::make()
+                ->title('Congrats!')
+                ->success()
+                ->body(session('success'))
+                ->color('success')
+                ->iconColor('success')
+                ->send();
+            session()->forget('success');
+        }
         return view('livewire.guest.product.single')
             ->layout('layouts.guest');
+    }
+
+    public function addToCart($productId, $quantity)
+    {
+        $cart = session()->get('cart', []);
+        $existingProduct = collect($cart)->firstWhere('product_id', $productId);
+        if ($existingProduct) {
+            foreach ($cart as &$item) {
+                if ($item['product_id'] == $productId) {
+                    $item['quantity'] += $quantity;
+                    break;
+                }
+            }
+        }
+        else {
+              $product = Product::findOrfail($productId);
+            $cart[] = [
+                'product_id' => $product->id,
+                'quantity' => $quantity,
+                'price' => $product->sale ? $product->sale_price : $product->price,
+                'status' => 'pending',
+            ];
+        }
+
+        session()->put('cart', $cart);
+        session()->flash('success', 'Product added to cart');
     }
 
 
     public function order($product)
     {
-        $product = Product::findOrfail($product);
-        $data = [
-            'product_id' => $product->id,
-            'quantity' => 1,
-            'price' => $product->sale ? $product->sale_price : $product->price,
-            'status' => 'pending',
-        ];
-        session()->push('cart', $data);
+
+        $this->addToCart($product, 1);
         return $this->redirect(route('cart'), navigate: true);
     }
 }

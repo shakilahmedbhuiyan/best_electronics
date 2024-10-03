@@ -32,6 +32,7 @@
                             </div>
                         </div>
 
+                        <!-- share buttons -->
                         <div class="ml-auto flex flex-wrap gap-4">
                             {{--                                <button type="button" class="px-2.5 py-1.5 bg-pink-100 text-xs text-pink-600 rounded-md flex items-center">--}}
                             {{--                                    <svg xmlns="http://www.w3.org/2000/svg" width="12px" fill="currentColor" class="mr-1" viewBox="0 0 64 64">--}}
@@ -68,7 +69,7 @@
                                 @endif
                                 <span class="text-sm ml-1">Tax included</span>
                             </p>
-                           @if($product['instalment'] === 1)
+                           @if($product['instalment'])
                                 <div class="text-sm inline-flex justify-center items-center text-orange-600/85">
 
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="currentColor"
@@ -160,14 +161,17 @@
 
                     <div class="flex flex-wrap gap-4">
                         <button type="button" wire:click="order({{ $product['id'] }})"
-                                class="min-w-[200px] px-4 py-3 bg-emerald-900 hover:bg-emerald-950 text-white text-sm
+                                class="min-w-[200px] px-4 py-3 bg-gradient-to-tr from-emerald-950 to-emerald-700
+                                hover:bg-gradient-to-br text-white text-sm
                                 font-semibold rounded-md">
                             Buy now
                         </button>
-                        {{--                        <button type="button"--}}
-                        {{--                                class="min-w-[200px] px-4 py-2.5 border border-gray-800 bg-transparent hover:bg-gray-50 text-gray-800 text-sm font-semibold rounded-md">--}}
-                        {{--                            Add to cart--}}
-                        {{--                        </button>--}}
+                        <button type="button" class="min-w-[200px] px-4 py-2.5 border border-emerald-900
+                        bg-transparent hover:bg-gradient-to-tr hover:from-emerald-950 hover:to-emerald-700
+                        text-gray-800 hover:text-slate-100 text-sm font-semibold rounded-md"
+                        wire:click="addToCart({{ $product['id'] }},1)">
+                            Add to cart
+                        </button>
                     </div>
                 </div>
             </div>

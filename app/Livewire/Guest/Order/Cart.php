@@ -31,10 +31,8 @@ class Cart extends Component
 
     public function mount()
     {
-
-
         $this->seo()->setTitle('Cart');
-        $this->seo()->setDescription('Items you put in your cart');
+        $this->seo()->setDescription('Items in your cart');
         $cart = session()->get('cart');
         if (!$cart || empty($cart)) {
             return $this->cartItems = [];
@@ -95,7 +93,6 @@ class Cart extends Component
             'customer.dob' => 'required|date|before:last year',
         ]);
 
-
         $user = User::where('email', $this->customer['email'])
             ->orWhere('mobile', $this->customer['mobile'])
             ->orWhere('id_no', $this->customer['id_no'])
@@ -152,7 +149,6 @@ class Cart extends Component
         session()->flash('success', 'Order placed successfully');
         return $this->redirect(route('checkout.success', $order->order_number));
     }
-
 
     public function render()
     {
