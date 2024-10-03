@@ -23,42 +23,44 @@ class Index extends Component implements HasForms, HasTable
             ->query(Order::with('user', 'products'))
             ->columns([
 //                Split::make([
-                    TextColumn::make('order_number')
-                        ->label('Order Number')
-                        ->searchable()
-                        ->sortable()
-                        ->url(fn (Model $st) => route('admin.order.show', $st->id)),
-                    TextColumn::make('user.name')
-                        ->label('User')
-                        ->searchable()
-                        ->sortable(),
-                    TextColumn::make('grand_total')
-                        ->label('Total')
-                        ->searchable()
-                        ->sortable(),
-                    TextColumn::make('status')
-                        ->label('Status')
-                        ->searchable()
-                        ->sortable(),
-                    TextColumn::make('created_at')
-                        ->label('Date')
+                TextColumn::make('order_number')
+                    ->label('Order Number')
+                    ->searchable()
+                    ->sortable()
+                    ->url(fn(Model $st) => route('admin.order.show', $st->id)),
+                TextColumn::make('user.name')
+                    ->label('User')
+                    ->searchable()
+                    ->sortable(),
+                TextColumn::make('grand_total')
+                    ->label('Total')
+                    ->searchable()
+                    ->sortable(),
+                TextColumn::make('status')
+                    ->label('Status')
+                    ->searchable()
+                    ->sortable(),
+                TextColumn::make('created_at')
+                    ->label('Date')
 //                        ->formatState(fn ($value) => $value->format('d/m/Y, h:i:s a',))
-                        ->searchable()
-                        ->sortable(),
+                    ->searchable()
+                    ->sortable(),
 //                ])
             ])
             ->filters([
-                 \Filament\Tables\Filters\SelectFilter::make('status')
-                     ->label('Status')
-                     ->options([
-                         'pending' => 'Pending',
-                         'processing' => 'Processing',
-                         'completed' => 'Completed',
-                            'declined' => 'Declined',
-                        ]),
-            ])
-
-            ;
+                \Filament\Tables\Filters\SelectFilter::make('status')
+                    ->label('Status')
+                    ->options([
+                        'pending' => 'Pending',
+                        'processing' => 'Processing',
+                        'completed' => 'Completed',
+                        'cancelled' => 'Cancelled',
+                        'refunded' => 'Refunded',
+                        'shipped' => 'Shipped',
+                        'stuck' => 'Stuck',
+                        'delivered' => 'Delivered',
+                    ]),
+            ]);
     }
 
     public function render()
