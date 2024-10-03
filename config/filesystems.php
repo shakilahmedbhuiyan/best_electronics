@@ -70,7 +70,7 @@ return [
     */
 
     'links' => [
-//        public_path('storage') => storage_path('app/public'),
+        public_path('profile-photos') => storage_path('app/public/profile-photos'),
         public_path('categories') => storage_path('app/public/categories'),
         public_path('brands') => storage_path('app/public/brands'),
         public_path('products') => storage_path('app/public/products'),
