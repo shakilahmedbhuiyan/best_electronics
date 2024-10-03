@@ -11,7 +11,9 @@ class HomeSlider extends Component
 
     public function mount()
     {
-        $this->sliders =SliderModel::active()->get();
+        $this->sliders =SliderModel::active()
+            ->orderBy('id', 'desc')
+            ->get();
     }
 
     public function render()

@@ -23,6 +23,20 @@
         gtag('config', 'G-6MZMNHZ157')
     </script>
 
+    <!-- Google tag (gtag.js) for merchant -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GT-5MXLVKLC"></script>
+    <script>
+        window.dataLayer = window.dataLayer || []
+
+        function gtag() {
+            dataLayer.push(arguments)
+        }
+
+        gtag('js', new Date())
+
+        gtag('config', 'GT-5MXLVKLC')
+    </script>
+
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
