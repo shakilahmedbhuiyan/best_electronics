@@ -23,6 +23,7 @@ class Cart extends Component
         'customer.city' => 'city',
         'customer.id_no' => 'Identity Number',
         'customer.nationality' => 'nationality',
+        'customer.dob' => 'Date of Birth',
     ];
 
     public ?array $customers = [];
@@ -85,14 +86,15 @@ class Cart extends Component
 
         $this->validate([
             'customer.name' => 'required|string',
-            'customer.email' => 'required|email',
-            'customer.mobile' => 'required|int|digits:9,12',
+            'customer.email' => 'required|email:rfc,dns',
+            'customer.mobile' => 'required|numeric|digits_between:9,15',
             'customer.address' => 'required|string',
             'customer.city' => 'required|string',
             'customer.nationality' => 'required|string',
-            'customer.id_no' => 'required|string',
+            'customer.id_no' => 'required|numeric|digits:10',
             'customer.dob' => 'required|date|before:last year',
         ]);
+        dd($this->customer);
 
         $user = User::where('email', $this->customer['email'])
             ->orWhere('mobile', $this->customer['mobile'])

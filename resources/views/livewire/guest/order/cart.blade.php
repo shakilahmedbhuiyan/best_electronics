@@ -79,19 +79,24 @@
             </div>
 
             <!-- Customer Form -->
-            <form wire:submit.prevent class="w-full px-2 md:px-5 mx-auto bg-slate-50 rounded-lg shadow-lg">
-                <h4 class="text-center font-bold text-lg"> Customer Information's: </h4>
+            <form wire:submit.prevent class="w-full px-2 md:px-5 mx-auto bg-slate-50 rounded-lg shadow-lg py-4">
+                <h4 class="text-center font-bold text-lg font-serif text-emerald-900">Order Information's: </h4>
                 <div class="flex flex-col space-y-3">
                     <x-input wire:model.defer="customer.name" required
                              type="text" placeholder="Name" label="Name" />
                     <x-input wire:model.defer="customer.email" type="email" placeholder="Email" label="Email"
                              required />
-                    <x-input wire:model.defer="customer.mobile" type="text" placeholder="Mobile" label="Mobile"
-                             required />
-                    <x-input wire:model.defer="customer.address" type="text" placeholder="Address" label="Address" />
+                    <x-phone wire:model.defer="customer.mobile" type="text" placeholder="Mobile" label="Mobile"
+                             required corner="Whatsapp preferred"
+                    :mask="['(#)## ###-####','+### ###-####', '+### ### ###-####']"/>
+                    <x-input wire:model.defer="customer.address" type="text"
+                             placeholder="Address" label="Address"
+                             corner="Current Address"
+                    />
                     <x-input wire:model.defer="customer.city" type="text" placeholder="City" label="City" />
-                    <x-input wire:model.defer="customer.id_no" type="text" placeholder="ID Number"
-                             label="ID Number" />
+                    <x-maskable wire:model.defer="customer.id_no" type="text" placeholder="ID Number"
+                             label="ID Number" required
+                    mask="### ### ####" corner=" نفاذ | NAFATH"/>
 
                     <div class=" grid grid-col-1 md:grid-cols-2 gap-3">
                         <x-input wire:model.defer="customer.nationality" type="text" label="Nationality"
@@ -101,7 +106,7 @@
                             label="Date of Birth"
                             placeholder="Date of Birth"
                             without-time
-                            :max="now()->subYears(18)"
+                            :max="now()->subYears(18)->format('d-m-Y')"
                         />
                     </div>
                 </div>
