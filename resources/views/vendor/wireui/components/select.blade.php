@@ -111,7 +111,7 @@
 
                                 <div wire:ignore class="flex flex-nowrap items-center gap-1">
                                     <template x-for="(option, index) in selectedOptions" :key="`selected.${index}`">
-                                        <span class="
+                                        <span class=" hover:text-primary-800
                                                 inline-flex items-center py-0.5 pl-2 pr-0.5 rounded-full text-xs font-medium
                                                 border border-secondary-200 shadow-sm bg-secondary-100 text-secondary-700
                                                 dark:bg-secondary-700 dark:text-secondary-400 dark:border-none
@@ -119,7 +119,8 @@
                                             <span style="max-width: 5rem" class="truncate" x-text="option.label"></span>
 
                                             <button
-                                                class="shrink-0 h-4 w-4 flex items-center text-secondary-400 justify-center hover:text-secondary-500"
+                                                class="shrink-0 h-4 w-4 flex items-center text-secondary-400
+                                                justify-center hover:text-secondary-500"
                                                 x-on:click.stop="unSelect(option)"
                                                 tabindex="-1"
                                                 type="button">
@@ -149,7 +150,7 @@
                             x-cloak>
                             <x-dynamic-component
                                 :component="WireUi::component('icon')"
-                                class="w-4 h-4 text-secondary-400 hover:text-negative-400"
+                                class="w-4 h-4 text-secondary-400 hover:text-primary-400"
                                 name="x"
                             />
                         </button>
@@ -182,11 +183,11 @@
         class="sm:max-w-xs"
     >
         <template x-if="asyncData.api || (config.searchable && options.length >= @toJs($minItemsForSearch))">
-            <div class="px-2 my-2" wire:key="search.options.{{ $name }}">
+            <div class="px-2 my-2"  wire:key="search.options.{{ $name }}">
                 <x-dynamic-component
                     :component="WireUi::component('input')"
                     :placeholder="trans('wireui::messages.searchHere')"
-                    class="bg-slate-100"
+                    class="bg-primary-100"
                     x-ref="search"
                     x-model.debounce.500ms="search"
                     x-on:keydown.arrow-down.prevent="$event.shiftKey || getNextFocusable().focus()"

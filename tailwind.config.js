@@ -1,6 +1,7 @@
 import defaultTheme from 'tailwindcss/defaultTheme'
 import forms from '@tailwindcss/forms'
 import typography from '@tailwindcss/typography'
+import colors from 'tailwindcss/colors.js'
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -14,7 +15,7 @@ export default {
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
         './vendor/wireui/wireui/src/*.php',
-        './vendor/wireui/wireui/ts/**/*.ts',
+        './vendor/wireui17/wireui/ts/**/*.ts',
         './vendor/wireui/wireui/src/WireUi/**/*.php',
         './vendor/wireui/wireui/src/Components/**/*.php',
         './app/Filament/**/*.php',
@@ -30,8 +31,12 @@ export default {
             },
             screens: {
                 print: { raw: 'print' },
-                screen: { raw: 'screen' },
+                screen: { raw: 'screen', },
             },
+            colors: {
+                primary: colors.emerald,
+                secondary: colors.slate,
+            }
         },
     },
 

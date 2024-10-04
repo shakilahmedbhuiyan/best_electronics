@@ -115,6 +115,7 @@
 
                     <div class=" grid grid-col-1 md:grid-cols-2 gap-3">
                         <x-select label="Nationality" placeholder="Select Nationality"
+
                                   wire:model.defer="customer.nationality"
                                   :async-data=" route('country.search')"
                                   :template="[
