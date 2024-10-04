@@ -28,6 +28,7 @@ class StoreInfoServiceProvider extends ServiceProvider
                 'address' => 'Store Address',
                 'phone' => 'Store Phone',
                 'email' => 'Store Email',
+                'map_link' => 'Store Map Link',
                 'logo' => '/logo/logo.png',
                 'favicon' => '/favicon.ico',
                 'facebook' => 'Store Facebook',
@@ -40,16 +41,7 @@ class StoreInfoServiceProvider extends ServiceProvider
                 'telegram' => 'Store Telegram',
                 'snapchat' => 'Store Snapchat',
                 'tiktok' => 'Store Tiktok',
-                'meta_title' => 'Store Meta Title',
-                'meta_description' => 'Store Meta Description',
-                'meta_keywords' => 'Store Meta Keywords',
-                'meta_author' => 'Store Meta Author',
-                'meta_robots' => 'Store Meta Robots',
-                'meta_revisit_after' => 'Store Meta Revisit After',
-                'meta_distribution' => 'Store Meta Distribution',
-                'meta_rating' => 'Store Meta Rating',
-                'meta_language' => 'Store Meta Language',
-                'meta_publisher' => 'Store Meta Publisher'
+
             ];
         });
         if ($store !== null) {
