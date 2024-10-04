@@ -92,7 +92,7 @@ class Product extends Model implements Sitemapable
     public function toSitemapTag(): Url | string | array
     {
         return Url::create(route('product.single', $this->slug))
-            ->addImage($this->thumbnail)
+            ->addImage($this->thumbnail, $this->name)
             ->setLastModificationDate($this->updated_at)
             ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY)
             ->setPriority(1.0);

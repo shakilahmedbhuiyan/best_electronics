@@ -4,4 +4,6 @@
 /sliders
 /storage
 /logo
+/category_sitemap.xml
+/product_sitemap.xml
 !.gitignore

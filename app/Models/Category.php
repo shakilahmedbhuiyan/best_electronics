@@ -53,7 +53,7 @@ class Category extends Model implements Sitemapable
     public function toSitemapTag(): Url | string | array
     {
         return Url::create(route('index.category', $this->slug))
-            ->addImage($this->thumbnailUrl)
+            ->addImage($this->thumbnailUrl, $this->name)
             ->setLastModificationDate($this->updated_at)
             ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
             ->setPriority(0.7);
