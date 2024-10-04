@@ -15,12 +15,8 @@ class Index extends Component
     {
         $store = app('store');
         $this->seo()->setTitle($store['description']);
-        $this->seo()
-            ->setDescription($store['description']);
         $this->seo()->opengraph()->setTitle($store['name']);
-        $this->seo()->opengraph()->setDescription($store['description']);
         $this->seo()->twitter()->setTitle($store['name']);
-        $this->seo()->twitter()->setDescription($store['description']);
         $this->seo()->jsonLd()->setTitle($store['name']);
     }
 

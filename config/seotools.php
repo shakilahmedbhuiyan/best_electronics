@@ -38,7 +38,8 @@ return [
          */
         'defaults' => [
             'title' => config('app.name'), // set false to total remove
-            'description' => '', // set false to total remove
+            'description' => 'Best Electronics offers all kinds of Smartphones with Installment facility all over Saudi Arabia.
+             Choose your best device and gadget from the wire range of varieties.', // set false to total remove
             'url' => null, // Set null for using Url::current(), set false to total remove
             'type' => 'website',
             'site_name' => config('app.name'),
@@ -60,7 +61,8 @@ return [
          */
         'defaults' => [
             'title' => config('app.name'), // set false to total remove
-            'description' => 'Affordable Printing Solution', // set false to total remove
+            'description' => 'Best Electronics offers all kinds of Smartphones with Installment facility all over Saudi Arabia.
+             Choose your best device and gadget from the wire range of varieties.', // set false to total remove
             'url' => 'full', // Set to null or 'full' to use Url::full(), set to 'current' to use Url::current(), set false to total remove
             'type' => 'WebPage',
             'images' => [],
