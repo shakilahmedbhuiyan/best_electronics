@@ -79,7 +79,22 @@
             </div>
 
             <!-- Customer Form -->
-            <form wire:submit.prevent class="w-full px-2 md:px-5 mx-auto bg-slate-50 rounded-lg shadow-lg py-4">
+            <form wire:submit.prevent class="w-full px-2 md:px-5 mx-auto bg-slate-50 rounded-lg shadow-lg py-4"
+                  x-data="{
+        options: [],
+        async fetchOptions() {
+            const response = await fetch('https://restcountries.com/v3.1/name/su?fields=name,flag'); // Replace with your API URL
+            if (response.ok) {
+                const data = await response.json();
+                this.options = data.map(item => ({
+                    label: name,
+                    value: name
+                }));
+            }
+        }
+    }"
+                  x-init="fetchOptions()"
+            >
                 <h4 class="text-center font-bold text-lg font-serif text-emerald-900">Order Information's: </h4>
                 <div class="flex flex-col space-y-3">
                     <x-input wire:model.defer="customer.name" required
@@ -88,19 +103,27 @@
                              required />
                     <x-phone wire:model.defer="customer.mobile" type="text" placeholder="Mobile" label="Mobile"
                              required corner="Whatsapp preferred"
-                    :mask="['(#)## ###-####','+### ###-####', '+### ### ###-####']"/>
+                             :mask="['(#)## ###-####','+### ###-####', '+### ### ###-####']" />
                     <x-input wire:model.defer="customer.address" type="text"
                              placeholder="Address" label="Address"
                              corner="Current Address"
                     />
                     <x-input wire:model.defer="customer.city" type="text" placeholder="City" label="City" />
                     <x-maskable wire:model.defer="customer.id_no" type="text" placeholder="ID Number"
-                             label="ID Number" required
-                    mask="### ### ####" corner=" نفاذ | NAFATH"/>
+                                label="ID Number" required
+                                mask="### ### ####" corner=" نفاذ | NAFATH" />
 
                     <div class=" grid grid-col-1 md:grid-cols-2 gap-3">
-                        <x-input wire:model.defer="customer.nationality" type="text" label="Nationality"
-                                 placeholder="Nationality" />
+                        <x-select label="Nationality" placeholder="Select Nationality"
+                                  wire:model.defer="customer.nationality"
+                                  :async-data=" route('country.search')"
+                                  :template="[
+                                    'name' => 'user-option',
+                                   'config' => ['src' => 'flag'],
+                                   ]"
+                                  option-label="name"
+                                  option-value="value"
+                                  option-description="official" />
                         <x-datetime-picker
                             wire:model.defer="customer.dob"
                             label="Date of Birth"
