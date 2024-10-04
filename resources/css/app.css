@@ -107,6 +107,10 @@
 }
 
 
+#listing ul li:hover {
+    background-color: theme(colors.emerald.500);
+}
+
 
 
 

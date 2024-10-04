@@ -113,9 +113,9 @@
                                 label="ID Number" required
                                 mask="### ### ####" corner=" نفاذ | NAFATH" />
 
-                    <div class=" grid grid-col-1 md:grid-cols-2 gap-3">
+                    <div class=" grid grid-col-1 md:grid-cols-2 gap-3" id="listing">
                         <x-select label="Nationality" placeholder="Select Nationality"
-
+                                  style="#item li:hover{background-color: #720740;}"
                                   wire:model.defer="customer.nationality"
                                   :async-data=" route('country.search')"
                                   :template="[
