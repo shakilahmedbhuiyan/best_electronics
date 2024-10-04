@@ -15,26 +15,33 @@ class CountryController extends Controller
         } else {
             $value = 'su';
         }
-        $api= 'https://restcountries.com/v3.1/name/'.$value.'?fields=name,flags,demonyms';
+        $api = 'https://restcountries.com/v3.1/name/' . $value . '?fields=name,flags,demonyms';
 
-            $result= Http::timeout(3600)
+        try {
+            $result = Http::timeout(3600)
                 ->withoutVerifying()
                 ->get($api);
 
-            if ($result->successful())
-            {
-                $result = collect($result->json())->map(function ($item) {
+            if ($result->successful()) {
+                return collect($result->json())->map(function ($item) {
                     return [
-                        'name' => $item['name']['common'].' - '.$item['demonyms']['eng']['m'],
+                        'name' => $item['name']['common'] . ' - ' . $item['demonyms']['eng']['m'],
                         'value' => $item['name']['common'],
                         'official' => $item['name']['official'],
                         'flag' => $item['flags']['svg']
                     ];
                 });
-                return $result;
+            } else {
+                $data = [
+                    'name' => 'No Country Found',
+                    'value' => '',
+                    'official' => '',
+                    'flag' => ''
+                ];
+                return collect([$data]);
             }
-            else {
-                return response()->json(['error' => 'Something went wrong'], 500);
-            }
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Error: API call failed'], 500);
+        }
     }
 }
