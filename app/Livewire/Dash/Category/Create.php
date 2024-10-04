@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Spatie\Sitemap\Sitemap;
 
 class Create extends Component
 {
@@ -33,7 +34,6 @@ class Create extends Component
             $this->slug . '.' . $this->thumbnail->extension(),
             'public'
         );
-
         $category = Category::create([
             'name' => $this->name,
             'slug' => $this->slug,
@@ -45,6 +45,7 @@ class Create extends Component
             // Remove the temporary file by its path
             Storage::disk('local')->delete('livewire-tmp/' . $this->thumbnail->getFilename());
         }
+
 
         Cache::forever('categories', Category::where('status', true)->get());
 

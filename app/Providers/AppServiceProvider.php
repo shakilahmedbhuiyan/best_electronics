@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Category;
+use App\Models\Product;
+use App\Observers\CategoryObserver;
+use App\Observers\ProductObserver;
 use App\Policies\RolePolicy;
 use App\Policies\PermissionPolicy;
 use Filament\Support\Colors\Color;
@@ -43,5 +47,10 @@ class AppServiceProvider extends ServiceProvider
             'success' => Color::Green,
             'warning' => Color::Amber,
         ]);
+
+
+        Product::observe(ProductObserver::class);
+        Category::observe(CategoryObserver::class);
+
     }
 }

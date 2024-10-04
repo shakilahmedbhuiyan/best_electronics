@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Spatie\Sitemap\SitemapGenerator;
+use Spatie\Sitemap\Tags\Url;
 
 class Update extends Component
 {
@@ -109,6 +111,7 @@ class Update extends Component
         ]);
         Cache::forget('product_' . $this->product->slug);
         Cache::forever('product_' . $this->product->slug, $this->product->load('category', 'brand')->toArray());
+
         session()->flash('success', 'Product Updated successfully');
         return $this->redirect(route('admin.product.index'), navigate: true);
     }

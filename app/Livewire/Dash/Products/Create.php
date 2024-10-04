@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Dash\Products;
 
-use AllowDynamicProperties;
+
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
@@ -84,9 +84,7 @@ class Create extends Component
             'thumbnail' => $thumbnail,
             'category_id' => $this->form['category'],
             'brand_id' => $this->form['brand'],
-
         ]);
-
 
         session()->flash('success', 'Product created successfully.');
 

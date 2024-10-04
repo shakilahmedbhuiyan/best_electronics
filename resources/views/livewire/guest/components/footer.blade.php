@@ -59,7 +59,8 @@
             <div class="space-y-3" bis_skin_checked="1">
                 <div class="uppercase text-gray-50 " bis_skin_checked="1">Social media</div>
                 <div class="flex justify-start space-x-3" bis_skin_checked="1">
-                    <a rel="noopener noreferrer" href="#" title="Facebook" class="flex items-center p-1">
+                    <a rel="noopener noreferrer" href="https://facebook.com/bestelectronicsksa"
+                       title="Facebook" class="flex items-center p-1" target="_blank">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32"
                              class="w-5 h-5 fill-current">
                             <path
