@@ -108,7 +108,15 @@
 
 
 #listing ul li:hover {
-    background-color: theme(colors.emerald.500);
+}
+
+@layer components {
+    #listing ul li:hover {
+        @apply bg-emerald-600;
+        @apply text-white;
+        @apply dark:bg-gray-800;
+        @apply dark:text-white;
+    }
 }
 
 

@@ -1,8 +1,8 @@
 <section x-data>
     <x-slot name="button">
         <div class="flex flex-row justify-center items-center space-x-3 w-full" id="listing">
-            <x-select label="Select Status" class="w-64"
-                             :options="[
+            <x-select class="w-40"
+                      :options="[
     ['name' => 'Pending', 'id' => 'pending', 'description' => 'Order is pending'],
     ['name' => 'Processing', 'id' => 'processing', 'description' => 'Order is processing'],
     ['name' => 'Completed', 'id' => 'completed', 'description' => 'Order is completed'],
@@ -12,11 +12,11 @@
     ['name' => 'Cancelled', 'id' => 'cancelled', 'description' => 'Order is cancelled'],
     ['name' => 'Stuck', 'id' => 'stuck', 'description' => 'Order is stuck'],
     ]"
-                             wire:model.live="status"
-                             placeholder="Select status"
-                             x-on:blur="$wire.updatedStatus()"
-                             option-label="name"
-                             option-value="id" />
+                      wire:model.live="status"
+                      placeholder="Select status"
+                      x-on:blur="$wire.updatedStatus()"
+                      option-label="name"
+                      option-value="id" />
 
             <a href="{{ route('admin.order.index') }}">
                 <x-button-1>Back</x-button-1>
@@ -28,7 +28,7 @@
 
     <div class="my-4 w-full">
 
-        <div class="mt-8 mb-12 print:mt-3 print:mb-1 px-5">
+        <div class="mt-8 mb-12 print:mt-3 print:mb-1 px-5 text-gray-800 dark:text-gray-200">
             <div class="flex flex-col sm:flex-row justify-between items-center">
 
                 <div class=" flex flex-col">
@@ -38,20 +38,20 @@
                     <p class="text-sm opacity-70">
                         {{  '#'. $order->user->id_no }}
                     </p>
-                    <p id="customer_email" class="flex flex-wrap items-center space-x-2">
-                        <x-icon name="at-symbol" class="w-4 h-4 inline-block" />
-                        <span> {{ $order->user->email }}</span>
-                    </p>
                     <p id="customer_mobile" class="flex items-center space-x-2">
                         <x-icon name="phone" class="w-4 h-4 inline-block" />
                         <span> {{ $order->user->mobile }}</span>
                     </p>
-                    <p class="text-sm break-words" id="customer_address">
-                        {{ $order->user->address }}
-                        <span class="font-medium" id="customer_city">
-                                {{ $order->user->city }}</span>
+                    <p id="customer_mobile" class="flex items-center space-x-2">
+                        <x-icon name="calendar" class="w-4 h-4 inline-block" />
+                        <span> {{ $order->user->dob->format('d M, Y') }}</span>
                     </p>
-                    <p> {{ $order->user->nationality }} </p>
+                    <p class="flex items-center space-x-2" id="nationality">
+                        <x-icon name="flag" class="w-4 h-4 inline-block" />
+                        <span>
+                            {{ $order->user->nationality }}
+                       </span>
+                    </p>
                 </div>
                 <div class="flex flex-col justify-center items-start">
                     <h2 class="text-xl font-bold" id="order_id">Order ID: {{ $order->order_number }}</h2>
@@ -107,12 +107,6 @@
                     </x-slot>
 
                 </x-table-hover>
-                <div class="p-5 print:p-2 w-full rounded-lg bg-gray-200 my-4 print:my-0">
-                    <h3>Order Address:</h3>
-                    <p>{{ $order->shipping_address }}</p>
-
-                </div>
-
 
             </div>
         </div>

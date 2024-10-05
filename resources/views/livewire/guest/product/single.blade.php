@@ -1,6 +1,6 @@
 <section>
     <!-- ✅ Product Details - Starts Here 👇 -->
-    <div class="font-sans my-6 px-5">
+    <div class="font-sans my-6 px-5 text-gray-800 dark:text-gray-200">
         <div class="p-4 w-full max-lg:mx-auto">
             <div class="grid items-start grid-cols-1 lg:grid-cols-2 gap-8 max-lg:gap-16">
                 <div class="w-full lg:sticky top-0 text-center">
@@ -20,7 +20,7 @@
                 <div>
                     <div class="flex flex-wrap items-start gap-4">
                         <div>
-                            <h2 class="text-2xl font-bold text-gray-800 capitalize">{{ $product['name'] }}</h2>
+                            <h2 class="text-2xl font-bold capitalize">{{ $product['name'] }}</h2>
                             <div class="flex flex-row space-x-2 mt-2 justify-center items-center ">
                                 <a class="text-sm text-gray-600 bg-green-300 rounded p-2"
                                    href="{{ route('index.category', $product['brand']['slug'] ) }}" wire:navigate>
@@ -55,12 +55,12 @@
                     <hr class="my-8" />
 
                     <div class="flex flex-wrap gap-4 items-start">
-                        <p class="text-sm text-gray-600 w-full text-justify capitalize">
+                        <p class="text-sm text-gray-600 dark:text-gray-400 w-full text-justify capitalize">
                             {!! $product['summary'] !!}
                         </p>
                         <div>
 
-                            <p class="text-gray-800 text-4xl font-bold">
+                            <p class="text-4xl font-bold">
                                 {!! "SAR ". (isset($product['sale_price']) ? $product['sale_price'] : $product['price']) !!}
                             </p>
                             <p class="text-gray-500 text-sm mt-2">
@@ -166,9 +166,9 @@
                                 font-semibold rounded-md">
                             Buy now
                         </button>
-                        <button type="button" class="min-w-[200px] px-4 py-2.5 border border-emerald-900
+                        <button type="button" class="min-w-[200px] px-4 py-2.5 border border-emerald-700
                         bg-transparent hover:bg-gradient-to-tr hover:from-emerald-950 hover:to-emerald-700
-                        text-gray-800 hover:text-slate-100 text-sm font-semibold rounded-md"
+                        text-emerald-600 hover:text-slate-100 text-sm font-semibold rounded-md"
                         wire:click="addToCart({{ $product['id'] }},1)">
                             Add to cart
                         </button>
@@ -180,7 +180,8 @@
                 <div class="w-full md:w-3/5">
                     <ul class="flex border-b">
                         <li
-                            class="text-gray-800 font-semibold text-sm bg-gray-100 py-3 px-8 border-b-2 border-gray-800 cursor-pointer transition-all">
+                            class="font-semibold text-sm py-3 px-8 border-b-2
+                            border-gray-800 cursor-pointer transition-all">
                             Description
                         </li>
                         <li class="text-gray-500 font-semibold text-sm hover:bg-gray-100 py-3 px-8 cursor-pointer transition-all">
@@ -188,13 +189,13 @@
                         </li>
                     </ul>
                     <div class="mt-8">
-                        <h3 class="text-xl font-bold text-gray-800">Product Description</h3>
-                        <p class="text-sm text-gray-500 mt-4">
+                        <h3 class="text-xl font-bold ">Product Description</h3>
+                        <p class="text-sm mt-4">
                             {!! $product['description'] !!}
                         </p>
                     </div>
                 </div>
-                <div class="bg-white border-2 border-emerald-950/75 rounded-lg min-h-24 p-5
+                <div class="bg-white dark:bg-gray-900 border-2 border-emerald-950/75 rounded-lg min-h-24 p-5
                 flex flex-col justify-center items-center w-full md:w-2/5 ">
                     <p>Related Products</p>
                 </div>

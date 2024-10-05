@@ -1,12 +1,14 @@
 <section>
 
     <div
-        class="flex flex-col sm:flex-row justify-between items-center max-w-4xl mx-auto bg-emerald-50 drop-shadow-lg rounded-lg p-5 print:hidden">
+        class="flex flex-col sm:flex-row justify-between items-center max-w-4xl mx-auto
+        bg-emerald-50 dark:bg-gray-900 drop-shadow-lg dark:text-gray-300
+        rounded-lg p-5 print:hidden">
         <div>
-            <p class="text-2xl font-bold text-emerald-900 font-serif">Thank you for shopping with
+            <p class="text-2xl font-bold text-emerald-900 dark:text-emerald-600 font-serif">Thank you for shopping with
                 <span class="capitalize"></span>{{ config('app.name') }}.</p>
 
-            <ul class="text-sm italic list-disc px-2">
+            <ul class="text-sm italic list-disc px-2 ">
                 <li class="list-item">
                     {!! "We will contact you on whatsapp for order verification." !!}
                 </li>
@@ -26,7 +28,7 @@
     </div>
 
 
-    <div class="mt-8 mb-12 print:mt-3 print:mb-1 px-5">
+    <div class="mt-8 mb-12 print:mt-3 print:mb-1 px-5 dark:text-gray-300">
         <div class="flex flex-col sm:flex-row justify-between items-center">
 
             <div class=" flex flex-col">
@@ -36,22 +38,23 @@
                 <p class="text-sm opacity-70">
                     {{  '#'. $order->user->id_no }}
                 </p>
-                <p id="customer_email" class="flex flex-wrap items-center space-x-2">
-                    <x-icon name="at-symbol" class="w-4 h-4 inline-block" />
-                   <span> {{ $order->user->email }}</span>
-                </p>
                 <p id="customer_mobile" class="flex items-center space-x-2">
                     <x-icon name="phone" class="w-4 h-4 inline-block" />
-                   <span> {{ $order->user->mobile }}</span>
+                    <span> {{ $order->user->mobile }}</span>
                 </p>
                 <p class="text-sm break-words" id="customer_address">
                     {{ $order->user->address }}
                     <span class="font-medium" id="customer_city">
                                 {{ $order->user->city }}</span>
                 </p>
-                <p> {{ $order->user->nationality }} </p>
+                <p class="flex items-center space-x-2" id="nationality">
+                    <x-icon name="flag" class="w-4 h-4 inline-block" />
+                    <span>
+                            {{ $order->user->nationality }}
+                       </span>
+                </p>
             </div>
-             <div class="flex flex-col justify-center items-start">
+            <div class="flex flex-col justify-center items-start">
                 <h2 class="text-xl font-bold" id="order_id">Order ID: {{ $order->order_number }}</h2>
                 <p class="text-gray-500" id="order_date">Order
                     Date: {{ $order->created_at->format('d M Y, h:i:s a') }}</p>
@@ -105,12 +108,6 @@
                 </x-slot>
 
             </x-table-hover>
-            <div class="p-5 print:p-2 w-full rounded-lg bg-gray-200 my-4 print:my-0">
-                <h3>Order Address:</h3>
-                <p>{{ $order->shipping_address }}</p>
-
-            </div>
-
 
         </div>
     </div>

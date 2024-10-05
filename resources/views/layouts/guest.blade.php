@@ -77,7 +77,7 @@
 
 </head>
 
-<body id="app" class="font-sans antialiased bg-gray-100">
+<body id="app" class="font-sans antialiased bg-gray-100 dark:bg-slate-800">
 @livewire('guest.components.top-header')
 @livewire('guest.components.nav')
 

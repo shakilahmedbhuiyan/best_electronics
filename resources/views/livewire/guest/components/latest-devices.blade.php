@@ -1,6 +1,8 @@
-<div class="bg-slate-200 pt-5 pb-8">
+<div class="bg-slate-200 dark:bg-gray-900 pt-5 pb-8">
     <div class="text-center p-5">
-        <h1 class="text-3xl font-bold leading-loose uppercase">Latest Products</h1>
+        <h1 class="text-3xl font-bold text-emerald-800 dark:text-emerald-600 font-serif leading-loose uppercase">
+            Latest Products
+        </h1>
     </div>
     <!-- ✅ Grid Section - Starts Here 👇 -->
     <section id="LatestProducts"

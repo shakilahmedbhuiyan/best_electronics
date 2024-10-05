@@ -1,17 +1,18 @@
-<section class="my-6">
+<section class="mt-6 pb-6 ">
 
-    <div class="flex justify-between items-center max-w-4xl mx-auto bg-emerald-50 drop-shadow-lg rounded-lg p-5">
-        <h2 class="text-2xl font-bold"> Shopping Cart</h2>
+    <div class="flex justify-between items-center max-w-4xl mx-auto
+    bg-emerald-50 dark:bg-slate-900 drop-shadow-lg rounded-lg p-5">
+        <h2 class="text-2xl font-bold text-gray-400 "> Shopping Cart</h2>
         <a href="{{ route('index') }}" class="text-emerald-700" wire:navigate>Continue Shopping</a>
     </div>
 
     <!-- Cart Items -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full my-2 px-4">
         @if($cartItems !== null && count($cartItems) > 0)
-            <div class="w-full px-2 md:px-5 mx-auto bg-slate-50 rounded-lg shadow-lg" x-data="cartData()">
-                <div class="hidden lg:grid grid-cols-2 py-6">
-                    <div class="font-normal text-xl leading-8 text-gray-500">Product</div>
-                    <p class="font-normal text-xl leading-8 text-gray-500 flex items-center justify-between">
+            <div class="w-full px-2 md:px-5 mx-auto bg-slate-50 dark:bg-slate-900 rounded-lg shadow-lg" x-data="cartData()">
+                <div class="hidden lg:grid grid-cols-2 py-6 text-gray-500 dark:text-gray-400">
+                    <div class="font-normal text-xl leading-8">Product</div>
+                    <p class="font-normal text-xl leading-8 flex items-center justify-between">
                         <span class="w-full max-w-[260px] text-center">Quantity</span>
                         <span class="w-full max-w-[200px] text-center">Total</span>
                     </p>
@@ -26,14 +27,15 @@
                                 <img :src="item.product.thumbnail" :alt="item.product.name"
                                      class="h-40 aspect-square rounded-xl object-contain">
                             </div>
-                            <div class="w-full max-w-sm">
-                                <h5 class="font-semibold text-xl text-black md:text-center"
+                            <div class="w-full max-w-sm text-slate-900 dark:text-slate-200">
+                                <h5 class="text-lg text-center sm:text-start"
                                     x-text="item.product.name"></h5>
-                                <p class="font-normal text-lg text-gray-500 my-2 max-[550px]:text-center"
+                                <p class="text-sm opacity-70 mb-1 text-center sm:text-start"
                                    x-text="item.product.category.name"></p>
-                                <h6 class="font-medium text-lg text-emerald-800 max-[550px]:text-center">
-                                    SAR. <span
-                                        x-text="item.product.sale ? item.product.sale_price : item.product.price"></span>
+                                <h6 class="font-medium text-md text-emerald-800
+                                dark:text-emerald-400 text-center sm:text-start">
+                                    <span class="text-sm opacity-70"></span>
+                                    <span x-text="item.product.sale ? item.product.sale_price : item.product.price"></span>
                                 </h6>
                                 <div class="text-sm flex md:inline-flex justify-center items-center text-orange-600/85"
                                      x-show="item.product.instalment">
@@ -56,66 +58,48 @@
                         <div
                             class="flex items-center flex-col md:flex-row w-full max-xl:max-w-xl max-xl:mx-auto gap-2">
                             <!-- Quantity Input -->
-                            <div class="flex items-center w-full mx-auto justify-center">
-                                <x-jet-input type="number" x-model.number="item.quantity"
+                            <div class="flex items-center w-20 mx-auto justify-center">
+                                <x-input type="number" x-model.number="item.quantity"
                                              x-on:change="$wire.updateCartQuantity(item.product.id, item.quantity)"
-                                             class="w-20" min="1" />
+                                             min="1" />
                             </div>
                             <!-- Total Price for Each Item -->
-                            <p class="text-emerald-950 font-bold text-2xl leading-9 w-full max-w-[176px] text-center">
-                                SAR. <span x-text="calculateItemTotal(item)"></span>
+                            <p class="text-emerald-800 dark:text-emerald-500 font-bold text-lg leading-3 w-full
+                            max-w-[176px] text-center">
+                                <span class="text-sm">{{__('SAR.')}}</span>
+                                <span x-text="calculateItemTotal(item)"></span>
                             </p>
                         </div>
                     </div>
                 </template>
 
                 <!-- Total -->
-                <div class="bg-gray-200 rounded-xl p-6 w-full mb-8">
-                    <div class="flex items-center justify-between w-full py-6">
-                        <p class="font-medium text-2xl leading-9 text-gray-900">Total</p>
-                        <h6 class="font-bold text-2xl leading-9 text-emerald-950" x-text="totalPrice()"></h6>
+                <div class="bg-gray-200 dark:bg-gray-800 rounded-xl px-6 w-full mb-8">
+                    <div class="flex items-center justify-between w-full py-6 text-emerald-800 dark:text-emerald-500">
+                        <p class="font-medium text-2xl leading-6 ">Total</p>
+                        <h6 class="font-bold text-2xl leading-6" x-text="totalPrice()"></h6>
                     </div>
                 </div>
             </div>
 
             <!-- Customer Form -->
-            <form wire:submit.prevent class="w-full px-2 md:px-5 mx-auto bg-slate-50 rounded-lg shadow-lg py-4"
-                  x-data="{
-        options: [],
-        async fetchOptions() {
-            const response = await fetch('https://restcountries.com/v3.1/name/su?fields=name,flag'); // Replace with your API URL
-            if (response.ok) {
-                const data = await response.json();
-                this.options = data.map(item => ({
-                    label: name,
-                    value: name
-                }));
-            }
-        }
-    }"
-                  x-init="fetchOptions()"
-            >
-                <h4 class="text-center font-bold text-lg font-serif text-emerald-900">Order Information's: </h4>
+            <form wire:submit.prevent="checkout()"
+                  class="w-full px-2 md:px-5 mx-auto bg-slate-50 dark:bg-slate-900 rounded-lg shadow-lg py-4">
+                <h4 class="text-center font-bold text-lg font-serif text-emerald-900 dark:text-emerald-500">
+                {{ __("Order Information's:") }}
+                </h4>
                 <div class="flex flex-col space-y-3">
                     <x-input wire:model.defer="customer.name" required
                              type="text" placeholder="Name" label="Name" />
-                    <x-input wire:model.defer="customer.email" type="email" placeholder="Email" label="Email"
-                             required />
                     <x-phone wire:model.defer="customer.mobile" type="text" placeholder="Mobile" label="Mobile"
                              required corner="Whatsapp preferred"
                              :mask="['(#)## ###-####','+### ###-####', '+### ### ###-####']" />
-                    <x-input wire:model.defer="customer.address" type="text"
-                             placeholder="Address" label="Address"
-                             corner="Current Address"
-                    />
-                    <x-input wire:model.defer="customer.city" type="text" placeholder="City" label="City" />
                     <x-maskable wire:model.defer="customer.id_no" type="text" placeholder="ID Number"
                                 label="ID Number" required
                                 mask="### ### ####" corner=" نفاذ | NAFATH" />
 
                     <div class=" grid grid-col-1 md:grid-cols-2 gap-3" id="listing">
                         <x-select label="Nationality" placeholder="Select Nationality"
-                                  style="#item li:hover{background-color: #720740;}"
                                   wire:model.defer="customer.nationality"
                                   :async-data=" route('country.search')"
                                   :template="[
@@ -135,10 +119,9 @@
                     </div>
                 </div>
                 <div class="flex items-center flex-col sm:flex-row justify-center gap-3 mt-8">
-                    <button wire:click="checkout()"
-                            class="rounded-full w-full max-w-[280px] py-4 text-center justify-center items-center
+                    <button type="submit" class="rounded-full w-full max-w-[280px] py-4 text-center justify-center items-center
                     bg-emerald-900 font-semibold text-lg text-white flex transition-all duration-300 hover:bg-emerald-950">
-                        Place Order
+                        {{ __(' Place Order') }}
                         <svg class="ml-2" xmlns="http://www.w3.org/2000/svg" width="23" height="22" viewBox="0 0 23 22"
                              fill="none">
                             <path d="M8.75324 5.49609L14.2535 10.9963L8.75 16.4998" stroke="white" stroke-width="1.6"
@@ -151,33 +134,35 @@
             <div class="flex flex-col col-span-full items-center justify-center w-full h-96">
                 <x-empty-cart class="h-96 aspect-video object-cover drop-shadow-lg" />
                 <h2 class="text-2xl font-semibold text-gray-500">No items in cart</h2>
-                <a href="{{ route('index') }}" class="text-emerald-700" wire:navigate>Start Shopping</a>
+                <a href="{{ route('index') }}" class="text-emerald-600 dark:text-emerald-500" wire:navigate>Start Shopping</a>
             </div>
         @endif
     </div>
 
 </section>
-<script>
-    function cartData() {
-        return {
-            items: @json($cartItems),  // Pass your PHP cartItems to Alpine.js
-            // updateItemQuantity(index) {
-            //     const item = this.items[index];
-            //     // Send an event to Livewire to update the quantity in the session
-            //     $dispatch('updateCartQuantity', item.product.id, item.quantity);
-            // },
-            calculateItemTotal(item) {
-                // Calculate the total price of each item based on the quantity and price
-                const price = item.product.sale ? item.product.sale_price : item.product.price
-                return (price * item.quantity).toFixed(2)
-            },
-            totalPrice() {
-                // Calculate the total price of all items in the cart
-                return this.items.reduce((total, item) => {
+@push('scripts')
+    <script>
+        function cartData() {
+            return {
+                items: @json($cartItems),  // Pass your PHP cartItems to Alpine.js
+                // updateItemQuantity(index) {
+                //     const item = this.items[index];
+                //     // Send an event to Livewire to update the quantity in the session
+                //     $dispatch('updateCartQuantity', item.product.id, item.quantity);
+                // },
+                calculateItemTotal(item) {
+                    // Calculate the total price of each item based on the quantity and price
                     const price = item.product.sale ? item.product.sale_price : item.product.price
-                    return total + (price * item.quantity)
-                }, 0).toFixed(2)
-            },
+                    return (price * item.quantity).toFixed(2)
+                },
+                totalPrice() {
+                    // Calculate the total price of all items in the cart
+                    return this.items.reduce((total, item) => {
+                        const price = item.product.sale ? item.product.sale_price : item.product.price
+                        return total + (price * item.quantity)
+                    }, 0).toFixed(2)
+                },
+            }
         }
-    }
-</script>
+    </script>
+@endpush

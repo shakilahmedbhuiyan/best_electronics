@@ -17,10 +17,7 @@ class Cart extends Component
 
     protected $validationAttributes = [
         'customer.name' => 'name',
-        'customer.email' => 'email',
         'customer.mobile' => 'mobile',
-        'customer.address' => 'address',
-        'customer.city' => 'city',
         'customer.id_no' => 'Identity Number',
         'customer.nationality' => 'nationality',
         'customer.dob' => 'Date of Birth',
@@ -84,42 +81,33 @@ class Cart extends Component
 
         $this->validate([
             'customer.name' => 'required|string',
-            'customer.email' => 'required|email:rfc,dns',
             'customer.mobile' => 'required|numeric|digits_between:9,15',
-            'customer.address' => 'required|string',
-            'customer.city' => 'required|string',
             'customer.nationality' => 'required|string',
             'customer.id_no' => 'required|numeric|digits:10',
             'customer.dob' => 'required|date|before:last year',
         ]);
 
-        $user = User::where('email', $this->customer['email'])
-            ->orWhere('mobile', $this->customer['mobile'])
+        $user = User::where('mobile', $this->customer['mobile'])
             ->orWhere('id_no', $this->customer['id_no'])
             ->first();
         if ($user) {
             $user->update([
                 'name' => $this->customer['name'],
-                'address' => $this->customer['address'],
-                'city' => $this->customer['city'],
                 'nationality' => $this->customer['nationality'],
                 'dob' => $this->customer['dob'],
             ]);
         } else {
             $user = User::create([
                 'name' => $this->customer['name'],
-                'email' => $this->customer['email'],
                 'mobile' => $this->customer['mobile'],
                 'id_no' => $this->customer['id_no'],
-                'address' => $this->customer['address'],
-                'city' => $this->customer['city'],
                 'nationality' => $this->customer['nationality'],
                 'dob' => $this->customer['dob'],
             ]);
         }
 
         $order = [
-            'order_number' => 'BEKSA-' . strtoupper(uniqid('ORD', false)),
+            'order_number' => 'BEORD-' . date("ymhis", strtotime(now())),
             'user_id' => $user->id,
             'status' => 'pending',
             'grand_total' => collect($cart)->sum(static function ($item) {
@@ -129,7 +117,7 @@ class Cart extends Component
             'payment_status' => 'unpaid',
             'notes' => null,
             'transaction_id' => null,
-            'shipping_address' => $this->customer['address'],
+            'shipping_address' => null,
             'item_count' => count($cart),
         ];
 

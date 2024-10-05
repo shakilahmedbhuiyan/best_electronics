@@ -82,7 +82,4 @@
         </div>
     </div>
 
-    <script>
-
-    </script>
 </nav>
