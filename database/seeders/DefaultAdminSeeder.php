@@ -21,7 +21,8 @@ class DefaultAdminSeeder extends Seeder
             'name' => 'System Admin',
             'email' => 'admin@retrievalit.xyz',
             'email_verified_at' => now(),
-            'password' => bcrypt('password')
+            'password' => bcrypt('password'),
+            'id_no' => '1234567890',
         ]);
 
         $role = Role::create(['name' => 'super-admin']);
@@ -31,6 +32,6 @@ class DefaultAdminSeeder extends Seeder
         $role->syncPermissions($permissions);
 
         $user->assignRole([$role->id]);
-    
+
     }
 }
