@@ -13,8 +13,8 @@
                 <span class="text-4xl text-emerald-800 italic">LATER</span>
             </h2>
             <p class="text-emerald-800 dark:text-emerald-600 text-md text-justify">
-                {{ __('Buy now and pay later with our flexible payment options.
-We offer a wide range of payment options with upto 36 month instalment to suit your needs') }}
+                {{ __("Buy now and pay later with our flexible payment options.
+We offer a wide range of payment options with upto 36 months of instalment to suit your needs") }}
             </p>
 
         </div>

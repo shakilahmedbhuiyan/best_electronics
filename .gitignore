@@ -24,4 +24,5 @@ yarn-error.log
 /public/sliders
 /public/sliders/*
 /public/logo
+/public/*.xml
 
