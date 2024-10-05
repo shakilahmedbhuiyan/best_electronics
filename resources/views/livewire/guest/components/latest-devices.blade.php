@@ -17,17 +17,17 @@
                 <a href="{{ route('product.single', $ld->slug) }}" class="relative" wire:navigate>
                     @isset($ld->sale_price)
                         <div class="bg-orange-500 h-10 w-[10rem] inline-flex justify-center items-center
-                absolute top-[5%] left-[50%] rotate-45">
-                    <span class="text-white">
-                        {{__( 'Sale')}}
-                    </span>
+                        absolute top-[5%] left-[50%] rotate-45">
+                            <span class="text-white font-semibold leading-loose">
+                                {{__( 'Sale')}}
+                            </span>
                         </div>
                     @endisset
                     <img
                         src="{{ asset($ld->thumbnail) }}"
                         alt="{{ $ld->name }}" class="h-44 w-36 aspect-auto mx-auto object-contain " />
                     <div class="px-4 py-3 w-full">
-                        <span class="text-gray-600 mr-3 uppercase text-xs">
+                        <span class="text-gray-600 mr-3 uppercase text-sm font-medium">
                             {{ $ld->brand->name }}
                         </span>
                         <p class="text-md font-semibold text-emerald-800 block capitalize">
