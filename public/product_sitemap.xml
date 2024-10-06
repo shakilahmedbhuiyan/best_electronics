@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+    <url>
+        <loc>http://127.0.0.1:8000/product/iphone-16-pro-max</loc>
+        <lastmod>2024-10-05T01:58:05+06:00</lastmod>
+
+    <image:image>
+    <image:loc>http://127.0.0.1:8000/products/iphone-16-pro-max.jpg</image:loc>
+    <image:caption>Iphone 16 pro max</image:caption>
+</image:image>
+        </url>
+    <url>
+        <loc>http://127.0.0.1:8000/product/iphone-15-pro-max</loc>
+        <lastmod>2024-10-05T04:23:43+06:00</lastmod>
+
+    <image:image>
+    <image:loc>http://127.0.0.1:8000/products/iphone-15-pro-max.webp</image:loc>
+    <image:caption>iphone 15 pro max</image:caption>
+</image:image>
+        </url>
+    <url>
+        <loc>http://127.0.0.1:8000/product/samsung-galaxy-s24-ultra</loc>
+        <lastmod>2024-10-05T22:38:54+06:00</lastmod>
+
+    <image:image>
+    <image:loc>http://127.0.0.1:8000/products/samsung-galaxy-s24-ultra.webp</image:loc>
+    <image:caption>SAMSUNG Galaxy S24 Ultra</image:caption>
+</image:image>
+        </url>
+</urlset>

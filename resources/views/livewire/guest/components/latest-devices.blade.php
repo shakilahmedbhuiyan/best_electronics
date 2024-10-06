@@ -12,12 +12,12 @@
 
         @foreach ($latestDevices as $ld)
             <!--   ✅ Product card 1 - Starts Here 👇 -->
-            <div class="w-full relative sm:w-60 bg-white shadow-md rounded-xl
+            <div class="w-full sm:w-60 bg-white shadow-md rounded-xl
             duration-500 hover:scale-105 hover:shadow-xl overflow-clip">
                 <a href="{{ route('product.single', $ld->slug) }}" class="relative" wire:navigate>
                     @isset($ld->sale_price)
-                        <div class="bg-orange-500 h-10 w-[10rem] inline-flex justify-center items-center
-                        absolute top-[5%] left-[50%] rotate-45">
+                        <div class="bg-orange-400/85 h-10  w-44 sm:w-[10rem] inline-flex justify-center items-center
+                        absolute top-[1.5rem] sm:top-[1rem] left-24 sm:left-[8rem] rotate-45 z-50">
                             <span class="text-white font-semibold leading-loose">
                                 {{__( 'Sale')}}
                             </span>
