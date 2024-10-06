@@ -2,7 +2,7 @@
 
 
 <!--   ✅ Product card 1 - Starts Here 👇 -->
-<div class="w-full sm:w-60 bg-white dark:bg-gray-900 shadow-md rounded-xl
+<div wire:loading.remove class="w-full sm:w-60 bg-white dark:bg-gray-900 shadow-md rounded-xl
             duration-500 hover:scale-105 hover:shadow-xl overflow-clip">
     <a href="{{ route('product.single', $product->slug) }}" class="relative" wire:navigate>
         @isset($product->sale_price)
@@ -50,3 +50,20 @@
     </a>
 </div>
 <!--   ✅ Product card 1 - Ends Here 👆 -->
+
+<div wire:loading
+    class="w-full sm:w-60 bg-gray-200 animate-pulse dark:bg-gray-900 shadow-md rounded-xl overflow-clip">
+    <div class="relative">
+        <div class="h-44 w-36 aspect-auto mx-auto" ></div>
+        <div class="px-4 py-3 w-full">
+            <div class="h-4 bg-gray-400 rounded w-1/4"></div>
+            <div class="h-4 bg-gray-400 rounded w-1/2 my-2"></div>
+        </div>
+        <div class="px-4 py-3 flex items-center align-bottom">
+            <div class="font-medium h-4 cursor-auto my-3 bg-gray-400 rounded w-1/4"></div>
+            <div class="ltr:ml-auto rtl:mr-auto">
+                <div class="h-10 w-10 bg-gray-400 rounded"></div>
+            </div>
+        </div>
+    </div>
+</div>
