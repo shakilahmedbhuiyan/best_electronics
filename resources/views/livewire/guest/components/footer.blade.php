@@ -40,6 +40,10 @@
                     <li>
                         <a rel="noopener noreferrer" href="#">FAQ</a>
                     </li>
+                    <li>
+                        <a rel="next" href="{{ route('pay-later') }}">Pay Later</a>
+                    </li>
+
                 </ul>
             </div>
             <div class="space-y-3" bis_skin_checked="1">

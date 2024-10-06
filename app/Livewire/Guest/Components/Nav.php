@@ -14,17 +14,23 @@ class Nav extends Component
             'type' => 'page',
         ],
         [
-            'id' => 4,
+            'id' => 2,
             'name' => 'Mobile',
             'route' => 'mobile',
             'type' => 'category',
         ],
         [
-            'id' => 5,
+            'id' => 3,
             'name' => 'Tablets',
             'route' => 'tablet',
             'type' => 'category',
         ],
+        [
+            'id' => 4,
+            'name' =>'Products',
+            'route' => 'products.all',
+            'type' => 'page',
+        ]
 
 
     ];

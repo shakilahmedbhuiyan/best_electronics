@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Product;
+use Illuminate\Support\Facades\Cache;
 use Spatie\Sitemap\Sitemap;
 
 class ProductObserver
@@ -20,11 +21,18 @@ class ProductObserver
      */
     public function updated(Product $product): void
     {
-        $sitemap= Sitemap::create()
+        $sitemap = Sitemap::create()
             ->add(Product::active()->inStock()->get());
-
         $sitemap->writeToFile(public_path('product_sitemap.xml'));
 
+        Cache::flush();
+        $products = Product::active()
+            ->inStock()
+            ->with('category', 'brand')
+            ->orderBy('price')
+            ->paginate(12);
+        $key = 'products-collection-page-' . $products->currentPage();
+        Cache::forever($key, $products);
     }
 
     /**
@@ -32,7 +40,7 @@ class ProductObserver
      */
     public function deleted(Product $product): void
     {
-        //
+        $this->updated($product);
     }
 
     /**
