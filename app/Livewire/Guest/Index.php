@@ -18,6 +18,7 @@ class Index extends Component
         $this->seo()->opengraph()->setTitle($store['name']);
         $this->seo()->twitter()->setTitle($store['name']);
         $this->seo()->jsonLd()->setTitle($store['name']);
+        $this->seo()->setCanonical( route('index') );
     }
 
     public function render()
