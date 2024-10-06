@@ -7,7 +7,7 @@
     <a href="{{ route('product.single', $product->slug) }}" class="relative" wire:navigate>
         @isset($product->sale_price)
             <div class="bg-orange-400/85 h-10  w-44 sm:w-[10rem] inline-flex justify-center items-center
-                        absolute top-[1.5rem] sm:top-[1rem] left-24 sm:left-[8rem] rotate-45 z-50">
+                        absolute top-[1.5rem] sm:top-[1rem] left-24 sm:left-[8rem] rotate-45 z-20">
                             <span class="text-white font-semibold leading-loose">
                                 {{__( 'Sale')}}
                             </span>
