@@ -10,13 +10,13 @@ return [
          */
         'defaults' => [
             'title' => config('app.name'), // set false to total remove
-            'titleBefore' => true, // Put defaults.title before page title, like 'It's Over 9000! - Dashboard'
+            'titleBefore' => false, // Put defaults.title before page title, like 'It's Over 9000! - Dashboard'
             'description' => 'Best Electronics offers all kinds of Smartphones with Installment facility all over Saudi Arabia.
              Choose your best device and gadget from the wire range of varieties.', // set false to total remove
             'separator' => ' - ',
             'keywords' => [],
-            'canonical' => false, // Set to null or 'full' to use Url::full(), set to 'current' to use Url::current(), set false to total remove
-            'robots' => false, // Set to 'all', 'none' or any combination of index/noindex and follow/nofollow
+            'canonical' => 'current', // Set to null or 'full' to use Url::full(), set to 'current' to use Url::current(), set false to total remove
+            'robots' => 'index/follow', // Set to 'all', 'none' or any combination of index/noindex and follow/nofollow
         ],
         /*
          * Webmaster tags are always added.
