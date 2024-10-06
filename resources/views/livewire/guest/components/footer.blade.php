@@ -41,7 +41,7 @@
                         <a rel="noopener noreferrer" href="#">FAQ</a>
                     </li>
                     <li>
-                        <a rel="next" href="{{ route('pay-later') }}">Pay Later</a>
+                        <a rel="next" href="{{ route('pay-later') }}" wire:navigate>Pay Later</a>
                     </li>
 
                 </ul>
