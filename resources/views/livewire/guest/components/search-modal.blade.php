@@ -4,7 +4,7 @@
             <x-slot name="title">
                 <h2 class="text-lg font-semibold">Search</h2>
             </x-slot>
-            <form class="flex flex-col space-y-4 w-full">
+            <form class="flex flex-col space-y-4 w-full" wire:loading.remove>
                 <x-input wire:model.defer="input" type="text" class="w-full px-4 py-2 rounded-md"
                          x-on:keydown.enter="$wire.search()"
                          placeholder="Search products...." autofocus>
@@ -20,6 +20,9 @@
                     </x-slot>
                 </x-input>
             </form>
+            <div class="animate-pulse flex flex-col space-y-4 w-full" wire:loading>
+                <div class="h-10 bg-gray-200 rounded w-full"></div>
+            </div>
 
         </x-card>
     </x-modal>
