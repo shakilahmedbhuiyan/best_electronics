@@ -21,7 +21,7 @@ text-gray-100 rounded-t-[1.5rem]">
             </p>
 
         </div>
-        <div class="grid grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-4 print:hidden"
+        <div class="grid grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-4 print:hidden pt-4 sm:pt-0"
              bis_skin_checked="1">
             <div class="space-y-3" bis_skin_checked="1">
                 <h3 class="tracking-wide uppercase text-gray-50 ">Product</h3>
