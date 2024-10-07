@@ -1,23 +1,24 @@
 <footer class="px-4 sm:px-8 divide-y bg-gradient-to-br sm:bg-gradient-to-bl from-emerald-800 to-emerald-950
 text-gray-100 rounded-t-[1.5rem]">
-    <div class="container flex flex-col justify-between py-10 print:py-1 mx-auto space-y-3 lg:flex-row lg:space-y-0 lg:space-x-6"
-         bis_skin_checked="1">
+    <div
+        class="container flex flex-col justify-between py-16 print:py-1 mx-auto space-y-3 lg:flex-row lg:space-y-0 lg:space-x-6"
+        bis_skin_checked="1">
         <div class="lg:w-1/3 " bis_skin_checked="1">
             <div class="flex flex-row justify-start items-center space-x-3">
-                 <x-application-mark class="h-12 w-12 py-0" />
+                <x-application-mark class="h-12 w-12 py-0" />
                 <div>
                     <span class="self-center text-2xl font-semibold">
                     {!! config('app.name') !!}
                 </span>
-                <h2 class="text-sm font-light">
-                    {{ __($store['description']) }}
-                </h2>
+                    <h2 class="text-sm font-light">
+                        {{ __($store['description']) }}
+                    </h2>
                 </div>
             </div>
-                <p class="text-sm font-light opacity-80 antialiased text-justify">
-                    Best Electronics offers all kinds of Smartphones with Installment facility all over Saudi Arabia.
-                    Choose your best device and gadget from the wire range of varieties.
-                </p>
+            <p class="text-sm font-light opacity-80 antialiased text-justify">
+                Best Electronics offers all kinds of Smartphones with Installment facility all over Saudi Arabia.
+                Choose your best device and gadget from the wire range of varieties.
+            </p>
 
         </div>
         <div class="grid grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-4 print:hidden"
@@ -100,6 +101,9 @@ text-gray-100 rounded-t-[1.5rem]">
                         </svg>
                     </a>
                 </div>
+
+                <p class="break-words capitalize">{{ __($store['address']) }}</p>
+
             </div>
         </div>
     </div>

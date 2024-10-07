@@ -21,7 +21,6 @@
 
         <div class="w-10/12 my-4 mx-auto">
             {{ $products->links() }}
-
         </div>
 
     </section>
