@@ -63,17 +63,17 @@
                             <p class="text-4xl font-bold">
                                 {!! "SAR ". (isset($product['sale_price']) ? $product['sale_price'] : $product['price']) !!}
                             </p>
-                            <p class="text-gray-500 text-sm mt-2">
+                            <p class="text-gray-500 mt-2">
                                 @if($product['sale_price'] | $product['sale'] === 1)
                                     <del>{!! $product['price'] !!}</del>
                                 @endif
-                                <span class="text-sm ml-1">Tax included</span>
+                                <span class="ml-1">Tax included</span>
                             </p>
                            @if($product['instalment'])
-                                <div class="text-sm inline-flex justify-center items-center text-orange-600/85">
+                                <div class="text-md inline-flex justify-center items-center text-orange-600/85">
 
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="currentColor"
-                                     class="h-8 w-8">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
+                                     viewBox="0 0 48 48"  fill="currentColor" >
                                     <path
                                         d="M28,41H6c-1.1,0-2-.9-2-2v-22h34v5c0,.55.45,1,1,1s1-.45,1-1v-11c0-2.21-1.79-4-4-4h-2v-1c0-.55-.45-1-1-1s-1,.45-1,1v1h-4v-1c0-.55-.45-1-1-1s-1,.45-1,1v1h-4v-1c0-.55-.45-1-1-1s-1,.45-1,1v1h-4v-1c0-.55-.45-1-1-1s-1,.45-1,1v1h-4v-1c0-.55-.45-1-1-1s-1,.45-1,1v1h-2c-2.21,0-4,1.79-4,4v28c0,2.21,1.79,4,4,4h22c.55,0,1-.45,1-1s-.45-1-1-1ZM6,9h2v2c0,.55.45,1,1,1s1-.45,1-1v-2h4v2c0,.55.45,1,1,1s1-.45,1-1v-2h4v2c0,.55.45,1,1,1s1-.45,1-1v-2h4v2c0,.55.45,1,1,1s1-.45,1-1v-2h4v2c0,.55.45,1,1,1s1-.45,1-1v-2h2c1.1,0,2,.9,2,2v4H4v-4c0-1.1.9-2,2-2Z" />
                                     <path
@@ -83,7 +83,7 @@
                                     <circle cx="34.5" cy="31.5" r="1.5" />
                                     <circle cx="39.5" cy="36.5" r="1.5" />
                                 </svg>
-                                {!! "Installment Available" !!}
+                               <span> {{ __('Installment Available') }}</span>
                             </div>
                             @endif
                         </div>

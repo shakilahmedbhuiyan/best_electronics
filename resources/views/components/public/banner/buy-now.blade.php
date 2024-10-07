@@ -1,7 +1,7 @@
 <div class="w-full antialiased  relative overflow-clip ">
 
     <div class="flex flex-col max-w-4xl mx-auto px-5 py-4 sm:py-12 sm:flex-row items-center justify-center space-x-0 sm:space-x-8 z-50">
-        <div class="sm:h-80 h-48 w-48 sm:w-80 aspect-square object-cover ">
+        <div class="sm:h-80 h-48 w-48 sm:w-80 aspect-square object-cover hidden sm:block">
             <x-buy-now class="z-60 drop-shadow-lg transition-all delay-1000 duration-1000 ">
 
             </x-buy-now>
@@ -24,15 +24,15 @@ We offer a wide range of payment options with upto 36 months of instalment to su
     </div>
 
     <div class="absolute top-3 left-0 rtl:right-0 sm:h-72 h-40 w-64 sm:w-[calc(50%-6rem)] -z-10 shadow-xl
-     animate-pulse delay-500 duration-1000 translate-x-6
+     animate-pulse delay-500 duration-1000 translate-x-6 hidden sm:block
          bg-gradient-to-tl from-transparent to-emerald-200/75 dark:to-slate-700/75
           ltr:rounded-r-full rtl:rounded-l-full rotate-[-50] transform"></div>
 
-    <div class="absolute bottom-24 sm:bottom-10 ltr:left-4 rtl:right-4  h-24 w-full space-y-2 flex
-     flex-col items-end rotate-0 ltr:sm:rotate-6 rtl:sm:-rotate-6 delay-500 duration-1000 ">
-        <div class="h-8 sm:h-12 w-2/6 drop-shadow-lg animate-pulse
+    <div class="absolute -bottom-14 sm:bottom-10 ltr:left-4 rtl:right-4 h-24 w-full space-y-2 sm:flex
+     flex-col items-end rotate-0 ltr:sm:rotate-6 rtl:sm:-rotate-6 delay-500 duration-1000 hidden  ">
+        <div class="h-5 sm:h-12 w-2/6 drop-shadow-lg animate-pulse
          ltr:bg-gradient-to-r rtl:bg-gradient-to-l from-orange-600 via-yellow-600/60 to-transparent rounded-3xl"></div>
-        <div class="h-6 sm:h-8 w-3/12 drop-shadow-lg animate-pulse transition-all delay-500
+        <div class="h-3 sm:h-8 w-3/12 drop-shadow-lg animate-pulse transition-all delay-500
          ltr:bg-gradient-to-r rtl:bg-gradient-to-l from-orange-600 via-yellow-600/60 to-transparent rounded-2xl"></div>
     </div>
 

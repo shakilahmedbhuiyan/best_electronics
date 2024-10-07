@@ -84,20 +84,5 @@ autoplayIntervalTime: 5000,
                 </a>
             </template>
         </div>
-
-        <!-- indicators -->
-        <div
-            class="absolute rounded-md bottom-3 md:bottom-5 left-1/2 z-20 flex -translate-x-1/2 gap-4 md:gap-3
-             bg-white/75 px-1.5 py-1 md:px-2 dark:bg-neutral-950/75"
-            role="group" aria-label="slides">
-            <template x-for="(slide, index) in slides">
-                <button class="size-2 cursor-pointer rounded-full transition bg-blue-600 dark:bg-blue-300"
-                        x-on:click="currentSlideIndex = index + 1"
-                        x-bind:class="[currentSlideIndex === index + 1 ?
-                        'bg-primary-600 dark:bg-primary-300' :
-                        'bg-primary-600/50 dark:bg-primary-300/50']"
-                        x-bind:aria-label="'slide ' + (index + 1)"></button>
-            </template>
-        </div>
     </div>
 </div>

@@ -29,11 +29,11 @@
                  :class="{ 'dark': darkMode }">
                 <!-- mobile search button -->
                 <button type="button" class="navbar-burger flex items-center justify-end"
-                        @click="$openModal('searchModal')">
+                        @click="$openModal('searchModal')" name="Search Modal Button">
                     <x-heroicons::outline.magnifying-glass
                         class="h-12 w-12 p-2 hover:bg-primary-900 hover:text-gray-200" />
                 </button>
-                <button x-on:click="toggle" type="button"
+                <button x-on:click="toggle" type="button" name="Dark Mode Button"
                         class="dark:text-primary-500 hover:text-indigo-500 dark:hover:text-yellow-400
                             rounded-lg text-sm mx-4 px-2 flex justify-center items-center ">
                     <!-- Dark Mode Icon -->
@@ -51,7 +51,7 @@
                 </button>
                 <!-- mobile navbar button -->
                 <button type="button" class="navbar-burger flex items-center justify-end
-                hover:bg-primary-900 hover:text-gray-200"
+                hover:bg-primary-900 hover:text-gray-200" name="Main Menu Button"
                         @click="navbarOpen = ! navbarOpen">
                     <x-heroicons::outline.bars-3-bottom-right
                         x-show="!navbarOpen"
@@ -88,10 +88,10 @@
         <div class="space-x-2 inline-flex items-center print:hidden text-primary-800 dark:text-primary-600"
              x-show="mobile" x-data="darkMode"
              :class="{ 'dark': darkMode }">
-                <x-button type="button" variant="flat" x-on:click="$openModal('searchModal')">
+                <x-button type="button" variant="flat" x-on:click="$openModal('searchModal')"  name="Search Modal Button">
                     <x-heroicons::outline.magnifying-glass class="h-6 w-6 " />
                 </x-button>
-                <x-button x-on:click="toggle" type="button" variant="flat"
+                <x-button x-on:click="toggle" type="button" variant="flat" name="Dark Mode Button"
                         class="hover:text-indigo-500 dark:hover:text-yellow-400
                             rounded-lg text-sm flex justify-center items-center ">
                     <!-- Dark Mode Icon -->
@@ -109,7 +109,7 @@
                 </x-button>
 
                 <a href="{{ route('cart') }}" class="md:inline-block transition duration-200" wire:navigate>
-                    <x-button type="button" flat class="hover:outline">
+                    <x-button type="button" flat class="hover:outline" name="shopping cart button">
                         <x-heroicons::outline.shopping-bag class="h-6 w-6" />
                     </x-button>
                 </a>
@@ -120,7 +120,7 @@
                         <a href="{{ route('logout') }}" wire:navigate
                            onClick="event.preventDefault();
                                                 this.closest('form').submit();">
-                            <x-button type="button" flat class="hover:outline">
+                            <x-button type="button" flat class="hover:outline" name="Logout Button">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
                                      fill="currentColor"
                                      viewBox="0 0 256 256">
@@ -151,7 +151,7 @@
 
                     </h1>
                 </a>
-                <button class="navbar-close" @click="navbarOpen=false">
+                <button class="navbar-close" @click="navbarOpen=false" name="Close Menu">
                     <svg class="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500"
                          xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
