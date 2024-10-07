@@ -5,7 +5,7 @@
         </h1>
         <a href="{{ route('products.all') }}" title="All Products" class="hidden sm:block">
             <x-button type="button" outline right-icon="arrow-right">
-                 {{ __(' All Products')}}
+                {{ __(' All Products')}}
             </x-button>
         </a>
     </div>
@@ -19,9 +19,10 @@
             <x-public.product-card :product="$ld" />
         @endforeach
     </section>
-    <div class="text-right block sm:hidden px-4">
+    <a href="{{ route('products.all') }}" title="All Products" class="text-right block sm:hidden px-4">
         <x-button type="button" outline right-icon="arrow-right">
-             {{ __(' All Products')}}
+            {{ __(' All Products')}}
         </x-button>
-    </div>
+    </a>
+
 </div>
