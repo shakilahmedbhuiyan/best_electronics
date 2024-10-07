@@ -13,7 +13,7 @@
                 role="brandLogo" aira-label="{{$brand . ' logo slider'}}">
                     <div class="max-w-sm rounded overflow-hidden shadow-lg flex flex-col justify-center items-center">
                         <img class="h-28 w-28 aspect-square" src="{{ asset($b->thumbnail) }}"
-                             alt="{{ $b->name }}"  aira-label="{{$brand . ' logo'}}">
+                             alt="{{ $b->name. ' logo' }}"  aira-label="{{$brand . ' logo'}}">
                         <div class="py-4">
                             <div class="text-lg mb-2">{{ $b->name }}</div>
                         </div>
