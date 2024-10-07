@@ -1,7 +1,7 @@
 <footer class="px-4 divide-y bg-gradient-to-br sm:bg-gradient-to-bl from-emerald-800 to-emerald-950 text-gray-100">
-    <div class="container flex flex-col justify-between py-10 print:py-1 mx-auto space-y-3 lg:flex-row lg:space-y-0"
+    <div class="container flex flex-col justify-between py-10 print:py-1 mx-auto space-y-3 lg:flex-row lg:space-y-0 lg:space-x-6"
          bis_skin_checked="1">
-        <div class="lg:w-1/3" bis_skin_checked="1">
+        <div class="lg:w-1/3 " bis_skin_checked="1">
             <div class="flex flex-row justify-start items-center space-x-3">
                  <x-application-mark class="h-12 w-12 py-0" />
                 <div>
@@ -13,7 +13,7 @@
                 </h2>
                 </div>
             </div>
-                <p class="text-sm font-light opacity-75">
+                <p class="text-sm font-light opacity-80 antialiased text-justify">
                     Best Electronics offers all kinds of Smartphones with Installment facility all over Saudi Arabia.
                     Choose your best device and gadget from the wire range of varieties.
                 </p>
