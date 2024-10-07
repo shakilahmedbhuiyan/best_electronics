@@ -159,14 +159,14 @@
 
                     {{--                    <hr class="my-8" />--}}
 
-                    <div class="flex flex-wrap gap-4">
+                    <div class="flex flex-row space-x-4">
                         <button type="button" wire:click="order({{ $product['id'] }})"
-                                class="min-w-[200px] px-4 py-3 bg-gradient-to-tr from-emerald-950 to-emerald-700
+                                class="w-1/2 px-4 py-3 bg-gradient-to-tr from-emerald-950 to-emerald-700
                                 hover:bg-gradient-to-br text-white text-sm
                                 font-semibold rounded-md">
                             Buy now
                         </button>
-                        <button type="button" class="min-w-[200px] px-4 py-2.5 border border-emerald-700
+                        <button type="button" class="w-1/2 px-4 py-2.5 border border-emerald-700
                         bg-transparent hover:bg-gradient-to-tr hover:from-emerald-950 hover:to-emerald-700
                         text-emerald-600 hover:text-slate-100 text-sm font-semibold rounded-md"
                         wire:click="addToCart({{ $product['id'] }},1)">
