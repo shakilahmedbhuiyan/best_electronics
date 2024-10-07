@@ -11,12 +11,12 @@
                     <p>The page you're looking for isn't available.</p>
                     <p>Try searching again or use the Go Back button below.</p>
                 </div>
-                <div class="mb-6 md:mb-0 ">
+                <a rel="opener" href="{{ route('index') }}" wire:navigate class="mb-6 md:mb-0 ">
                     <button
                         class="text-lg font-light outline-none focus:outline-none transform transition-all hover:scale-110 text-yellow-500 hover:text-yellow-600">
                         <i class="mdi mdi-arrow-left mr-2"></i>Go Back
                     </button>
-                </div>
+                </a>
             </div>
             <div class="w-full md:w-1/2 text-center">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 441.85 285.44"
