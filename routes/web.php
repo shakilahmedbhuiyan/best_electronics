@@ -7,6 +7,9 @@ Route::get('/pay-later', App\Livewire\Guest\Pages\BuyNow::class)->name('pay-late
 Route::get('/category/{category}', App\Livewire\Guest\Index::class .'@category')->name('index.category');
 Route::get('/product/{product}', App\Livewire\Guest\Product\Single::class)->name('product.single');
 Route::get('/products/all', App\Livewire\Guest\Product\Index::class)->name('products.all');
+Route::get('/shop', App\Livewire\Guest\Product\Index::class);
+Route::get('/about', App\Livewire\Guest\Pages\BuyNow::class)->name('about');
+
 
 Route::get('/checkout/cart', App\Livewire\Guest\Order\Cart::class)->name('cart');
 Route::get('/checkout', App\Livewire\Guest\Order\Checkout::class)->name('checkout');
