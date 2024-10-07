@@ -4,27 +4,22 @@
             <x-slot name="title">
                 <h2 class="text-lg font-semibold">Search</h2>
             </x-slot>
-            <div class="flex flex-col space-y-4 w-full">
-                <x-input wire:model="search" type="text" class="w-full px-4 py-2 rounded-md"
-                       placeholder="Search products...." autofocus right-icon="magnifying-glass"/>
-                <div class="flex flex-col space-y-2">
-                    @isset($results)
-                        @if($results->isEmpty())
-                            <p class="text-gray-500">No results found.</p>
-                        @endif
-                        @foreach($results as $result)
-                            <a href="#" class="flex items-center space-x-2">
-                                <img src="{{ $result->thumbnail }}" alt="{{ $result->title }}"
-                                     class="w-12 h-12 object-cover rounded-md">
-                                <div>
-                                    <h3 class="text-lg font-semibold">{{ $result->title }}</h3>
-                                    <p class="text-sm text-gray-500">{{ $result->author->name }}</p>
-                                </div>
-                            </a>
-                        @endforeach
-                    @endisset
-                </div>
-            </div>
+            <form class="flex flex-col space-y-4 w-full">
+                <x-input wire:model.defer="input" type="text" class="w-full px-4 py-2 rounded-md"
+                         x-on:keydown.enter="$wire.search()"
+                         placeholder="Search products...." autofocus>
+                    <x-slot name="append">
+                        <x-button type="submit"
+                                  class="h-full"
+                                  icon="magnifying-glass"
+                                  rounded="rounded-r"
+                                  label="Search"
+                                  primary
+                                  wire:click.prevent="search()"
+                        />
+                    </x-slot>
+                </x-input>
+            </form>
 
         </x-card>
     </x-modal>

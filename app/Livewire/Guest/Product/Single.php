@@ -16,29 +16,59 @@ class Single extends Component
 
     public function mount($product)
     {
-        $this->product = Cache::rememberForever('product_' . $product, static function () use ($product) {
-            $product = Product::where('slug', $product)
+        $key = 'product_' . $product;
+        if (Cache::has($key)) {
+            $this->product = Cache::get($key);
+        } else {
+            $item = Product::where('slug', $product)
                 ->where('status', true)
                 ->where('quantity', '>', 0)
                 ->with('brand', 'category')
-                ->firstOrFail();
-            return $product->toArray();
-        });
-
+                ->first();
+            if (!$item || $item === null) {
+                 return $this->redirect(route('products.search', $product), navigate: true);
+            }
+            $this->product = Cache::rememberForever($key, function () use ($item) {
+                return $item->toArray();
+            });
+        }
 
         $this->seo()->setTitle($this->product['name']);
         $this->seo()
-            ->setDescription($this->product['description']);
-        $this->seo()->metatags()->addMeta('article:published_time', $this->product['created_at']);
-        $this->seo()->metatags()->addMeta('article:section', $this->product['category']['name']);
-        $this->seo()->metatags()->addMeta('article:tag', $this->product['brand']['name']);
+            ->setDescription($this->product['meta_description']);
+        $this->seo()->metatags()->setKeywords($this->product['meta_keywords']);
+
+        $this->seo()->metatags()->addMeta('product:published_time', $this->product['created_at']);
+        $this->seo()->metatags()->addMeta('product:type', $this->product['category']['name']);
+        $this->seo()->metatags()->addMeta('product:tag', $this->product['meta_keywords']);
+
         $this->seo()->addImages($this->product['thumbnail']);
         $this->seo()->opengraph()->setTitle($this->product['name']);
-        $this->seo()->opengraph()->setDescription($this->product['description']);
+        $this->seo()->opengraph()->setDescription($this->product['meta_description']);
+         $this->seo()->opengraph()->setType('product');
         $this->seo()->twitter()->setTitle($this->product['name']);
         $this->seo()->twitter()->setDescription($this->product['description']);
+
         $this->seo()->jsonLd()->setTitle($this->product['name']);
         $this->seo()->jsonLd()->setDescription($this->product['description']);
+        $this->seo()->jsonLd()->setType('Product');
+        $this->seo()->jsonLd()->addImage($this->product['thumbnail']);
+        $this->seo()->jsonLd()->addValue('brand', $this->product['brand']['name']);
+        $this->seo()->jsonLd()->addValue('category', $this->product['category']['name']);
+        $this->seo()->jsonLd()->addValue('price', $this->product['price']);
+        $this->seo()->jsonLd()->addValue('currency', 'KSA');
+        $this->seo()->jsonLd()->addValue('availability', 'https://schema.org/InStock');
+        $this->seo()->jsonLd()->addValue('url', route('product.single', $this->product['slug']));
+        $this->seo()->jsonLd()->addValue('sku', $this->product['sku']);
+        if ($this->product['sale']) {
+            $this->seo()->jsonLd()->addValue('offer', [
+                'price' => $this->product['sale_price'],
+                'priceCurrency' => 'KSA',
+                'availability' => 'https://schema.org/InStock',
+                'url' => route('product.single', $this->product['slug']),
+            ]);
+        }
+        $this->seo()->setCanonical(route('product.single', $this->product['slug']));
     }
 
     public function render()
@@ -68,9 +98,8 @@ class Single extends Component
                     break;
                 }
             }
-        }
-        else {
-              $product = Product::findOrfail($productId);
+        } else {
+            $product = Product::findOrfail($productId);
             $cart[] = [
                 'product_id' => $product->id,
                 'quantity' => $quantity,
