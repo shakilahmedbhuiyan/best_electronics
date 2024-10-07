@@ -164,11 +164,11 @@
                 <ul>
                     <li class="mb-1">
                         <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-primary-200 hover:text-primary-800 rounded"
-                           href="{{ route('index') }}" wire:navigate>Home</a>
+                           href="{{ route('index') }}" rel="bookmark" wire:navigate>Home</a>
                     </li>
                     <li class="mb-1">
                         <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-primary-200 hover:text-primary-800 rounded"
-                           href="#">Products</a>
+                           href="{{ route('products.all') }}" wire:navigate rel="next">Products</a>
                     </li>
                     <li class="mb-1">
                         <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-primary-200 hover:text-primary-800 rounded"

@@ -1,5 +1,5 @@
 @if(isset($store['logo']) && file_exists(public_path($store['logo'])))
-<a href="{{ route('index') }}" >
+<a href="{{ route('index') }}"  rel="author">
     <img src="{{ asset($store['logo']) }}"
          {{ $attributes->merge(['class' => 'w-fit aspect-square']) }}
          alt="{{ config('app.name') }}">

@@ -1,19 +1,23 @@
 <footer class="px-4 divide-y bg-gradient-to-br sm:bg-gradient-to-bl from-emerald-800 to-emerald-950 text-gray-100">
-    <div class="container flex flex-col justify-between py-10 print:py-1 mx-auto space-y-8 lg:flex-row lg:space-y-0"
+    <div class="container flex flex-col justify-between py-10 print:py-1 mx-auto space-y-3 lg:flex-row lg:space-y-0"
          bis_skin_checked="1">
         <div class="lg:w-1/3" bis_skin_checked="1">
-            <a rel="noopener noreferrer" href="{{ route('index') }}" alt="{{ config('app.name') }}"
-               class="inline-flex justify-center items-center leading-none">
-
-                <x-application-mark class="h-12 w-12 py-0" />
-
-                <span class="self-center text-2xl font-semibold">
+            <div class="flex flex-row justify-start items-center space-x-3">
+                 <x-application-mark class="h-12 w-12 py-0" />
+                <div>
+                    <span class="self-center text-2xl font-semibold">
                     {!! config('app.name') !!}
                 </span>
                 <h2 class="text-sm font-light">
                     {{ __($store['description']) }}
                 </h2>
-            </a>
+                </div>
+            </div>
+                <p class="text-sm font-light opacity-75">
+                    Best Electronics offers all kinds of Smartphones with Installment facility all over Saudi Arabia.
+                    Choose your best device and gadget from the wire range of varieties.
+                </p>
+
         </div>
         <div class="grid grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-4 print:hidden"
              bis_skin_checked="1">
@@ -21,7 +25,8 @@
                 <h3 class="tracking-wide uppercase text-gray-50 ">Product</h3>
                 <ul class="space-y-1">
                     <li>
-                        <a rel="noopener noreferrer" href="#">Features</a>
+                        <a rel="next" href="{{ route('products.all') }}" wire:navigate>
+                            All Products</a>
                     </li>
                     <li>
                         <a rel="noopener noreferrer" href="#">Brands</a>
@@ -104,7 +109,7 @@
         </span>
         <div class="pl-1 flex flex-row justify-center items-center space-x-1">
             <span>Developed by</span>
-            <a href="https://retrievalit.xyz" target="_blank"
+            <a href="https://retrievalit.xyz" target="_blank" rel="external"
                class="flex flex-row items-center hover:text-blue-600 space-x-0.5"
                bis_skin_checked="1">
                 <svg id="uuid-e0462990-7840-4306-925f-6d3339cc2c47" xmlns="http://www.w3.org/2000/svg"
