@@ -13,9 +13,12 @@
                             </span>
             </div>
         @endisset
-        <img
+      <div class="w-full bg-primary-50 dark:bg-gray-600 overflow-hidden">
+            <img
             src="{{ asset($product->thumbnail) }}"
-            alt="{{ $product->name }}" class="h-44 w-36 aspect-auto mx-auto object-contain " />
+            alt="{{ $product->name }}" class="h-44 w-36 aspect-auto mx-auto object-contain
+             transform delay-100 duration-300 hover:scale-125 " />
+      </div>
         <div class="px-4 py-3 w-full ">
             <span class="text-secondary-700 dark:text-secondary-400 mr-3 uppercase text-sm font-medium">
                 {{ $product->brand->name }}
