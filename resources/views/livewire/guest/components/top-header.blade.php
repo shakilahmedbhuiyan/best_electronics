@@ -3,6 +3,7 @@
         <div class="container px-4 sm:px-11 lg:px-24 flex flex-row justify-between items-center">
             <div class="flex flex-row items-center space-x-4 sm:space-x-6">
                 <a target="_blank" href="https://wa.me/+{!! $store['whatsapp']!!}"
+                   aria-label="Whatsapp Chat"
                    class="text-sm inline-flex text-gray-600 hover:text-green-700">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 256 256">
                         <path
@@ -14,6 +15,7 @@
                    </span>
                 </a>
                 <a href="{!! $store['email'] !!}" target="_blank"
+                   aria-label="Email Address"
                    class="text-sm inline-flex text-gray-600 hover:text-gray-900">
                     <x-heroicons::outline.envelope class="mr-1 w-5 h-5" />
                     <span class="hidden sm:block">
@@ -23,6 +25,7 @@
             </div>
             <div class="flex flex-row items-center space-x-2 sm:space-x-6 print:hidden">
                 <a href="{{ $store['map_link'] }}" target="_blank"
+                   aria-label="Find Us on google map"
                    class="text-sm inline-flex rounded-lg px-1
                     text-gray-600 hover:text-gray-900 hover:bg-gray-50">
                     <x-heroicons::outline.map-pin class="mr-1 h-5 w-5" />
@@ -46,6 +49,7 @@
                     @endif
                 @else
                     <a href="{{ route('login') }}" wire:navigate
+                       aria-label="Login button"
                        class="text-sm inline-flex rounded-lg px-1
                     text-gray-600 hover:text-gray-900 hover:bg-gray-50">
                         <x-heroicons::outline.user class="mr-1 h-5 w-5" />

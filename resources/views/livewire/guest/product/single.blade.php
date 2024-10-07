@@ -63,14 +63,14 @@
                             <p class="text-4xl font-bold">
                                 {!! "SAR ". (isset($product['sale_price']) ? $product['sale_price'] : $product['price']) !!}
                             </p>
-                            <p class="text-gray-500 mt-2">
+                            <p class="text-gray-700 dark:text-gray-400 mt-2">
                                 @if($product['sale_price'] | $product['sale'] === 1)
                                     <del>{!! $product['price'] !!}</del>
                                 @endif
                                 <span class="ml-1">Tax included</span>
                             </p>
                            @if($product['instalment'])
-                                <div class="text-md inline-flex justify-center items-center text-orange-600/85">
+                                <div class="text-md inline-flex justify-center items-center text-primary-800 dark:text-primary-500">
 
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
                                      viewBox="0 0 48 48"  fill="currentColor" >
@@ -168,7 +168,7 @@
                         </button>
                         <button type="button" class="w-1/2 px-4 py-2.5 border border-emerald-700
                         bg-transparent hover:bg-gradient-to-tr hover:from-emerald-950 hover:to-emerald-700
-                        text-emerald-600 hover:text-slate-100 text-sm font-semibold rounded-md"
+                        text-emerald-800 hover:text-slate-100 text-sm font-semibold rounded-md"
                         wire:click="addToCart({{ $product['id'] }},1)">
                             Add to cart
                         </button>
@@ -184,7 +184,7 @@
                             border-gray-800 cursor-pointer transition-all">
                             Description
                         </li>
-                        <li class="text-gray-500 font-semibold text-sm hover:bg-gray-100 py-3 px-8 cursor-pointer transition-all">
+                        <li class="text-gray-700 font-semibold text-sm hover:bg-gray-100 py-3 px-8 cursor-pointer transition-all">
                             Reviews
                         </li>
                     </ul>

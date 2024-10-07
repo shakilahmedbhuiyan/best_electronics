@@ -14,10 +14,12 @@ export default {
         './vendor/laravel/jetstream/**/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
-        './vendor/wireui/wireui/src/*.php',
-        './vendor/wireui17/wireui/ts/**/*.ts',
-        './vendor/wireui/wireui/src/WireUi/**/*.php',
-        './vendor/wireui/wireui/src/Components/**/*.php',
+
+        "./vendor/wireui/wireui/src/*.php",
+        "./vendor/wireui/wireui/ts/**/*.ts",
+        "./vendor/wireui/wireui/src/WireUi/**/*.php",
+        "./vendor/wireui/wireui/src/Components/**/*.php",
+
         './app/Filament/**/*.php',
         './resources/views/filament/**/*.blade.php',
         './vendor/filament/**/*.blade.php',
@@ -26,17 +28,17 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
-                serif: ['Alexandra', ...defaultTheme.fontFamily.sans],
+               sans: ['Nunito Sans', ...defaultTheme.fontFamily.sans],
+                serif: ['Alexandria', ...defaultTheme.fontFamily.serif],
             },
             screens: {
                 print: { raw: 'print' },
-                screen: { raw: 'screen', },
+                screen: { raw: 'screen' },
             },
             colors: {
                 primary: colors.emerald,
                 secondary: colors.slate,
-            }
+            },
         },
     },
 

@@ -7,12 +7,15 @@ use Artesaos\SEOTools\Traits\SEOTools;
 use Filament\Notifications\Notification;
 use Illuminate\Support\Facades\Cache;
 use Livewire\Component;
+use WireUi\Traits\WireUiActions;
 
 class Single extends Component
 {
     use SEOTools;
+    use WireUiActions;
 
     public $product;
+    private $message = '';
 
     public function mount($product)
     {
@@ -26,7 +29,7 @@ class Single extends Component
                 ->with('brand', 'category')
                 ->first();
             if (!$item || $item === null) {
-                 return $this->redirect(route('products.search', $product), navigate: true);
+                return $this->redirect(route('products.search', $product), navigate: true);
             }
             $this->product = Cache::rememberForever($key, function () use ($item) {
                 return $item->toArray();
@@ -45,7 +48,7 @@ class Single extends Component
         $this->seo()->addImages($this->product['thumbnail']);
         $this->seo()->opengraph()->setTitle($this->product['name']);
         $this->seo()->opengraph()->setDescription($this->product['meta_description']);
-         $this->seo()->opengraph()->setType('product');
+        $this->seo()->opengraph()->setType('product');
         $this->seo()->twitter()->setTitle($this->product['name']);
         $this->seo()->twitter()->setDescription($this->product['description']);
 
@@ -87,11 +90,13 @@ class Single extends Component
             ->layout('layouts.guest');
     }
 
+
     public function addToCart($productId, $quantity)
     {
         $cart = session()->get('cart', []);
-        $existingProduct = collect($cart)->firstWhere('product_id', $productId);
-        if ($existingProduct) {
+        $product = collect($cart)->firstWhere('product_id', $productId);
+        if ($product) {
+            $this->message = 'Product already in cart';
             foreach ($cart as &$item) {
                 if ($item['product_id'] == $productId) {
                     $item['quantity'] += $quantity;
@@ -106,10 +111,21 @@ class Single extends Component
                 'price' => $product->sale ? $product->sale_price : $product->price,
                 'status' => 'pending',
             ];
+            $this->message = $product->name . ' added to cart';
         }
 
         session()->put('cart', $cart);
+        $this->successNotification();
         session()->flash('success', 'Product added to cart');
+    }
+
+    public function successNotification(): void
+    {
+        $this->notification()->send([
+            'icon' => 'success',
+            'title' => 'Cart Updated',
+            'description' => $this->message,
+        ]);
     }
 
 

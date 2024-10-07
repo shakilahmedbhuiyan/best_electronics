@@ -13,6 +13,7 @@
 
         <div class="inline-flex print:flex-none justify-center items-center leading-none ">
             <x-application-mark href="{{ route('index') }}" alt="{{ config('app.name') }}"
+                                aria-label="Application Logo refer to home page"
                                 class="h-11 sm:h-12 aspect-square pt-1 sm:py-0" fill="currentColor" />
             <h1 class="flex flex-col pl-2 font-bold text-[1.3rem] leading-none text-primary-800 dark:text-primary-600">
                 Best
@@ -29,11 +30,11 @@
                  :class="{ 'dark': darkMode }">
                 <!-- mobile search button -->
                 <button type="button" class="navbar-burger flex items-center justify-end"
-                        @click="$openModal('searchModal')" name="Search Modal Button">
+                        @click="$openModal('searchModal')" aria-label="Search Modal Button">
                     <x-heroicons::outline.magnifying-glass
                         class="h-12 w-12 p-2 hover:bg-primary-900 hover:text-gray-200" />
                 </button>
-                <button x-on:click="toggle" type="button" name="Dark Mode Button"
+                <button x-on:click="toggle" type="button" aria-label="Dark Mode Button"
                         class="dark:text-primary-500 hover:text-indigo-500 dark:hover:text-yellow-400
                             rounded-lg text-sm mx-4 px-2 flex justify-center items-center ">
                     <!-- Dark Mode Icon -->
@@ -51,7 +52,7 @@
                 </button>
                 <!-- mobile navbar button -->
                 <button type="button" class="navbar-burger flex items-center justify-end
-                hover:bg-primary-900 hover:text-gray-200" name="Main Menu Button"
+                hover:bg-primary-900 hover:text-gray-200" aria-label="Main Menu Button"
                         @click="navbarOpen = ! navbarOpen">
                     <x-heroicons::outline.bars-3-bottom-right
                         x-show="!navbarOpen"
@@ -88,10 +89,10 @@
         <div class="space-x-2 inline-flex items-center print:hidden text-primary-800 dark:text-primary-600"
              x-show="mobile" x-data="darkMode"
              :class="{ 'dark': darkMode }">
-                <x-button type="button" variant="flat" x-on:click="$openModal('searchModal')"  name="Search Modal Button">
+                <x-button type="button" variant="flat" x-on:click="$openModal('searchModal')"  aria-label="Search Modal Button">
                     <x-heroicons::outline.magnifying-glass class="h-6 w-6 " />
                 </x-button>
-                <x-button x-on:click="toggle" type="button" variant="flat" name="Dark Mode Button"
+                <x-button x-on:click="toggle" type="button" variant="flat" aria-label="Dark Mode Button"
                         class="hover:text-indigo-500 dark:hover:text-yellow-400
                             rounded-lg text-sm flex justify-center items-center ">
                     <!-- Dark Mode Icon -->
@@ -109,7 +110,7 @@
                 </x-button>
 
                 <a href="{{ route('cart') }}" class="md:inline-block transition duration-200" wire:navigate>
-                    <x-button type="button" flat class="hover:outline" name="shopping cart button">
+                    <x-button type="button" flat class="hover:outline" aria-label="shopping cart button">
                         <x-heroicons::outline.shopping-bag class="h-6 w-6" />
                     </x-button>
                 </a>
@@ -120,7 +121,7 @@
                         <a href="{{ route('logout') }}" wire:navigate
                            onClick="event.preventDefault();
                                                 this.closest('form').submit();">
-                            <x-button type="button" flat class="hover:outline" name="Logout Button">
+                            <x-button type="button" flat class="hover:outline" aria-label="Logout Button">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
                                      fill="currentColor"
                                      viewBox="0 0 256 256">
@@ -151,7 +152,7 @@
 
                     </h1>
                 </a>
-                <button class="navbar-close" @click="navbarOpen=false" name="Close Menu">
+                <button class="navbar-close" @click="navbarOpen=false" aria-label="Close Menu">
                     <svg class="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500"
                          xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -209,11 +210,11 @@
                 @else
                     <div class="pt-6">
                         <a class="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold bg-gray-50 hover:bg-gray-100 rounded-xl"
-                           href="{{ route('login') }}">
+                           href="{{ route('login') }}" aria-label="Sign In Link">
                             Sign in
                         </a>
                         <a class="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-primary-600 hover:bg-primary-700  rounded-xl"
-                           href="{{ route('register') }}">Sign Up</a>
+                           href="{{ route('register') }}" aria-label="Sign Up link for new account">Sign Up</a>
                     </div>
                 @endif
                 <p class="my-4 text-xs text-center text-gray-400">

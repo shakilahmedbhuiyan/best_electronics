@@ -11,19 +11,6 @@
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-6MZMNHZ157"></script>
-    <script>
-        window.dataLayer = window.dataLayer || []
-
-        function gtag() {
-            dataLayer.push(arguments)
-        }
-
-        gtag('js', new Date())
-
-        gtag('config', 'G-6MZMNHZ157')
-    </script>
-
-    <!-- Google tag (gtag.js) for merchant -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=GT-5MXLVKLC"></script>
     <script>
         window.dataLayer = window.dataLayer || []
@@ -34,20 +21,21 @@
 
         gtag('js', new Date())
 
+        gtag('config', 'G-6MZMNHZ157')
+
+   // - Google tag (gtag.js) for merchant
+
         gtag('config', 'GT-5MXLVKLC')
     </script>
 
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-    <link href="https://fonts.bunny.net/css?family=alexandria:100,200,300,400,500,700,800,900" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.google.com">
 
     <!--Wireui Scripts -->
     <wireui:scripts />
 
     <!-- Styles -->
-    @filamentStyles
     @vite('resources/css/app.css')
     @livewireStyles
     <!-- Meta Pixel Code -->
@@ -77,13 +65,15 @@
 
 </head>
 
-<body id="app" class="font-sans antialiased bg-gray-100 dark:bg-slate-800">
+<body id="app" class="font-sans antialiased bg-gray-100 dark:bg-slate-800 relative">
+<!-- Notifications -->
+<x-notifications  z-index="z-50" />
+
 @livewire('guest.components.top-header')
 @livewire('guest.components.nav')
 
 
-<!-- Notifications -->
-<x-notifications position="top-right" z-index="z-50" />
+
 <!-- Notifications End -->
 
 <!-- Page Content -->
@@ -123,12 +113,12 @@
 
 <livewire:guest.components.footer />
 
-@filamentScripts
 @vite('resources/js/app.js')
 @livewireScripts
 @stack('scripts')
 
-<noscript><img height="1" width="1" style="display:none"
+<noscript>
+    <img height="1" width="1" style="display:none"
                src="https://www.facebook.com/tr?id=1230542744779073&ev=PageView&noscript=1"
     /></noscript>
 <!-- End Meta Pixel Code -->
