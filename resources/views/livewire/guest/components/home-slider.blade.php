@@ -3,7 +3,7 @@ autoplayIntervalTime: 5000,
      slides: @js($sliders->map(function ($slider) {
         return [
             'imgSrc' => asset( $slider->image), // Assuming your image path is stored in 'image'
-            'imgAlt' => $slider->title, // Assuming you have a title for alt text
+            'imgAlt' => $slider->title.' logo', // Assuming you have a title for alt text
             'link' => $slider->link?? '#', // Assuming you have a link for the image
         ];
     })),
@@ -75,7 +75,7 @@ autoplayIntervalTime: 5000,
         <!-- Change aspect-[3/1] to match your images aspect ratio -->
         <div class="relative  sm:aspect-[3/1] aspect-[9/4] w-full sm:rounded-lg overflow-hidden">
             <template x-for="(slide, index) in slides">
-                <a :href="slide.link" target="_blank">
+                <a :href="slide.link" target="_blank" x-bind:aria-label="slide.imgAlt">
                     <div x-cloak x-show="currentSlideIndex == index + 1" class="absolute inset-0"
                          x-transition.opacity.duration.700ms>
                         <img class="absolute w-full h-full inset-0 object-fill sm:object-cover text-neutral-600 dark:text-neutral-300"

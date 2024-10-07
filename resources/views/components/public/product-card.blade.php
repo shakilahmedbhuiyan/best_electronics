@@ -4,7 +4,9 @@
 <!--   ✅ Product card 1 - Starts Here 👇 -->
 <div wire:loading.remove class="w-full sm:w-60 bg-white dark:bg-gray-900 shadow-md rounded-xl
             duration-500 hover:scale-105 hover:shadow-xl overflow-clip">
-    <a href="{{ route('product.single', $product->slug) }}" class="relative" wire:navigate>
+    <a href="{{ route('product.single', $product->slug) }}"
+       aria-label="{{ $product->name.' product card' }}"
+       class="relative" wire:navigate>
         @isset($product->sale_price)
             <div class="bg-orange-400/85 h-10  w-44 sm:w-[10rem] inline-flex justify-center items-center
                         absolute top-[1.5rem] sm:top-[1rem] left-24 sm:left-[8rem] rotate-45 z-20">
@@ -39,7 +41,7 @@
                 </del>
             @endif
             <div class="ltr:ml-auto rtl:mr-auto">
-                <x-button type="button" flat>
+                <x-button type="button" flat aria-label="{{ $product->name.' add to cart button' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                          fill="currentColor" class="bi bi-bag-plus" viewBox="0 0 16 16">
                         <path fill-rule="evenodd"
