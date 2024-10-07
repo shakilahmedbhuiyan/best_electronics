@@ -3,7 +3,7 @@ autoplayIntervalTime: 5000,
      slides: @js($sliders->map(function ($slider) {
         return [
             'imgSrc' => asset( $slider->image), // Assuming your image path is stored in 'image'
-            'imgAlt' => $slider->title.' logo', // Assuming you have a title for alt text
+            'imgAlt' => $slider->title.' slider', // Assuming you have a title for alt text
             'link' => $slider->link?? '#', // Assuming you have a link for the image
         ];
     })),
