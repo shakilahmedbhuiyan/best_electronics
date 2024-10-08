@@ -8,9 +8,7 @@
     ['name' => 'Completed', 'id' => 'completed', 'description' => 'Order is completed'],
     ['name' => 'Refunded', 'id' => 'refunded', 'description' => 'Order is refunded'],
     ['name' => 'Shipped', 'id' => 'shipped', 'description' => 'Order is shipped'],
-    ['name' => 'Delivered', 'id' => 'delivered', 'description' => 'Order is delivered'],
     ['name' => 'Cancelled', 'id' => 'cancelled', 'description' => 'Order is cancelled'],
-    ['name' => 'Stuck', 'id' => 'stuck', 'description' => 'Order is stuck'],
     ]"
                       wire:model.live="status"
                       placeholder="Select status"

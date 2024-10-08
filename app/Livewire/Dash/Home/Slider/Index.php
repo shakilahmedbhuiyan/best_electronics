@@ -103,8 +103,8 @@ class Index extends Component implements HasForms, HasTable
                     ->color('danger')
                     ->requiresConfirmation()
                     ->action(function (HomeSlider $record) {
-                        if (Storage::disk('public')->exists($record->image)) {
-                            Storage::disk('public')->delete($record->image);
+                        if (Storage::disk('local')->exists($record->image)) {
+                            Storage::disk('local')->delete($record->image);
                         }
                         $record->delete();
                     })

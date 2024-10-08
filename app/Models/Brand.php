@@ -4,8 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Sitemap\Contracts\Sitemapable;
+use Spatie\Sitemap\Tags\Url;
 
-class Brand extends Model
+class Brand extends Model implements Sitemapable
 {
     use HasFactory;
 
@@ -46,6 +48,15 @@ class Brand extends Model
     public function getThumbnailUrlAttribute()
     {
         return asset($this->thumbnail);
+    }
+
+     public function toSitemapTag(): Url | string | array
+    {
+        return Url::create(route('index.category', $this->slug))
+            ->addImage($this->thumbnailUrl, $this->name)
+            ->setLastModificationDate($this->updated_at)
+            ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
+            ->setPriority(0.7);
     }
 
 }

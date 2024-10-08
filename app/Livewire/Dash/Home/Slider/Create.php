@@ -40,7 +40,7 @@ class Create extends Component
 
         $image = $this->form['image']->storeAs(
             'sliders',
-            Str::slug($this->form['title']) . '.' . $this->form['image']->extension(),
+            Str::slug($this->form['title']) . '-slider-image.' . $this->form['image']->extension(),
             'public'
         );
         Storage::disk('local')->delete('livewire-tmp/' . $this->form['image']->getFilename());

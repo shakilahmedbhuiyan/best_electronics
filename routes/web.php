@@ -44,6 +44,8 @@ Route::group([
         ->get('/brands/', \App\Livewire\Dash\Brand\Index::class)->name('brand.index');
     Route::middleware(['permission:brand-create'])
         ->get('/brands/create', \App\Livewire\Dash\Brand\Create::class)->name('brand.create');
+    Route::middleware(['permission:brand-update'])
+        ->get('/brands/update/{brand}', \App\Livewire\Dash\Brand\Update::class)->name('brand.update');
 
     Route::middleware(['permission:product-list'])
         ->get('/products', \App\Livewire\Dash\Products\Index::class)->name('product.index');
@@ -62,6 +64,8 @@ Route::group([
     Route::middleware(['permission:store-info'])
         ->get('/store/info', \App\Livewire\Dash\Store\Info::class)->name('store.info');
 
+     Route::middleware(['permission:order-list'])
+        ->get('/orders/pending', \App\Livewire\Dash\Order\Pending::class)->name('order.pending');
     Route::middleware(['permission:order-list'])
         ->get('/orders', \App\Livewire\Dash\Order\Index::class)->name('order.index');
     Route::middleware(['permission:order-view'])

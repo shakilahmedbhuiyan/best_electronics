@@ -26,8 +26,8 @@
 
 </head>
 
-<body id="app" class="font-sans antialiased bg-gray-100 dark:bg-gray-900">
-<x-banner />
+<body id="app" class="font-sans antialiased bg-gray-100 dark:bg-gray-900 relative">
+  <x-notifications z-index="z-50" />
 
 <div class="flex flex-row relative" x-data="{ sidebar: false, mobile: false }"
      x-init="width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
@@ -57,7 +57,7 @@
                 </div>
             </header>
         @endif
-        <x-notifications position="top-right" z-index="z-50" />
+
         <!-- Page Content -->
         <main>
             {{ $slot }}

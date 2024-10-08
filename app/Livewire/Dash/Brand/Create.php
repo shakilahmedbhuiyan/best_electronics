@@ -41,7 +41,6 @@ class Create extends Component
             'thumbnail' => $thumbnail,
         ]);
         if ($this->thumbnail) {
-            // Remove the temporary file by its path
             Storage::disk('local')->delete('livewire-tmp/' . $this->thumbnail->getFilename());
         }
         Cache::forever('brands', Brand::where('status', true)->get());

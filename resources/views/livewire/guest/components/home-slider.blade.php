@@ -1,3 +1,5 @@
+
+
 <div x-data="{
 autoplayIntervalTime: 5000,
      slides: @js($sliders->map(function ($slider) {
@@ -86,3 +88,4 @@ autoplayIntervalTime: 5000,
         </div>
     </div>
 </div>
+

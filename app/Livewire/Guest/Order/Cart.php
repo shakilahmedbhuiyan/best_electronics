@@ -60,7 +60,6 @@ class Cart extends Component
 
     public function updateCartQuantity($productId, $quantity)
     {
-
         $cart = session()->get('cart', []);
         foreach ($cart as &$item) {
             if ($item['product_id'] == $productId) {
@@ -70,7 +69,6 @@ class Cart extends Component
         }
         session()->put('cart', $cart);
         $this->cartItems = $cart;
-
     }
 
     public function checkout()
@@ -135,6 +133,7 @@ class Cart extends Component
         }
         session()->forget('cart');
         session()->flash('success', 'Order placed successfully');
+        $this->dispatch('order-created');
         return $this->redirect(route('checkout.success', $order->order_number));
     }
 
