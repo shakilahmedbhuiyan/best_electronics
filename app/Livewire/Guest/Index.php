@@ -15,6 +15,7 @@ class Index extends Component
     {
         $store = app('store');
         $this->seo()->setTitle('Best Mobile Shop in KSA');
+        $this->seo()->metatags()->setKeywords(['Mobile Shop', 'iphone 16', 'Mobile Phones', 'Mobile Accessories']);
         $this->seo()->opengraph()->setTitle('Best Mobile Shop in KSA- '.$store['name']);
         $this->seo()->twitter()->setTitle($store['name']);
         $this->seo()->jsonLd()->setTitle('Best Mobile Shop in KSA- '.$store['name']);
