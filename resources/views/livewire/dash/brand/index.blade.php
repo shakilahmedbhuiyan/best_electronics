@@ -12,12 +12,12 @@
             <div
                 class="flex flex-row sm:flex-row justify-center items-center w-full space-x-2">
                 <div class="w-4/6">
-                    <x-input wire:model="search" id="search" placeholder="Search Brand" />
+                    <x-input wire:model.live.debounce.1500ms="search" id="search" placeholder="Search Brand" />
                 </div>
                 <div class="">
-                    <x-native-select wire:model="perPage" id="perPage"
+                    <x-select wire:model.live="perPage" id="perPage"
                                      placeholder="Per Page"
-                                     :options="[10, 20, 50, 100]" />
+                                     :options="[5,10, 20, 50, 100]" />
                 </div>
             </div>
             <div class="overflow-x-auto soft-scrollbar py-3">
@@ -68,6 +68,9 @@
                         @endforelse
                     </x-slot>
                 </x-table-hover>
+
+                    {{ $brands->links() }}
+
             </div>
         </x-card>
 

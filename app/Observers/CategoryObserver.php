@@ -24,7 +24,10 @@ class CategoryObserver
      */
     public function updated(Category $category): void
     {
-        //
+         $sitemap = Sitemap::create()
+            ->add(Category::active()->get());
+
+        $sitemap->writeToFile(public_path('category_sitemap.xml'));
     }
 
     /**

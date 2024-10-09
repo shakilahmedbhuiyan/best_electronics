@@ -32,14 +32,12 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function getCreatedAtAtrribute($value)
-    {
-        return \Carbon\Carbon::parse($value)->format('d/m/Y, h:i:s a');
-    }
-
 
     public function scopePending($query)
     {
         return $query->where('status', 'pending');
     }
+
+
+
 }

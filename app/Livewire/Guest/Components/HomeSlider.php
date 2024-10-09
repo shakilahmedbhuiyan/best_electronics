@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Guest\Components;
 
+use Illuminate\Support\Facades\Cache;
 use Livewire\Component;
 use App\Models\HomeSlider as SliderModel;
 
@@ -11,9 +12,9 @@ class HomeSlider extends Component
 
     public function mount()
     {
-        $this->sliders =SliderModel::active()
-            ->orderBy('id', 'desc')
-            ->get();
+        $this->sliders = Cache::rememberForever('home-sliders', function () {
+            return SliderModel::active()->get();
+        });
     }
 
     public function render()

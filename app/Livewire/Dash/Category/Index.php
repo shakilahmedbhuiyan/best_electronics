@@ -3,72 +3,48 @@
 namespace App\Livewire\Dash\Category;
 
 use App\Models\Category;
-use Filament\Forms\Concerns\InteractsWithForms;
-use Filament\Forms\Contracts\HasForms;
 use Filament\Notifications\Notification;
-use Filament\Tables\Actions\Action;
-use Filament\Tables\Columns\IconColumn;
-use Filament\Tables\Columns\ImageColumn;
-use Filament\Tables\Columns\Layout\Split;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Concerns\InteractsWithTable;
-use Filament\Tables\Contracts\HasTable;
-use Filament\Tables\Filters\Filter;
-use Filament\Tables\Table;
 use Livewire\Component;
+use Livewire\WithPagination;
 use WireUi\Traits\WireUiActions;
 
-class Index extends Component implements HasForms, HasTable
+class Index extends Component
 {
-    use WireUiActions, InteractsWithTable;
-    use InteractsWithForms;
+    use WireUiActions, WithPagination;
 
+    public $search = '';
+    public $perPage = 15;
+    protected $listeners = ['refresh' => '$refresh'];
 
-
-
-     public function table(Table $table): Table
+    public function updatingSearch()
     {
-        return $table
-            ->query(Category::query())
-            ->columns([
-                Split::make([
-                    ImageColumn::make('thumbnail_url')
-                        ->disk('public')
-                        ->circular()
-                        ->grow(false),
-                    TextColumn::make('name')
-                        ->label('Name')
-                        ->searchable()
-                        ->sortable(),
-                    IconColumn::make('featured')
-                        ->sortable()
-                        ->boolean(),
-                ]),
+        $this->search();
+    }
 
-            ])
-            ->actions([
-                Action::make('feature')
-                    ->action(function (Category $record) {
-                        $record->featured = true;
-                        $record->save();
-                    })
-                    ->hidden(fn(Category $record): bool => $record->featured),
-                Action::make('unfeature')
-                    ->action(function (Category $record) {
-                        $record->featured = false;
-                        $record->save();
-                    })
-                    ->visible(fn(Category $record): bool => $record->featured),
-            ])
-            ->filters([
-                Filter::make('featured')
-                    ->label('Featured')
-            ]);
+     private function search()
+    {
+        return Category::where('name', 'like', '%' . $this->search . '%')
+            ->orWhere('slug', 'like', '%' . $this->search . '%')
+            ->orWhere('status', 'like', '%' . $this->search . '%')
+            ->orWhere('featured', 'like', '%' . $this->search . '%')
+            ->paginate($this->perPage);
+    }
+
+    public function featured($id)
+    {
+        $cat = Category::findOrFail($id);
+        $cat->update(['featured' => !$cat->featured]);
+        $this->notification()->send([
+            'icon' => 'success',
+            'title' => 'Updated successfully',
+            'description' =>  $cat->name . ' category updated successfully',
+        ]);
+        $this->dispatch('$refresh');
     }
 
     public function render()
     {
-         if (session()->has('success')) {
+        if (session()->has('success')) {
             Notification::make()
                 ->title('Saved successfully')
                 ->success()
@@ -78,7 +54,10 @@ class Index extends Component implements HasForms, HasTable
                 ->send();
             session()->forget('success');
         }
-        return view('livewire.dash.category.index', ['header' => 'Categories'])
-            ->layout('layouts.app' , ['title' => 'Categories']);
+        return view('livewire.dash.category.index',
+            ['header' => 'Categories'],
+            ['categories' => $this->search()]
+        )
+            ->layout('layouts.app', ['title' => 'Categories']);
     }
 }

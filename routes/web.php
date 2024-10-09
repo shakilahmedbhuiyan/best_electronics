@@ -40,6 +40,8 @@ Route::group([
         ->get('/categories', \App\Livewire\Dash\Category\Index::class)->name('category.index');
     Route::middleware(['permission:category-create'])
         ->get('/categories/create', \App\Livewire\Dash\Category\Create::class)->name('category.create');
+    Route::middleware(['permission:category-update'])
+        ->get('/categories/update/{category}', \App\Livewire\Dash\Category\Update::class)->name('category.update');
     Route::middleware(['permission:brand-list'])
         ->get('/brands/', \App\Livewire\Dash\Brand\Index::class)->name('brand.index');
     Route::middleware(['permission:brand-create'])

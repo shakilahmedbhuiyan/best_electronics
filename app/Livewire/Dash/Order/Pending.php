@@ -6,6 +6,7 @@ use App\Models\Order;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Notifications\Notification;
+use Filament\Tables\Columns\Layout\Split;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
@@ -24,8 +25,8 @@ class Pending extends Component implements HasForms, HasTable
         return $table
             ->query(
                 Order::pending()
-                ->with('user', 'products')
-                ->orderBy('created_at', 'desc')
+                    ->with('user', 'products')
+                    ->orderBy('created_at', 'desc')
             )
             ->columns([
 //                Split::make([
@@ -37,9 +38,16 @@ class Pending extends Component implements HasForms, HasTable
                 TextColumn::make('user.name')
                     ->label('User')
                     ->searchable()
+                    ->sortable(['user.name' => 'name', 'user.id_no' => 'id_no'])
+                    ->description(fn(Model $st) => $st->user->id_no),
+
+                TextColumn::make('item_count')
+                    ->label('Items')
+                    ->searchable()
                     ->sortable(),
                 TextColumn::make('grand_total')
                     ->label('Total')
+                    ->money('SAR')
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('status')
@@ -48,13 +56,13 @@ class Pending extends Component implements HasForms, HasTable
                     ->sortable(),
                 TextColumn::make('created_at')
                     ->label('Date')
-                    ->searchable()
+                    ->dateTime('d M, Y h:i a')
                     ->sortable(),
 //                ])
             ]);
     }
 
-     #[on('order-created')]
+    #[on('order-created')]
     public function showOrderNotification()
     {
         if (session()->has('success')) {

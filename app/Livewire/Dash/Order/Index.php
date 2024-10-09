@@ -22,8 +22,8 @@ class Index extends Component implements HasForms, HasTable
         return $table
             ->query(
                 Order::where('status', '!=', 'pending')
-                ->with('user', 'products')
-                ->orderBy('created_at', 'desc')
+                    ->with('user', 'products')
+                    ->orderBy('created_at', 'desc')
             )
             ->columns([
 //                Split::make([
@@ -35,9 +35,16 @@ class Index extends Component implements HasForms, HasTable
                 TextColumn::make('user.name')
                     ->label('User')
                     ->searchable()
+                    ->sortable(['user.name' => 'name', 'user.id_no' => 'id_no'])
+                    ->description(fn(Model $st) => $st->user->id_no),
+
+                TextColumn::make('item_count')
+                    ->label('Items')
+                    ->searchable()
                     ->sortable(),
                 TextColumn::make('grand_total')
                     ->label('Total')
+                    ->money('SAR')
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('status')
@@ -46,8 +53,7 @@ class Index extends Component implements HasForms, HasTable
                     ->sortable(),
                 TextColumn::make('created_at')
                     ->label('Date')
-//                        ->formatState(fn ($value) => $value->format('d/m/Y, h:i:s a',))
-                    ->searchable()
+                    ->dateTime('d M, Y h:i a')
                     ->sortable(),
 //                ])
             ])

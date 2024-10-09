@@ -17,7 +17,6 @@ class Update extends Component
     {
         $this->authorize('permission:brand-update');
         $this->brand = Brand::findOrFail($brand);
-        $this->id = $this->brand->id;
         $this->name = $this->brand->name;
         $this->description =   $this->brand->description;
         $this->status = $this->brand->status;
