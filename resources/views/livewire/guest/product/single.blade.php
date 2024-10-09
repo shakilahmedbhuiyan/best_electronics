@@ -55,7 +55,7 @@
                     <hr class="my-8" />
 
                     <div class="flex flex-wrap gap-4 items-start">
-                        <p class="text-sm text-gray-600 dark:text-gray-400 w-full text-justify capitalize">
+                        <p class="text-sm text-gray-600 dark:text-gray-400 w-full text-justify capitalize whitespace-pre-line">
                             {!! $product['summary'] !!}
                         </p>
                         <div>
@@ -190,7 +190,7 @@
                     </ul>
                     <div class="mt-8">
                         <h3 class="text-xl font-bold ">Product Description</h3>
-                        <p class="text-sm mt-4">
+                        <p class="text-sm mt-4 whitespace-pre-line">
                             {!! $product['description'] !!}
                         </p>
                     </div>
