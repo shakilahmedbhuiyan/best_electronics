@@ -13,13 +13,14 @@ class Index extends Component
 
     public function mount()
     {
+        $description = 'Best Electronics offers all kinds of Smartphones with Installment facility all over Saudi Arabia. Choose your best device and gadget';
         $store = app('store');
         $this->seo()->setTitle('Best Mobile Shop in KSA');
         $this->seo()->metatags()->setKeywords(['Mobile Shop', 'iphone 16', 'Mobile Phones', 'Mobile Accessories']);
         $this->seo()->opengraph()->setTitle('Best Mobile Shop in KSA- '.$store['name']);
         $this->seo()->twitter()->setTitle($store['name']);
         $this->seo()->jsonLd()->setTitle('Best Mobile Shop in KSA- '.$store['name']);
-        $this->seo()->setDescription('Best Mobile Shop in KSA- '.$store['description']);
+        $this->seo()->setDescription('Best Mobile Shop in KSA- '.$description);
         $this->seo()->setCanonical( route('index') );
     }
 
