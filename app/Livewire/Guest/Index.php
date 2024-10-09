@@ -14,10 +14,11 @@ class Index extends Component
     public function mount()
     {
         $store = app('store');
-        $this->seo()->setTitle($store['description']);
-        $this->seo()->opengraph()->setTitle($store['name']);
+        $this->seo()->setTitle('Best Mobile Shop in KSA');
+        $this->seo()->opengraph()->setTitle('Best Mobile Shop in KSA- '.$store['name']);
         $this->seo()->twitter()->setTitle($store['name']);
-        $this->seo()->jsonLd()->setTitle($store['name']);
+        $this->seo()->jsonLd()->setTitle('Best Mobile Shop in KSA- '.$store['name']);
+        $this->seo()->setDescription('Best Mobile Shop in KSA- '.$store['description']);
         $this->seo()->setCanonical( route('index') );
     }
 

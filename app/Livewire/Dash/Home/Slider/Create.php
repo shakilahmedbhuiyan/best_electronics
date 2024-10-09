@@ -37,11 +37,12 @@ class Create extends Component
     {
         $this->validate();
 
-
+        $imageTitle= Str::slug($this->form['title']) . '-slider-image.' . $this->form['image']->extension();
+        if (storage::disk('public')->exists('sliders/' . $imageTitle)) {
+            $imageTitle= Str::slug($this->form['title']).'-slider-image-'.random_int(2,8).'.'. $this->form['image']->extension();
+        }
         $image = $this->form['image']->storeAs(
-            'sliders',
-            Str::slug($this->form['title']) . '-slider-image.' . $this->form['image']->extension(),
-            'public'
+            'sliders',$imageTitle,'public'
         );
         Storage::disk('local')->delete('livewire-tmp/' . $this->form['image']->getFilename());
 

@@ -1,5 +1,4 @@
-
-
+@if( $sliders !== null && $sliders->isNotEmpty())
 <div x-data="{
 autoplayIntervalTime: 5000,
      slides: @js($sliders->map(function ($slider) {
@@ -88,4 +87,9 @@ autoplayIntervalTime: 5000,
         </div>
     </div>
 </div>
+@else
+    <div class="hidden">
+        <p>No slider found</p>
+    </div>
+@endif
 

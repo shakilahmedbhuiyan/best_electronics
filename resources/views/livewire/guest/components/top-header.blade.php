@@ -47,14 +47,6 @@
                             {{ __('Profile') }}
                         </a>
                     @endif
-                @else
-                    <a href="{{ route('login') }}" wire:navigate
-                       aria-label="Login button"
-                       class="text-sm inline-flex rounded-lg px-1
-                    text-gray-600 hover:text-gray-900 hover:bg-gray-50">
-                        <x-heroicons::outline.user class="mr-1 h-5 w-5" />
-                        {{ __('Login') }}
-                    </a>
                 @endif
             </div>
         </div>
