@@ -8,9 +8,9 @@
        aria-label="{{ $product->name.' product card' }}"
        class="relative" wire:navigate>
         @isset($product->sale_price)
-            <div class="bg-orange-400/85 h-10  w-44 sm:w-[10rem] inline-flex justify-center items-center
-                        absolute top-[1.5rem] sm:top-[1rem] left-24 sm:left-[8rem] rotate-45 z-20">
-                            <span class="text-white font-semibold leading-loose">
+            <div class="bg-orange-400 h-8 w-10 inline-flex justify-center items-center
+                        absolute top-3 right-4 z-20 rounded-xl drop-shadow">
+                            <span class="text-white font-semibold leading-loose p-2 ">
                                 {{__( 'Sale')}}
                             </span>
             </div>
