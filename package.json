@@ -17,7 +17,6 @@
     },
     "dependencies": {
         "@ryangjchandler/alpine-clipboard": "github:ryangjchandler/alpine-clipboard",
-        "postcss-nesting": "^12.1.5",
-        "swiper": "^11.1.14"
+        "postcss-nesting": "^12.1.5"
     }
 }

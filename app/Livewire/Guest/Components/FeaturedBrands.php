@@ -3,6 +3,7 @@
 namespace App\Livewire\Guest\Components;
 
 use App\Models\Brand;
+use Illuminate\Support\Facades\Cache;
 use Livewire\Component;
 
 class FeaturedBrands extends Component
@@ -11,7 +12,9 @@ class FeaturedBrands extends Component
 
     public function mount()
     {
-        $this->brands = Brand::featured()->get();
+        $this->brands = Cache::rememberForever('featured-brands', static function () {
+            return Brand::featured()->get();
+        });
     }
 
     public function render()

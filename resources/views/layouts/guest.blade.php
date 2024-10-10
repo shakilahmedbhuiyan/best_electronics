@@ -38,6 +38,8 @@
     <!-- Styles -->
     @vite('resources/css/app.css')
     @livewireStyles
+
+    @stack('styles')
     <!-- Meta Pixel Code -->
     <script>
         !function(f, b, e, v, n, t, s) {
@@ -115,6 +117,7 @@
 
 @vite('resources/js/app.js')
 @livewireScripts
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js" async defer></script>
 @stack('scripts')
 
 <noscript>
