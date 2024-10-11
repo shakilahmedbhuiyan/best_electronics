@@ -27,7 +27,7 @@ class Nav extends Component
         ],
         [
             'id' => 4,
-            'name' =>'Products',
+            'name' =>'All Products',
             'route' => 'products.all',
             'type' => 'page',
         ]

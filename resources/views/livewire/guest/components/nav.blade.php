@@ -162,14 +162,16 @@
             <!-- mobile menu links -->
             <div>
                 <ul>
-                    <li class="mb-1">
-                        <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-primary-200 hover:text-primary-800 rounded"
-                           href="{{ route('index') }}" rel="bookmark" wire:navigate>Home</a>
-                    </li>
-                    <li class="mb-1">
-                        <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-primary-200 hover:text-primary-800 rounded"
-                           href="{{ route('products.all') }}" wire:navigate rel="next">Products</a>
-                    </li>
+                     @foreach($navLinks as $item)
+                        <li class="mb-1 "
+                            wire:key="{{ $item['id'] }}">
+                            <x-mobile-link route="{{$item['route']}}"
+                                        title="{{$item['name']}}"
+                                        id="{{ '#dropdown'.$item['id'] }}"
+                                        type="{{$item['type']}}" />
+
+                        </li>
+                    @endforeach
                     <li class="mb-1">
                         <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-primary-200 hover:text-primary-800 rounded"
                            href="#">About Us</a>
@@ -179,8 +181,9 @@
                            href="#">Contact</a>
                     </li>
                     <li class="mb-1">
-                        <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-primary-200 hover:text-primary-800 rounded"
-                           href="{{ route('cart') }}">My Cart</a>
+                       <x-mobile-link route="cart"
+                                        title="My Cart"
+                                        type="page" />
                     </li>
                 </ul>
             </div>
