@@ -23,9 +23,11 @@
                             <h2 class="text-2xl font-bold capitalize">{{ $product['name'] }}</h2>
                             <div class="flex flex-row space-x-2 mt-2 justify-center items-center ">
                                 <a class="text-sm text-gray-600 bg-green-300 rounded p-2"
-                                   href="{{ route('index.category', $product['brand']['slug'] ) }}" wire:navigate>
+                                   aria-label="{{ $product['brand']['name'].' brand' }}"
+                                   href="{{ route('index.brand', $product['brand']['slug'] ) }}" wire:navigate>
                                     {{ $product['brand']['name'] }}</a>
                                 <a class="text-sm text-gray-600 bg-green-300 rounded p-2"
+                                   aria-label="{{ $product['category']['name'].' Category' }}"
                                    href="{{ route('index.category', $product['category']['slug'] ) }}" wire:navigate>
                                     {{ $product['category']['name'] }}</a>
 
