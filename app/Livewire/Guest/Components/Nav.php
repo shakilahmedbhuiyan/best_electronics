@@ -16,7 +16,7 @@ class Nav extends Component
         [
             'id' => 2,
             'name' => 'Apple',
-            'route' => 'samsung',
+            'route' => 'apple',
             'type' => 'category',
         ],
         [
