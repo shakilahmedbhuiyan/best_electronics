@@ -4,10 +4,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', App\Livewire\Guest\Index::class)->name('index');
 Route::get('/pay-later', App\Livewire\Guest\Pages\BuyNow::class)->name('pay-later');
-Route::get('/category/{category}', App\Livewire\Guest\Index::class .'@category')->name('index.category');
+Route::get('/category/{category}', App\Livewire\Guest\Product\Category::class)->name('index.category');
 Route::get('/product/{product}', App\Livewire\Guest\Product\Single::class)->name('product.single');
 Route::get('/products/all', App\Livewire\Guest\Product\Index::class)->name('products.all');
 Route::get('/products/search/{search}', App\Livewire\Guest\Product\Search::class)->name('products.search');
+
 Route::get('/shop', App\Livewire\Guest\Product\Index::class);
 Route::get('/about', App\Livewire\Guest\Pages\BuyNow::class)->name('about');
 

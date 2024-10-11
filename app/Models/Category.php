@@ -18,7 +18,11 @@ class Category extends Model implements Sitemapable
      */
     public function products()
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Product::class)
+            ->where('status', true)
+            ->where('quantity', '>', 0)
+            ->with('brand')
+            ->orderBy('created_at', 'asc');
     }
 
     /*

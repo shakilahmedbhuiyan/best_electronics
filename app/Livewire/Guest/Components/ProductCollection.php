@@ -12,31 +12,35 @@ class ProductCollection extends Component
     use WithPagination;
 
     private $key;
+    private $page = 1;
 
     public function mount()
     {
-        $this->key = 'products-collection-page-1';
+        $this->key = "products-page-" . $this->page;
+    }
+
+    public function gotoPage($page, $pageName = 'page')
+    {
+        $this->page = $page;
+        $this->setPage($page, $pageName);
+        $this->key = "products-page-" . $page;
     }
 
 
     public function render()
     {
-
         if (cache()->has($this->key)) {
             $products = cache()->get($this->key);
         } else {
-            $products = Product::active()
-                ->inStock()
-                ->with('category', 'brand')
-                ->orderBy('price')
+            $products = Product::with('brand')
+                ->where('status', true)
+                ->where('quantity', '>', 0)
+                ->orderBy('created_at', 'asc')
                 ->paginate(12);
-            $key = 'products-collection-page-' . $products->currentPage();
-            Cache::forever($key, $products);
+            Cache::forever($this->key, $products);
+
         }
-
-
         return view('livewire.guest.components.product-collection', compact('products'));
-
-
     }
+
 }

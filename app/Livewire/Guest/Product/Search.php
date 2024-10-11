@@ -23,8 +23,8 @@ use Livewire\WithPagination;
         $this->search = $search;
 
         $this->title = 'Product Search';
-        $this->description = "The product you search for ". Str::replace('-', ' ', $search) .
-        ". Searched products founds on our store are displayed below.";
+        $this->description = "The product you search for " . Str::replace('-', ' ', $search) .
+            ". Searched products founds on our store are displayed below.";
 
         $this->seo()->openGraph()
             ->setTitle($this->title)
@@ -38,15 +38,15 @@ use Livewire\WithPagination;
 
     public function render()
     {
-        $query =  $this->search;
-       // dd($query);
+        $query = $this->search;
+        // dd($query);
 
         $key = 'product_search_page_1_' . $this->search;
         if (Cache::has($key)) {
             $products = Cache::get($key);
         } else {
             $products = Product::Where('slug', 'like', '%' . $query . '%')
-                        ->orWhere('name', 'like', '%' . $query . '%')
+                ->orWhere('name', 'like', '%' . $query . '%')
                 ->where('status', true)
                 ->where('quantity', '>', 0)
                 ->with('brand', 'category')
