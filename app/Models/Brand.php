@@ -18,7 +18,10 @@ class Brand extends Model implements Sitemapable
      */
     public function products()
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Product::class)
+            ->where('status', true)
+            ->where('quantity', '>', 0)
+            ->orderBy('created_at', 'asc');
     }
 
     /*
@@ -52,7 +55,7 @@ class Brand extends Model implements Sitemapable
 
      public function toSitemapTag(): Url | string | array
     {
-        return Url::create(route('index.category', $this->slug))
+        return Url::create(route('index.brand', $this->slug))
             ->addImage($this->thumbnailUrl, $this->name)
             ->setLastModificationDate($this->updated_at)
             ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
