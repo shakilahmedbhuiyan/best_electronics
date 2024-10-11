@@ -35,6 +35,7 @@ class Index extends Component
                     $query->where('name', 'like', '%' . $this->search . '%');
                 })
                 ->with('category', 'brand')
+                ->orderBy('updated_at', 'asc')
                 ->simplePaginate($this->perPage);
 //        });
     }

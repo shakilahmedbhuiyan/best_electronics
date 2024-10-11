@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Guest\Product;
 
+use Artesaos\SEOTools\Traits\SEOTools;
 use Illuminate\Support\Facades\Cache;
 use Livewire\Component;
 use App\Models\Category as CategoryModel;
@@ -10,6 +11,7 @@ use Livewire\WithPagination;
 class Category extends Component
 {
     use WithPagination;
+    use SEOTools;
 
     private $slug;
     public $category;
