@@ -17,6 +17,12 @@ use Livewire\WithPagination;
         $this->title = 'All Products';
         $this->description = config('seotools.meta.defaults.description');
 
+        $this->seo()->metatags()
+            ->setTitle($this->title)
+            ->setDescription($this->description)
+            ->setKeywords(config('seotools.meta.defaults.keywords'))
+            ->setCanonical(route('products.all'))
+            ->addMeta('robots', 'index,follow');
         $this->seo()->openGraph()
             ->setTitle($this->title)
             ->setDescription($this->description)

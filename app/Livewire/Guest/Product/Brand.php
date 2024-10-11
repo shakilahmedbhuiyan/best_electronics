@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Guest\Product;
 
+use Artesaos\SEOTools\Traits\SEOTools;
 use Illuminate\Support\Facades\Cache;
 use Livewire\Component;
 use App\Models\Brand as BrandModel;
@@ -10,6 +11,7 @@ use Livewire\WithPagination;
 class Brand extends Component
 {
     use WithPagination;
+    use SEOTools;
 
     private $slug;
     public $brand;
@@ -51,6 +53,19 @@ class Brand extends Component
 
     public function render()
     {
+        $title = $this->brand->name . ' Products';
+        $description = $this->brand->description;
+
+        $this->seo()->setTitle($title);
+        $this->seo()->setDescription($description);
+        $this->seo()->openGraph()
+            ->setTitle($title)
+            ->setDescription($description)
+            ->setUrl(route('index.brand', $this->brand->slug))
+            ->addImage( $this->brand->thumbnail_url);
+        $this->seo()->setTitle($title);
+        $this->seo()->addImages($this->brand->thumbnail_url);
+
         if (cache()->has($this->key)) {
             $products = cache()->get($this->key);
         } else {

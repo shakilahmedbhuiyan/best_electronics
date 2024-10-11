@@ -51,6 +51,20 @@ class Category extends Component
 
     public function render()
     {
+        $title = $this->category->name . ' Products';
+        $description = $this->category->description;
+
+        $this->seo()->setTitle($title);
+        $this->seo()->setDescription($description);
+        $this->seo()->openGraph()
+            ->setTitle($title)
+            ->setDescription($description)
+            ->setUrl(route('index.category', $this->category->slug))
+            ->addImage($this->category->thumbnail_url);
+        $this->seo()->setTitle($title);
+        $this->seo()->addImages($this->category->thumbnail_url);
+
+
         if (cache()->has($this->key)) {
             $products = cache()->get($this->key);
         } else {
