@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', App\Livewire\Guest\Index::class)->name('index');
 Route::get('/pay-later', App\Livewire\Guest\Pages\BuyNow::class)->name('pay-later');
 Route::get('/category/{category}', App\Livewire\Guest\Product\Category::class)->name('index.category');
+Route::get('/brand/{brand}', App\Livewire\Guest\Product\Brand::class)->name('index.brand');
 Route::get('/product/{product}', App\Livewire\Guest\Product\Single::class)->name('product.single');
 Route::get('/products/all', App\Livewire\Guest\Product\Index::class)->name('products.all');
 Route::get('/products/search/{search}', App\Livewire\Guest\Product\Search::class)->name('products.search');

@@ -11,6 +11,8 @@
        href="{{ route($route)  }}"
    @elseif( $type === 'category')
        href="{{ route('index.category', $route)}}"
+   @elseif( $type === 'brand')
+       href="{{ route('index.brand', $route)}}"
    @elseif( $type === 'external')
        href="{{ $route }}"
    @else

@@ -67,8 +67,7 @@
             <div x-show="mobile" class="print:hidden">
                 <ul class="flex flex-row justify-center items-center text-primary-800 dark:text-primary-600">
                     @foreach($navLinks as $item)
-                        <li class="hover:bg-primary-900 hover:text-white @isset($item['dropdown']) hoverable
-                        @endisset"
+                        <li class="hover:bg-primary-900 hover:text-white "
                             wire:key="{{ $item['id'] }}">
                             <x-web-link route="{{$item['route']}}"
                                         title="{{$item['name']}}"

@@ -17,13 +17,13 @@ class Nav extends Component
             'id' => 2,
             'name' => 'Apple',
             'route' => 'apple',
-            'type' => 'category',
+            'type' => 'brand',
         ],
         [
             'id' => 3,
             'name' => 'Samsung',
             'route' => 'samsung',
-            'type' => 'category',
+            'type' => 'brand',
         ],
         [
             'id' => 4,
