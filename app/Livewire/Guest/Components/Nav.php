@@ -15,14 +15,14 @@ class Nav extends Component
         ],
         [
             'id' => 2,
-            'name' => 'Mobile',
-            'route' => 'mobile',
+            'name' => 'Apple',
+            'route' => 'samsung',
             'type' => 'category',
         ],
         [
             'id' => 3,
-            'name' => 'Tablets',
-            'route' => 'tablet',
+            'name' => 'Samsung',
+            'route' => 'samsung',
             'type' => 'category',
         ],
         [

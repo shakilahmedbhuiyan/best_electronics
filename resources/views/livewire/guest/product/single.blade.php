@@ -190,9 +190,9 @@
                     </ul>
                     <div class="mt-8">
                         <h3 class="text-xl font-bold ">Product Description</h3>
-                        <p class="text-sm mt-4 whitespace-pre-line">
-                            {!! $product['description'] !!}
-                        </p>
+                        <article class="text-sm mt-4 whitespace-pre-line prose dark:prose-invert">
+                            {!! Str::markdown($product['description']) !!}
+                        </article>
                     </div>
                 </div>
                 <div class="bg-white dark:bg-gray-900 border-2 border-emerald-950/75 rounded-lg min-h-24 p-5
