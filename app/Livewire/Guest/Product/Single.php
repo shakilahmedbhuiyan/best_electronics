@@ -26,7 +26,7 @@ class Single extends Component
             $item = Product::where('slug', $product)
                 ->where('status', true)
                 ->where('quantity', '>', 0)
-                ->with('brand', 'category')
+                ->with('brand', 'category', 'images')
                 ->first();
             if (!$item || $item === null) {
                 return $this->redirect(route('products.search', $product), navigate: true);

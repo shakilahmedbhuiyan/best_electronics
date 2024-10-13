@@ -27,7 +27,7 @@
 </head>
 
 <body id="app" class="font-sans antialiased bg-gray-100 dark:bg-gray-900 relative">
-  <x-notifications z-index="z-50" />
+<x-notifications z-index="z-50" />
 
 <div class="flex flex-row relative" x-data="{ sidebar: false, mobile: false }"
      x-init="width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
@@ -69,8 +69,10 @@
 </div>
 
 @filamentScripts
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js" data-spa="auto" defer></script>
 @vite('resources/js/app.js')
 @livewireScripts
+
 @stack('scripts')
 </body>
 

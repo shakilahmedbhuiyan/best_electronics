@@ -12,11 +12,16 @@ class ProductGallery extends Model
     protected $fillable = [
         'product_id',
         'image',
-        'is_default',
+        'variation'
     ];
 
     public function product()
     {
         return $this->belongsTo(Product::class);
     }
+
+//    public function getImageAttribute($value)
+//    {
+//        return $value ? asset($value) : null;
+//    }
 }

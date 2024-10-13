@@ -6,6 +6,7 @@
 /public/categories
 /public/brands
 /public/products
+/public/products-gallery
 /storage/*.key
 /vendor
 .env

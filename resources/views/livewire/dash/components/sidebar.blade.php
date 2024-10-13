@@ -1,4 +1,5 @@
 <div id="logo-sidebar" x-show="sidebar" :class="{ 'fixed': sidebar, 'absolute': !sidebar }"
+     @mouseover="sidebar = true" @mouseleave.away="sidebar = false"
      class="sm:w-60 w-1/2 h-full top-0 left-0 pt-20 bg-white border-r border-gray-200 dark:bg-slate-800
      dark:border-gray-700 overflow-y-auto transition-all duration-300 ease-in-out">
     <div class="h-full px-3 pb-4 bg-white dark:bg-slate-800">

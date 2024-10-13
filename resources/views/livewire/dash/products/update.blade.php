@@ -101,43 +101,51 @@
 
             <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
                 <div class="space-y-4">
-                    <x-currency prefix="SAR" wire:model.defer="form.price"
-                                placeholder="Product Price"
-                                thousands=","
-                                decimal="." />
-                    <x-currency prefix="SAR" wire:model.defer="form.sale_price"
-                                thousands=","
-                                decimal="."
-                                right-icon="receipt-percent" variant="solid"
-                                placeholder="Product Sale Price" />
+                    <div class="grid grid-cols-2 gap-2">
+                        <x-currency prefix="SAR" wire:model.defer="form.price"
+                                    placeholder="Product Price"
+                                    thousands=","
+                                    decimal="." />
+                        <x-currency prefix="SAR" wire:model.defer="form.sale_price"
+                                    thousands=","
+                                    decimal="."
+                                    right-icon="receipt-percent" variant="solid"
+                                    placeholder="Product Sale Price" />
+                    </div>
                     <x-input type="text" wire:model.defer="form.quantity" icon="cube"
                              placeholder="Product Stock Quantity" />
+                    <div class="grid grid-cols-2 gap-2">
+                        <x-select wire:model.defer="form.category_id"
+                                  label="Current Category: {{ $product->category->name }}"
+                                  placeholder="Select Product Category">
+                            @forelse($categories as $c)
+                                <x-select.user-option :src=" asset($c->thumbnail)"
+                                                      label="{{ $c->name }}"
+                                                      value="{{ $c->id }}" />
+                            @empty
+                                <x-select.user-option label="No Category Available" />
+                            @endforelse
+                        </x-select>
 
-                    <x-select wire:model.defer="form.category_id" label="Current Category: {{ $product->category->name }}"
-                              placeholder="Select Product Category">
-                        @forelse($categories as $c)
-                            <x-select.user-option :src=" asset($c->thumbnail)"
-                                                  label="{{ $c->name }}"
-                                                  value="{{ $c->id }}" />
-                        @empty
-                            <x-select.user-option label="No Category Available" />
-                        @endforelse
-                    </x-select>
-
-                    <x-select wire:model.defer="form.brand_id" label="Current Brand: {{ $product->brand->name }}"
-                              placeholder="Select Product Brand">
-                        @forelse( $brands as $b)
-                            <x-select.user-option :src=" asset($b->thumbnail)"
-                                                  label="{{ $b->name }}"
-                                                  value="{{ $b->id }}" />
-                        @empty
-                            <x-select.user-option label="No Brand Available" />
-                        @endforelse
-                    </x-select>
+                        <x-select wire:model.defer="form.brand_id" label="Current Brand: {{ $product->brand->name }}"
+                                  placeholder="Select Product Brand">
+                            @forelse( $brands as $b)
+                                <x-select.user-option :src=" asset($b->thumbnail)"
+                                                      label="{{ $b->name }}"
+                                                      value="{{ $b->id }}" />
+                            @empty
+                                <x-select.user-option label="No Brand Available" />
+                            @endforelse
+                        </x-select>
+                    </div>
+                    <x-textarea id="trix-content" class="w-full" label="Summary"
+                                placeholder="Product Short Summary"
+                                wire:model.defer="form.summary"></x-textarea>
                 </div>
 
                 <!-- product image upload -->
-                <div class="flex items-center justify-center ">
+                @persist('productGallery')
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 ">
                     <div class="" x-data="previewImage()" wire:loading.class="d-block opacity-20 blur-sm">
                         <x-input-error for="form.thumbnail" />
                         <div class="w-60 h-60 rounded bg-gray-100 border border-blue-200 flex
@@ -148,16 +156,39 @@
                         </div>
                         <div>
                             <label for="logo" class="block mb-2 mt-4 ">Product Image</label>
-                            <input class="w-full cursor-pointer" type="file" name="logo" id="logo"
-                                   wire:model.defer="form.thumbnail" @change="fileChosen" />
+                            <x-jet-input class="w-full cursor-pointer" type="file" name="logo" id="logo"
+                                         wire:model.defer="form.thumbnail" @change="fileChosen" />
                         </div>
                     </div>
+                    <section class="container">
+                        <div class=" main-carousel "
+                             data-flickity='{ "wrapAround": true, "autoPlay": 2000, "pageDots": false }'>
+                            @forelse( $product->images as $key=>$i)
+                                <div class="w-1/3 sm:w-1/2 rounded overflow-hidden shadow-lg flex flex-col
+                                 justify-center items-center">
+                                    <div class="py-4 relative">
+
+                                        <img class="h-28 w-28 aspect-square" src="{{ asset($i->image) }}"
+                                             alt="{{ "gallery" }}">
+                                        <x-badge warning icon="trash" rounded="lg" icon-size="md"
+                                                 class="absolute top-0 right-0 cursor-pointer "
+                                                 wire:click="deleteImage({{ $i->id }})"
+                                                 wire:confirm="Are you sure you want to delete this image?" />
+                                    </div>
+                                </div>
+                            @empty
+                                <div class="w-full h-60 flex items-center justify-center">
+                                    <p class="text-secondary-700 dark:text-secondary-300">No Image Available</p>
+                                </div>
+                            @endforelse
+                        </div>
+                        <x-button outline label="Add Product Images" x-on:click="$openModal('productGallery')" primary />
+                    </section>
                 </div>
+                @endpersist
             </div>
-             <x-textarea id="trix-content" class="w-full" label="Summary"
-                        placeholder="Product Short Summary"
-                        wire:model.defer="form.summary"></x-textarea>
-            <x-textarea id="trix-content" class="w-full" label="Description"
+
+            <x-textarea id="trix-content" class="w-full" label="Description" rows="10"
                         placeholder="Product Complete Description"
                         wire:model.defer="form.description"></x-textarea>
             <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -166,7 +197,7 @@
                 <x-input type="text" icon="tag" wire:model.defer="form.meta_keywords"
                          placeholder="Product Meta Keywords. use comma(,) to separate values" label="SEO Keywords" />
                 <x-textarea type="text" icon="tag" wire:model.defer="form.meta_description"
-                            class="col-span-full" label="SEO Description"
+                            class="col-span-full" label="SEO Description" corner="170 character max"
                             placeholder="Product Meta Description. Write in between 60-120 character"></x-textarea>
             </div>
 
@@ -191,12 +222,21 @@
 
 </section>
 
+@push('modals')
+    <livewire:dash.components.product-image-upload-modal :product="$product" />
+@endpush
+
+
+
 @push('scripts')
     <script>
         // const easyMDE = new EasyMDE({ element: document.getElementById('trix-content') })
         // easyMDE.codemirror.on('outside', () => {
         //     @this.set('form.description', easyMDE.value())
         // })
+        Livewire.on('productImage', () => {
+            this.location.reload()
+        })
         function previewImage() {
             return {
                 imageUrl: '',

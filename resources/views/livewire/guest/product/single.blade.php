@@ -4,17 +4,29 @@
         <div class="p-4 w-full max-lg:mx-auto">
             <div class="grid items-start grid-cols-1 lg:grid-cols-2 gap-8 max-lg:gap-16">
                 <div class="w-full lg:sticky top-0 text-center">
-                    <div class="lg:h-96">
+                    <div class="sm:h-96 h-64 carousel carousel-main " data-flickity='{"pageDots": false, "setGallerySize": false}'>
                         <img src="{{ asset($product['thumbnail']) }}" alt="{{ $product['name'] }}"
-                             class="lg:w-11/12 w-full h-full aspect-square rounded-md object-contain object-top" />
+                             class="lg:w-11/12 w-full h-full aspect-square rounded-md object-contain carousel-cell carousel-cell-image" />
+                        @foreach($product['images'] as $i)
+                            <img src="{{ asset($i['image']) }}" alt="{{ $product['name'].'-'.$i['variation'] }}"
+                                 loading="lazy"
+                                 class="lg:w-11/12 w-full h-full aspect-square rounded-md object-contain carousel-cell carousel-cell-image " />
+                        @endforeach
                     </div>
 
-                    {{--                        <div class="flex flex-wrap gap-4 justify-center mx-auto mt-4">--}}
-                    {{--                            <img src="https://readymadeui.com/images/product6.webp" alt="Product1" class="w-16 cursor-pointer rounded-md outline" />--}}
-                    {{--                            <img src="https://readymadeui.com/images/product8.webp" alt="Product2" class="w-16 cursor-pointer rounded-md" />--}}
-                    {{--                            <img src="https://readymadeui.com/images/product5.webp" alt="Product3" class="w-16 cursor-pointer rounded-md" />--}}
-                    {{--                            <img src="https://readymadeui.com/images/product7.webp" alt="Product4" class="w-16 cursor-pointer rounded-md" />--}}
-                    {{--                        </div>--}}
+                    @if($product['images'])
+                        <div class="carousel carousel-nav content-center"
+                             data-flickity='{ "asNavFor": ".carousel-main", "contain": true, "pageDots": false }'>
+                            <img src="{{ asset($product['thumbnail']) }}" alt="{{ $product['name'] }}"
+                                     loading="lazy"
+                                     class="w-36 h-38 aspect-square rounded-md object-contain carousel-cell " />
+                            @foreach($product['images'] as $i)
+                                <img src="{{ asset($i['image']) }}" alt="{{ $product['name'].'-'.$i['variation'] }}"
+                                     loading="lazy"
+                                     class="w-24 h-24 aspect-square rounded-md object-cover carousel-cell " />
+                            @endforeach
+                        </div>
+                    @endif
                 </div>
 
                 <div>
@@ -71,22 +83,23 @@
                                 @endif
                                 <span class="ml-1">Tax included</span>
                             </p>
-                           @if($product['instalment'])
-                                <div class="text-md inline-flex justify-center items-center text-primary-800 dark:text-primary-500">
+                            @if($product['instalment'])
+                                <div
+                                    class="text-md inline-flex justify-center items-center text-primary-800 dark:text-primary-500">
 
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
-                                     viewBox="0 0 48 48"  fill="currentColor" >
-                                    <path
-                                        d="M28,41H6c-1.1,0-2-.9-2-2v-22h34v5c0,.55.45,1,1,1s1-.45,1-1v-11c0-2.21-1.79-4-4-4h-2v-1c0-.55-.45-1-1-1s-1,.45-1,1v1h-4v-1c0-.55-.45-1-1-1s-1,.45-1,1v1h-4v-1c0-.55-.45-1-1-1s-1,.45-1,1v1h-4v-1c0-.55-.45-1-1-1s-1,.45-1,1v1h-4v-1c0-.55-.45-1-1-1s-1,.45-1,1v1h-2c-2.21,0-4,1.79-4,4v28c0,2.21,1.79,4,4,4h22c.55,0,1-.45,1-1s-.45-1-1-1ZM6,9h2v2c0,.55.45,1,1,1s1-.45,1-1v-2h4v2c0,.55.45,1,1,1s1-.45,1-1v-2h4v2c0,.55.45,1,1,1s1-.45,1-1v-2h4v2c0,.55.45,1,1,1s1-.45,1-1v-2h4v2c0,.55.45,1,1,1s1-.45,1-1v-2h2c1.1,0,2,.9,2,2v4H4v-4c0-1.1.9-2,2-2Z" />
-                                    <path
-                                        d="M37 25c-4.96 0-9 4.04-9 9s4.04 9 9 9 9-4.04 9-9-4.04-9-9-9zM37 41c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7zM14 22c0-.55-.45-1-1-1h-4c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-4zM12 25h-2v-2h2v2zM13 31h-4c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-4c0-.55-.45-1-1-1zM12 35h-2v-2h2v2zM24 22c0-.55-.45-1-1-1h-4c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-4zM22 25h-2v-2h2v2zM23 31h-4c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-4c0-.55-.45-1-1-1zM22 35h-2v-2h2v2zM29 21c-.55 0-1 .45-1 1v3.07c0 .55.45 1 1 1s1-.45 1-1v-2.07h2.05c.13.4.51.69.95.69.55 0 1-.45 1-1v-.69c0-.55-.45-1-1-1h-4z" />
-                                    <path
-                                        d="M39.29,30.29l-6,6c-.39.39-.39,1.02,0,1.41.2.2.45.29.71.29s.51-.1.71-.29l6-6c.39-.39.39-1.02,0-1.41s-1.02-.39-1.41,0Z" />
-                                    <circle cx="34.5" cy="31.5" r="1.5" />
-                                    <circle cx="39.5" cy="36.5" r="1.5" />
-                                </svg>
-                               <span> {{ __('Installment Available') }}</span>
-                            </div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
+                                         viewBox="0 0 48 48" fill="currentColor">
+                                        <path
+                                            d="M28,41H6c-1.1,0-2-.9-2-2v-22h34v5c0,.55.45,1,1,1s1-.45,1-1v-11c0-2.21-1.79-4-4-4h-2v-1c0-.55-.45-1-1-1s-1,.45-1,1v1h-4v-1c0-.55-.45-1-1-1s-1,.45-1,1v1h-4v-1c0-.55-.45-1-1-1s-1,.45-1,1v1h-4v-1c0-.55-.45-1-1-1s-1,.45-1,1v1h-4v-1c0-.55-.45-1-1-1s-1,.45-1,1v1h-2c-2.21,0-4,1.79-4,4v28c0,2.21,1.79,4,4,4h22c.55,0,1-.45,1-1s-.45-1-1-1ZM6,9h2v2c0,.55.45,1,1,1s1-.45,1-1v-2h4v2c0,.55.45,1,1,1s1-.45,1-1v-2h4v2c0,.55.45,1,1,1s1-.45,1-1v-2h4v2c0,.55.45,1,1,1s1-.45,1-1v-2h4v2c0,.55.45,1,1,1s1-.45,1-1v-2h2c1.1,0,2,.9,2,2v4H4v-4c0-1.1.9-2,2-2Z" />
+                                        <path
+                                            d="M37 25c-4.96 0-9 4.04-9 9s4.04 9 9 9 9-4.04 9-9-4.04-9-9-9zM37 41c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7zM14 22c0-.55-.45-1-1-1h-4c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-4zM12 25h-2v-2h2v2zM13 31h-4c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-4c0-.55-.45-1-1-1zM12 35h-2v-2h2v2zM24 22c0-.55-.45-1-1-1h-4c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-4zM22 25h-2v-2h2v2zM23 31h-4c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-4c0-.55-.45-1-1-1zM22 35h-2v-2h2v2zM29 21c-.55 0-1 .45-1 1v3.07c0 .55.45 1 1 1s1-.45 1-1v-2.07h2.05c.13.4.51.69.95.69.55 0 1-.45 1-1v-.69c0-.55-.45-1-1-1h-4z" />
+                                        <path
+                                            d="M39.29,30.29l-6,6c-.39.39-.39,1.02,0,1.41.2.2.45.29.71.29s.51-.1.71-.29l6-6c.39-.39.39-1.02,0-1.41s-1.02-.39-1.41,0Z" />
+                                        <circle cx="34.5" cy="31.5" r="1.5" />
+                                        <circle cx="39.5" cy="36.5" r="1.5" />
+                                    </svg>
+                                    <span> {{ __('Installment Available') }}</span>
+                                </div>
                             @endif
                         </div>
 
@@ -171,7 +184,7 @@
                         <button type="button" class="w-1/2 px-4 py-2.5 border border-emerald-700
                         bg-transparent hover:bg-gradient-to-tr hover:from-emerald-950 hover:to-emerald-700
                         text-emerald-800 hover:text-slate-100 text-sm font-semibold rounded-md"
-                        wire:click="addToCart({{ $product['id'] }},1)">
+                                wire:click="addToCart({{ $product['id'] }},1)">
                             Add to cart
                         </button>
                     </div>
@@ -206,3 +219,11 @@
         </div>
     </div>
 </section>
+@push('styles')
+    <style>
+        .carousel-cell-image:hover{
+            @apply transform scale-125;
+        }
+
+    </style>
+@endpush

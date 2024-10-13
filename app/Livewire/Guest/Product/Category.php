@@ -53,7 +53,7 @@ class Category extends Component
 
     public function render()
     {
-        $title = $this->category->name . ' Products';
+        $title = $this->category->name . ' Devices';
         $description = $this->category->description;
 
         $this->seo()->setTitle($title);

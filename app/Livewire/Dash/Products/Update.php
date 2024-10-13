@@ -5,17 +5,20 @@ namespace App\Livewire\Dash\Products;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductGallery;
 use Filament\Notifications\Notification;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
+use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Spatie\Sitemap\SitemapGenerator;
 use Spatie\Sitemap\Tags\Url;
+use WireUi\Traits\WireUiActions;
 
 class Update extends Component
 {
-    use withFileUploads;
+    use withFileUploads, WireUiActions;
 
     public $product;
     public $categories;
@@ -28,7 +31,7 @@ class Update extends Component
         'form.slug' => 'Product Slug',
         'form.price' => 'Price',
         'form.sale_price' => 'Sale Price',
-        'form.instalment'=> 'Instalment',
+        'form.instalment' => 'Instalment',
         'form.quantity' => 'Stock Quantity',
         'form.thumbnail' => 'Product Thumbnail',
         'form.category_id' => 'Category',
@@ -41,13 +44,20 @@ class Update extends Component
         'form.meta_keywords' => 'SEO Keywords',
     ];
 
+    #[on('productImage')]
+    public function successNotification()
+    {
+        $this->dispatch('$refresh');
+        $this->mount($this->product->id);
+    }
 
     public function mount($product)
     {
-        $this->product = Product::findOrFail($product);
+        $this->product = Product::with('images')
+            ->findOrFail($product);
         $this->form = $this->product->toArray();
-//        $this->form['category'] = $this->product->category->id;
-//        $this->form['brand'] = $this->product->brand->id;
+        $this->form['category'] = $this->product->category->id;
+        $this->form['brand'] = $this->product->brand->id;
         $this->form['thumbnail'] = null;
 
         $this->categories = Cache::flexible('categories', [5, 180], function () {
@@ -78,6 +88,7 @@ class Update extends Component
             'form.meta_description' => 'nullable|string',
             'form.meta_keywords' => 'nullable|string',
         ]);
+
         $thumbnail = $this->product->thumbnail;
 
         if ($this->form['thumbnail']) {
@@ -93,7 +104,7 @@ class Update extends Component
             'name' => $this->form['name'],
             'slug' => $this->form['slug'],
             'price' => $this->form['price'],
-            'sale'=> (bool)$this->form['sale_price'],
+            'sale' => (bool)$this->form['sale_price'],
             'sale_price' => $this->form['sale_price'] ?? null,
             'quantity' => $this->form['quantity'],
             'thumbnail' => $thumbnail,
@@ -104,9 +115,9 @@ class Update extends Component
             'brand_id' => $this->form['brand_id'],
             'status' => $this->form['status'],
             'instalment' => $this->form['instalment'],
-            'meta_title' => $this->form['meta_title']?? $this->form['name'],
-            'meta_description' => $this->form['meta_description']?? $this->form['summary'],
-            'meta_keywords' => $this->form['meta_keywords']??$this->form['name'],
+            'meta_title' => $this->form['meta_title'] ?? $this->form['name'],
+            'meta_description' => $this->form['meta_description'] ?? $this->form['summary'],
+            'meta_keywords' => $this->form['meta_keywords'] ?? $this->form['name'],
             'updated_at' => now(),
         ]);
         Cache::forget('product_' . $this->product->slug);
@@ -116,6 +127,14 @@ class Update extends Component
         return $this->redirect(route('admin.product.index'), navigate: true);
     }
 
+    public function deleteImage($id)
+    {
+        $image=ProductGallery::find($id);
+        Storage::disk('public')->delete($image->image);
+        $image->delete();
+        $this->dispatch('$refresh');
+        $this->dispatch('productImage');
+    }
 
     public function render()
     {
