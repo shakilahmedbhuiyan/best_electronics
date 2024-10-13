@@ -7,11 +7,13 @@
                     <div class="sm:h-96 h-64 carousel carousel-main " data-flickity='{"pageDots": false, "setGallerySize": false}'>
                         <img src="{{ asset($product['thumbnail']) }}" alt="{{ $product['name'] }}"
                              class="lg:w-11/12 w-full h-full aspect-square rounded-md object-contain carousel-cell carousel-cell-image" />
+                        @if($product['images'])
                         @foreach($product['images'] as $i)
                             <img src="{{ asset($i['image']) }}" alt="{{ $product['name'].'-'.$i['variation'] }}"
                                  loading="lazy"
                                  class="lg:w-11/12 w-full h-full aspect-square rounded-md object-contain carousel-cell carousel-cell-image " />
                         @endforeach
+                        @endif
                     </div>
 
                     @if($product['images'])
@@ -19,7 +21,7 @@
                              data-flickity='{ "asNavFor": ".carousel-main", "contain": true, "pageDots": false }'>
                             <img src="{{ asset($product['thumbnail']) }}" alt="{{ $product['name'] }}"
                                      loading="lazy"
-                                     class="w-36 h-38 aspect-square rounded-md object-contain carousel-cell " />
+                                     class="w-24 h-24 aspect-square rounded-md object-contain carousel-cell " />
                             @foreach($product['images'] as $i)
                                 <img src="{{ asset($i['image']) }}" alt="{{ $product['name'].'-'.$i['variation'] }}"
                                      loading="lazy"

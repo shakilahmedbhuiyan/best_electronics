@@ -69,7 +69,7 @@
 </div>
 
 @filamentScripts
-<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js" data-spa="auto" defer></script>
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js" data-spa="auto" defer async></script>
 @vite('resources/js/app.js')
 @livewireScripts
 

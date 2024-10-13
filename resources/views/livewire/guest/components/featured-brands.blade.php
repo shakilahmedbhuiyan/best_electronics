@@ -7,7 +7,7 @@
 
         <section class="container">
             <div class=" main-carousel "
-                 data-flickity='{ "wrapAround": true, "autoPlay": 3000, "pageDots": false }'>
+                 data-flickity='{ "contain": true, "autoPlay": 3000, "pageDots": false }'>
                 @foreach($brands as $brand=>$b)
 
                     <div class="w-4/12 rounded overflow-hidden shadow-lg flex flex-col justify-center items-center">
@@ -15,10 +15,6 @@
                            role="brandLogo" aria-label="{{$brand . ' logo slider'}}">
                             <img class="h-28 w-28 aspect-square" src="{{ $b->thumbnail_url }}"
                                  alt="{{ $b->name. ' logo' }}" aira-label="{{$brand . ' logo'}}">
-                            <div class="py-4">
-                                <div
-                                    class="text-lg capitalize text-secondary-700 dark:text-secondary-300 mb-2">{{ $b->name }}</div>
-                            </div>
                         </a>
                     </div>
 

@@ -9,6 +9,7 @@
 /public/products-gallery
 /storage/*.key
 /vendor
+composer.lock
 .env
 .env.backup
 .env.production
