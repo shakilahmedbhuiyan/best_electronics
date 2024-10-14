@@ -32,7 +32,7 @@ class ProductImageUploadModal extends Component
             'image' => 'required|image|max:1024',
             'variation' => 'required|string|max:100'
         ]);
-        $slug = Str::slug($this->variation);
+        $slug = $this->product->slug.'-'.Str::slug($this->variation);
         if ($this->product->images()->where('variation', $slug)->exists()) {
             $this->addError('variation', 'Variation already exists');
             return;
