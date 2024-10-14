@@ -35,9 +35,11 @@ class ProductCollection extends Component
             $products = Product::with('brand')
                 ->where('status', true)
                 ->where('quantity', '>', 0)
-                ->orderBy('created_at', 'asc')
+                ->orderBy('price', 'desc')
                 ->paginate(12);
-            Cache::forever($this->key, $products);
+            Cache::flexible($this->key, [300, now()->addDays(5)], function () use ($products) {
+                return $products;
+            });
 
         }
         return view('livewire.guest.components.product-collection', compact('products'));

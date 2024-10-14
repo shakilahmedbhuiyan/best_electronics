@@ -77,7 +77,7 @@ class Create extends Component
             'name' => $this->form['name'],
             'slug' => $this->form['slug'],
             'price' => $this->form['price'],
-            'sale'=> (bool)$this->form['sale_price'],
+            'sale'=> isset($this->form['sale_price'])? 1 : 0,
             'sale_price' => $this->form['sale_price'] ?? null,
             'sku' => $sku,
             'quantity' => $this->form['quantity'],

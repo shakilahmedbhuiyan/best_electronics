@@ -12,25 +12,30 @@ class AppleDevices extends Component
 {
     public $devices;
     public $brand;
+    public $cache = false;
 
     public function mount($brand)
     {
-        $key = 'brand_' . $brand;
-
-        $this->brand = cache::rememberForever($key, function () use ($brand) {
+        $this->brand = cache::rememberForever('brand_' . $brand, function () use ($brand) {
             return Brand::where('name', $brand)->first();
         });
-        $this->devices = Product::where('brand_id', $this->brand->id)
-            ->where('status', true)
-            ->where('quantity', '>', 0)
-            ->orderBy('created_at', 'desc')
-            ->with('brand')
-            ->limit(4)
-            ->get();
 
-        Cache::flexible($this->brand->slug.'_devices',[5,3600], function () {
-            return $this->devices;
-        });
+        $key = $this->brand->slug . '_devices';
+
+        if (Cache::has($key)) {
+            $this->devices = Cache::get($key);
+            $this->cache = true;
+        } else {
+            $this->devices = Product::where('brand_id', $this->brand->id)
+                ->where('status', true)
+                ->where('quantity', '>', 0)
+                ->orderBy('created_at', 'desc')
+                ->with('brand')
+                ->limit(4)
+                ->get();
+            Cache::forever($key,  $this->devices);
+        }
+        return $this->devices;
     }
 
     public function render()
