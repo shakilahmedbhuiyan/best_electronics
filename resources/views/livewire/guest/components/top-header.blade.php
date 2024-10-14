@@ -14,7 +14,7 @@
                         {{ __($store['whatsapp']) }}
                    </span>
                 </a>
-                <a href="{!! $store['email'] !!}" target="_blank"
+                <a href="mailto:{!! $store['email'] !!}"
                    aria-label="Email Address"
                    class="text-sm inline-flex text-gray-600 hover:text-gray-900">
                     <x-heroicons::outline.envelope class="mr-1 w-5 h-5" />
