@@ -1,4 +1,6 @@
-@php($name = $name ?? $attributes->wire('model')->value())
+@php
+$name = $name ?? $attributes->wire('model')->value()
+@endphp
 
 <div class="fixed inset-0 overflow-y-auto {{ $spacing }} {{ $zIndex }}"
      x-data="wireui_modal({

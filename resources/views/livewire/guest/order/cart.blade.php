@@ -144,19 +144,12 @@
     <script>
         function cartData() {
             return {
-                items: @json($cartItems),  // Pass your PHP cartItems to Alpine.js
-                // updateItemQuantity(index) {
-                //     const item = this.items[index];
-                //     // Send an event to Livewire to update the quantity in the session
-                //     $dispatch('updateCartQuantity', item.product.id, item.quantity);
-                // },
+                items: @json($cartItems),
                 calculateItemTotal(item) {
-                    // Calculate the total price of each item based on the quantity and price
                     const price = item.product.sale ? item.product.sale_price : item.product.price
                     return (price * item.quantity).toFixed(2)
                 },
                 totalPrice() {
-                    // Calculate the total price of all items in the cart
                     return this.items.reduce((total, item) => {
                         const price = item.product.sale ? item.product.sale_price : item.product.price
                         return total + (price * item.quantity)

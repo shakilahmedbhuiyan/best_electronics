@@ -130,7 +130,10 @@ class Update extends Component
     public function deleteImage($id)
     {
         $image=ProductGallery::find($id);
-        Storage::disk('public')->delete($image->image);
+        if (Storage::disk('public')->exists($image->image))
+        {
+            Storage::disk('public')->delete($image->image);
+        }
         $image->delete();
         $this->dispatch('$refresh');
         $this->dispatch('productImage');

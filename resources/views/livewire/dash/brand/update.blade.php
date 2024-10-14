@@ -44,21 +44,19 @@
                                  wire:loading.class="d-block opacity-20 blur-sm">
                                 <x-input-error for="image" />
 
-                                <label for="logo">
-                                    <div class="w-44 h-44 rounded bg-gray-100 border border-gray-200 flex
+                                <div class="w-44 h-44 rounded bg-gray-100 border border-gray-200 flex
                                     items-center justify-center overflow-hidden">
 
-                                        <img x-show="imageUrl" :src="imageUrl" class="w-full object-cover">
+                                    <img x-show="imageUrl" :src="imageUrl" class="w-full object-cover">
 
-                                        <img x-show="!imageUrl" src="{{ asset($thumbnail) }}"
-                                             class="w-full object-cover">
-                                    </div>
-                                </label>
+                                    <img x-show="!imageUrl" src="{{ asset($thumbnail) }}"
+                                         class="w-full object-cover">
+                                </div>
 
                                 <div>
                                     <label for="logo" class="block mb-2 mt-4 font-bold">Upload image..</label>
                                     <x-jet-input class="w-full cursor-pointer" type="file" name="logo" id="logo"
-                                           wire:model.defer="image" @change="fileChosen"/>
+                                                 wire:model.defer="image" @change="fileChosen" />
                                 </div>
                             </div>
                         </div>

@@ -6,9 +6,11 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\HomeSlider;
 use App\Models\Product;
+use App\Models\ProductGallery;
 use App\Observers\BrandObserver;
 use App\Observers\CategoryObserver;
 use App\Observers\HomeSliderObserver;
+use App\Observers\ProductGalleryObserver;
 use App\Observers\ProductObserver;
 use App\Policies\RolePolicy;
 use App\Policies\PermissionPolicy;
@@ -57,6 +59,7 @@ class AppServiceProvider extends ServiceProvider
         Category::observe(CategoryObserver::class);
         Brand::observe(BrandObserver::class);
         HomeSlider::observe(HomeSliderObserver::class);
+        ProductGallery::observe(ProductGalleryObserver::class);
 
     }
 }

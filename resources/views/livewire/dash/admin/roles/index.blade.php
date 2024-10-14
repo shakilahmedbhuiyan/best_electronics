@@ -61,7 +61,6 @@
     <!-- Permissions Table -->
     <div>
         {{ $this->table }}
-
     </div>
 
 </section>

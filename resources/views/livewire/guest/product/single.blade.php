@@ -4,15 +4,16 @@
         <div class="p-4 w-full max-lg:mx-auto">
             <div class="grid items-start grid-cols-1 lg:grid-cols-2 gap-8 max-lg:gap-16">
                 <div class="w-full lg:sticky top-0 text-center">
-                    <div class="sm:h-96 h-64 carousel carousel-main " data-flickity='{"pageDots": false, "setGallerySize": false}'>
+                    <div class="sm:h-96 h-64 carousel carousel-main "
+                         data-flickity='{"pageDots": false, "setGallerySize": false}'>
                         <img src="{{ asset($product['thumbnail']) }}" alt="{{ $product['name'] }}"
                              class="lg:w-11/12 w-full h-full aspect-square rounded-md object-contain carousel-cell carousel-cell-image" />
                         @if($product['images'])
-                        @foreach($product['images'] as $i)
-                            <img src="{{ asset($i['image']) }}" alt="{{ $product['name'].'-'.$i['variation'] }}"
-                                 loading="lazy"
-                                 class="lg:w-11/12 w-full h-full aspect-square rounded-md object-contain carousel-cell carousel-cell-image " />
-                        @endforeach
+                            @foreach($product['images'] as $i)
+                                <img src="{{ asset($i['image']) }}" alt="{{ $product['name'].'-'.$i['variation'] }}"
+                                     loading="lazy"
+                                     class="lg:w-11/12 w-full h-full aspect-square rounded-md object-contain carousel-cell carousel-cell-image " />
+                            @endforeach
                         @endif
                     </div>
 
@@ -20,8 +21,8 @@
                         <div class="carousel carousel-nav content-center"
                              data-flickity='{ "asNavFor": ".carousel-main", "contain": true, "pageDots": false }'>
                             <img src="{{ asset($product['thumbnail']) }}" alt="{{ $product['name'] }}"
-                                     loading="lazy"
-                                     class="w-24 h-24 aspect-square rounded-md object-contain carousel-cell " />
+                                 loading="lazy"
+                                 class="w-24 h-24 aspect-square rounded-md object-contain carousel-cell " />
                             @foreach($product['images'] as $i)
                                 <img src="{{ asset($i['image']) }}" alt="{{ $product['name'].'-'.$i['variation'] }}"
                                      loading="lazy"
@@ -44,7 +45,6 @@
                                    aria-label="{{ $product['category']['name'].' Category' }}"
                                    href="{{ route('index.category', $product['category']['slug'] ) }}" wire:navigate>
                                     {{ $product['category']['name'] }}</a>
-
                             </div>
                         </div>
 
@@ -223,7 +223,7 @@
 </section>
 @push('styles')
     <style>
-        .carousel-cell-image:hover{
+        .carousel-cell-image:hover {
             @apply transform scale-125;
         }
 

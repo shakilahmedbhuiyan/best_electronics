@@ -57,7 +57,6 @@ class store extends Model
             'instagram' => $this->instagram,
             'linkedin' => $this->linkedin,
             'youtube' => $this->youtube,
-            'whatsapp' => $this->whatsapp,
             'tiktok' => $this->tiktok,
         ];
     }
@@ -79,6 +78,7 @@ class store extends Model
             'description' => $this->description,
             'address' => $this->address,
             'phone' => $this->phone,
+             'whatsapp' => $this->whatsapp,
             'email' => $this->email,
             'website' => $this->website,
             'map_link' => $this->map_link,

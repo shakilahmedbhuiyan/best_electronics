@@ -144,7 +144,7 @@
                 </div>
 
                 <!-- product image upload -->
-                @persist('productGallery')
+
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 ">
                     <div class="" x-data="previewImage()" wire:loading.class="d-block opacity-20 blur-sm">
                         <x-input-error for="form.thumbnail" />
@@ -185,7 +185,6 @@
                         <x-button outline label="Add Product Images" x-on:click="$openModal('productGallery')" primary />
                     </section>
                 </div>
-                @endpersist
             </div>
 
             <x-textarea id="trix-content" class="w-full" label="Description" rows="10"
@@ -246,10 +245,8 @@
 
                 fileToDataUrl(event, callback) {
                     if (!event.target.files.length) return
-
                     let file = event.target.files[0],
                         reader = new FileReader()
-
                     reader.readAsDataURL(file)
                     reader.onload = (e) => callback(e.target.result)
                 },

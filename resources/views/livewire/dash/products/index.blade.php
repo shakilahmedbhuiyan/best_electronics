@@ -118,6 +118,7 @@
             </div>
 
         @endforeach
+
         @if(!isset($products) || count($products) <= 0)
             <!-- No product card -->
             <div class="col-span-full flex justify-center items-center">
