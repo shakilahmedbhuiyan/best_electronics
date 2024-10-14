@@ -49,6 +49,9 @@ class Single extends Component
         $this->seo()->opengraph()->setTitle($this->product['name']);
         $this->seo()->opengraph()->setDescription($this->product['meta_description']);
         $this->seo()->opengraph()->setType('product');
+        $this->seo()->opengraph()->setUrl(route('product.single', $this->product['slug']));
+        $this->seo()->opengraph()->addImage($this->product['thumbnail']);
+        $this->seo()->opengraph()->addProperty('image:alt', $this->product['name']);
         $this->seo()->twitter()->setTitle($this->product['name']);
         $this->seo()->twitter()->setDescription($this->product['description']);
 
