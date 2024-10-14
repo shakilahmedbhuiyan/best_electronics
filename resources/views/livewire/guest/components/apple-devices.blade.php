@@ -1,7 +1,7 @@
 <div class="bg-slate-200 dark:bg-primary-950/30 bg-blend-multiply pt-5 pb-8">
     <div class="text-center p-5 flex flex-row justify-between items-center">
         <h2 class="text-3xl font-bold text-emerald-800 dark:text-emerald-600 font-serif leading-loose uppercase">
-           {{ __($brand->name. 'Products') }}
+           {{ __($brand->name. ' Products') }}
         </h2>
         <a href="{{ route('index.brand', $brand->slug) }}" title="All Products" class="hidden sm:block">
             <x-button type="button" outline right-icon="arrow-right">

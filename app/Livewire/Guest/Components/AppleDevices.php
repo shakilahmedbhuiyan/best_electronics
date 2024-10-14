@@ -28,7 +28,7 @@ class AppleDevices extends Component
             ->limit(4)
             ->get();
 
-        Cache::rememberForever($this->brand->slug.'_devices', function () {
+        Cache::flexible($this->brand->slug.'_devices',[5,3600], function () {
             return $this->devices;
         });
     }
