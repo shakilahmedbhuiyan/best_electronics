@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Guest\Product;
 
+use App\Models\Product;
 use Artesaos\SEOTools\Traits\SEOTools;
 use Illuminate\Support\Facades\Cache;
 use Livewire\Component;
@@ -69,8 +70,13 @@ class Brand extends Component
         if (cache()->has($this->key)) {
             $products = cache()->get($this->key);
         } else {
-            $products = $this->brand->products()->paginate(12);
-            Cache::forever($this->key, $products);
+            $products = Cache::flexible($this->key, [5, now()->addDays(5)], function () {
+                return Product::with('brand', 'category')
+                    ->where('brand_id', $this->brand->id)
+                    ->Active()
+                    ->InStock()
+                    ->paginate(12);
+            });
         }
         return view('livewire.guest.product.brand', compact('products'))
             ->layout('layouts.guest');

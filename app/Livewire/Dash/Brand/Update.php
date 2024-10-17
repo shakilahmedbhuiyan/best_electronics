@@ -11,17 +11,19 @@ use Livewire\WithFileUploads;
 class Update extends Component
 {
     use WithFileUploads;
-    public $name, $description, $status, $thumbnail, $slug, $image;
+    public $name, $description, $status, $thumbnail, $slug, $image, $featured;
     public $brand;
     public function mount($brand)
     {
         $this->authorize('permission:brand-update');
-        $this->brand = Brand::findOrFail($brand);
-        $this->name = $this->brand->name;
-        $this->description =   $this->brand->description;
-        $this->status = $this->brand->status;
-        $this->thumbnail = $this->brand->thumbnail_url;
-        $this->slug = $this->brand->slug;
+        $brand = Brand::findOrFail($brand);
+        $this->brand = $brand;
+        $this->name = $brand->name;
+        $this->description =   $brand->description;
+        $this->status = $brand->status;
+        $this->thumbnail = $brand->thumbnail_url;
+        $this->slug = $brand->slug;
+        $this->featured = $brand->featured;
     }
 
     public function update()
@@ -49,6 +51,7 @@ class Update extends Component
             'description' => $this->description,
             'thumbnail' => $this->thumbnail,
             'status' => $this->status,
+            'featured' => $this->status? $this->featured : 0,
             'slug' => $this->slug,
         ]);
         session()->flash('success', 'Brand '.$this->brand->name.' updated successfully');

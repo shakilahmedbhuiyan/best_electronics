@@ -9,24 +9,7 @@
     {!! SEO::generate(true) !!}
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/ico">
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6MZMNHZ157"></script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=GT-5MXLVKLC"></script>
-    <script>
-        window.dataLayer = window.dataLayer || []
 
-        function gtag() {
-            dataLayer.push(arguments)
-        }
-
-        gtag('js', new Date())
-
-        gtag('config', 'G-6MZMNHZ157')
-
-   // - Google tag (gtag.js) for merchant
-
-        gtag('config', 'GT-5MXLVKLC')
-    </script>
 
 
     <!-- Fonts -->
@@ -39,32 +22,11 @@
     @vite('resources/css/app.css')
     @livewireStyles
 
-    @stack('styles')
-    <!-- Meta Pixel Code -->
-    <script>
-        !function(f, b, e, v, n, t, s) {
-            if (f.fbq) return
-            n = f.fbq = function() {
-                n.callMethod ?
-                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-            }
-            if (!f._fbq) f._fbq = n
-            n.push = n
-            n.loaded = !0
-            n.version = '2.0'
-            n.queue = []
-            t = b.createElement(e)
-            t.async = !0
-            t.src = v
-            s = b.getElementsByTagName(e)[0]
-            s.parentNode.insertBefore(t, s)
-        }(window, document, 'script',
-            'https://connect.facebook.net/en_US/fbevents.js')
-        fbq('init', '1230542744779073')
-        fbq('track', 'PageView')
-    </script>
-    <!-- End Meta Pixel Code -->
+    @persist('analytics')
+    <livewire:guest.components.analytics />
+    @endpersist
 
+    @stack('styles')
 </head>
 
 <body id="app" class="font-sans antialiased bg-gray-100 dark:bg-slate-800 relative">
@@ -110,21 +72,23 @@
 </div>
 
 
-@livewire('notifications')
+{{--@livewire('notifications')--}}
 @stack('modals')
 
 <livewire:guest.components.footer />
 
 @vite('resources/js/app.js')
 @livewireScripts
-<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js" async defer></script>
-@stack('scripts')
 
+@persist('analytics-end')
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js" async defer></script>
 <noscript>
     <img height="1" width="1" style="display:none"
                src="https://www.facebook.com/tr?id=1230542744779073&ev=PageView&noscript=1"
     /></noscript>
 <!-- End Meta Pixel Code -->
+@endpersist
+@stack('scripts')
 
 </body>
 

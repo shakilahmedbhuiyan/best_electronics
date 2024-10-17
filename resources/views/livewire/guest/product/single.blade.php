@@ -191,20 +191,14 @@
                         </article>
                     </div>
                 </div>
-                <div class="bg-white dark:bg-gray-900 border-2 border-emerald-950/75 rounded-lg min-h-24 p-5
-                flex flex-col justify-center items-center w-full md:w-2/5 ">
-                    <p>Related Products</p>
+                <div class="w-full md:w-2/5 ">
+                    <livewire:guest.product.related :productId="$product['id']"
+                                                    :categoryId="$product['category']['id']"
+                                                    :brandId="$product['brand']['id']"  />
                 </div>
 
             </div>
         </div>
     </div>
 </section>
-@push('styles')
-    <style>
-        .carousel-cell-image:hover {
-            @apply transform scale-125;
-        }
 
-    </style>
-@endpush
